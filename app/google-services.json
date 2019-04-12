@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "560338463833",
+    "firebase_url": "https://medicontrol-ufrpe.firebaseio.com",
+    "project_id": "medicontrol-ufrpe",
+    "storage_bucket": "medicontrol-ufrpe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560338463833:android:9647547fe0c76688",
+        "android_client_info": {
+          "package_name": "com.adht.android.medicontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560338463833-vpcnuh5gph6044kku4lbpp12i1pes8a0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.adht.android.medicontrol",
+            "certificate_hash": "118b3e867fa0ab330347905e3b4790fd62a99667"
+          }
+        },
+        {
+          "client_id": "560338463833-389jdak9jfoc5t4sfnc2epdo98mlh4uf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLc-Re7jYSv8Bde4BBDdMhpc2zOIsIdRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560338463833-389jdak9jfoc5t4sfnc2epdo98mlh4uf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
