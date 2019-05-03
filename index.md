@@ -13,4 +13,11 @@ Esse projeto nasceu da realidade dos seus próprios desenvolvedores, que enfrent
 
 # Diagramas
 
+## Diagrama de Casos de Uso
+
+![Casos de Uso](projetompoo/Diagrama%20de%20Caso%20de%20Uso.png)
+
+## Diagrama de Atividades
+
 ![Atividade](projetompoo/Diagrama%20de%20Atividade.png)
+
