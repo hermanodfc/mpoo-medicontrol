@@ -13,4 +13,4 @@ Esse projeto nasceu da realidade dos seus próprios desenvolvedores, que enfrent
 
 # Diagramas
 
-![Atividade](https://github.com/hermanodfc/mpoo-medicontrol/blob/gh-pages/projetompoo/Diagrama%20de%20Atividade.png)
+![Atividade](projetompoo/Diagrama%20de%20Atividade.png)
