@@ -11,3 +11,6 @@ O projeto MediControl tem como objetivo contribuir com a manutenção dos horár
 
 Esse projeto nasceu da realidade dos seus próprios desenvolvedores, que enfrentam as dificuldades diárias relacionadas ao monitoramento do cuidado de terceiros. Assim, sabendo das reais necessidades inerentes ao assunto, pretende-se entregar um aplicativo completo e que faça diferença na vida de seus usuários.
 
+# Diagramas
+
+![Atividade](https://github.com/hermanodfc/mpoo-medicontrol/blob/gh-pages/projetompoo/Diagrama%20de%20Atividade.png)
