@@ -3,7 +3,9 @@
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
+    <string name="email_hint">seu@email.com</string>
     <string name="prompt_password">Senha</string>
+    <string name="password_hint">******</string>
     <string name="action_sign_in">Entrar</string>
     <string name="action_register"><u>Faça seu cadastro</u></string>
     <string name="error_invalid_email">This email address is invalid</string>
