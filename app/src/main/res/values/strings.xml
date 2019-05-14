@@ -8,6 +8,8 @@
     <string name="password_hint">******</string>
     <string name="action_sign_in">Entrar</string>
     <string name="action_register"><u>Faça seu cadastro</u></string>
+    <string name="name">Nome</string>
+    <string name="name">Nome</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
