@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.cadastro.CadastroActivity"></activity>
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".usuario.model.ui.LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
