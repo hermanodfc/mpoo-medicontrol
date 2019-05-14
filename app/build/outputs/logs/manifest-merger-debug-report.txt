@@ -1,0 +1,189 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2e18527b87ab490d7ccacd1e4c0631aa\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\691fcc3da0d52d983022a5a42b5ecf0a\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\6b91db436cbee95cdcafdde8a03b2e3e\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\28fbe0bf90f4b5c1517702cc85e51da0\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\61bdf87b75474ea6c4f234e8da311cb3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3c5648b05c0b5bf1941675749b807f3c\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\4de77526e4d70b6ffe886ffe8e2c138f\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\06e198a872d2b60b35ddb96a6ec7d704\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3969de8305668f0e58f98cb7b7a0a02e\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\74fdc93edc3c8392a69af557ee9d80ef\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\1bb86fc6dec7fdfc5924f1b975db681b\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.1.0-alpha02] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3b614f09e202634e9ebc1237055ac1c1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\bf5dd2680cb5d4f52db9a9b3593b10f8\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\86e0d2f19dfad705b6d6d72ccf9670a0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\363416b6a7af95223bf4f3e1296c4a47\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\a2cd736582886bc22bf02f75c71363cb\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\aa45fb0081252866edf0bfa810539919\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\a30a0a76212eaa6360f96ebea0db93a2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\95342d8e9b59556552515def119da97c\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0-alpha02] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\0ed6eab12501a7ebd96e3ad61bfec2e5\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.1.0-alpha03] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\ddc6b88eb242ebc76da4814d027d4af4\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\50a99e4ade5a822921b8ce6cc7764cc8\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\0c1a5657dce594836963560288a541b4\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\9722b86ada1d11c1f2a2aea9b377f566\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\0162088f127f7e98d15c34fefa487c5e\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\86756147ed48060ca65f26ae57e727cf\AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\c37ca7230fa717f7eedc429af5af5445\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2c8ab33def0a3e3ec32e65d9150bc472\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\37987b49d300b2a6d040d11f4ebc9f83\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\723538caa9a4da3ce29fe48574023856\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\1b50294fc50ea81bc652bc50f461d257\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3348cb98cbacfc5a67cced329553d46e\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+	package
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:3:5-43
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:5:5-71
+	android:name
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:5:22-68
+uses-permission#android.permission.READ_PROFILE
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:6:5-71
+	android:name
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:6:22-68
+uses-permission#android.permission.READ_CONTACTS
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:7:5-72
+	android:name
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:7:22-69
+application
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:9:5-26:19
+MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2e18527b87ab490d7ccacd1e4c0631aa\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2e18527b87ab490d7ccacd1e4c0631aa\AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\28fbe0bf90f4b5c1517702cc85e51da0\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\28fbe0bf90f4b5c1517702cc85e51da0\AndroidManifest.xml:9:5-20
+MERGED from [androidx.core:core:1.1.0-alpha03] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\ddc6b88eb242ebc76da4814d027d4af4\AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.1.0-alpha03] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\ddc6b88eb242ebc76da4814d027d4af4\AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\86756147ed48060ca65f26ae57e727cf\AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\86756147ed48060ca65f26ae57e727cf\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0-alpha03] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\ddc6b88eb242ebc76da4814d027d4af4\AndroidManifest.xml:22:18-86
+	android:supportsRtl
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:14:9-35
+	android:label
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:12:9-41
+	android:roundIcon
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:13:9-54
+	android:icon
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:11:9-43
+	android:allowBackup
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:10:9-35
+	android:theme
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:15:9-40
+activity#com.adht.android.medicontrol.view.cadastro.CadastroActivity
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:16:9-77
+	android:name
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:16:19-65
+activity#com.adht.android.medicontrol.view.LoginActivity
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:17:9-25:20
+	android:label
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:19:13-57
+	android:name
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:18:13-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:20:13-24:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:21:17-69
+	android:name
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:21:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:23:17-77
+	android:name
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:23:27-74
+uses-sdk
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2e18527b87ab490d7ccacd1e4c0631aa\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2e18527b87ab490d7ccacd1e4c0631aa\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\691fcc3da0d52d983022a5a42b5ecf0a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\691fcc3da0d52d983022a5a42b5ecf0a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\6b91db436cbee95cdcafdde8a03b2e3e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\6b91db436cbee95cdcafdde8a03b2e3e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\28fbe0bf90f4b5c1517702cc85e51da0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\28fbe0bf90f4b5c1517702cc85e51da0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\61bdf87b75474ea6c4f234e8da311cb3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\61bdf87b75474ea6c4f234e8da311cb3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3c5648b05c0b5bf1941675749b807f3c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3c5648b05c0b5bf1941675749b807f3c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\4de77526e4d70b6ffe886ffe8e2c138f\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\4de77526e4d70b6ffe886ffe8e2c138f\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\06e198a872d2b60b35ddb96a6ec7d704\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\06e198a872d2b60b35ddb96a6ec7d704\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3969de8305668f0e58f98cb7b7a0a02e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3969de8305668f0e58f98cb7b7a0a02e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\74fdc93edc3c8392a69af557ee9d80ef\AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\74fdc93edc3c8392a69af557ee9d80ef\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\1bb86fc6dec7fdfc5924f1b975db681b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\1bb86fc6dec7fdfc5924f1b975db681b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0-alpha02] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3b614f09e202634e9ebc1237055ac1c1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0-alpha02] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3b614f09e202634e9ebc1237055ac1c1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\bf5dd2680cb5d4f52db9a9b3593b10f8\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\bf5dd2680cb5d4f52db9a9b3593b10f8\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\86e0d2f19dfad705b6d6d72ccf9670a0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\86e0d2f19dfad705b6d6d72ccf9670a0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\363416b6a7af95223bf4f3e1296c4a47\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\363416b6a7af95223bf4f3e1296c4a47\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\a2cd736582886bc22bf02f75c71363cb\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\a2cd736582886bc22bf02f75c71363cb\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\aa45fb0081252866edf0bfa810539919\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\aa45fb0081252866edf0bfa810539919\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\a30a0a76212eaa6360f96ebea0db93a2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\a30a0a76212eaa6360f96ebea0db93a2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\95342d8e9b59556552515def119da97c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\95342d8e9b59556552515def119da97c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0-alpha02] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\0ed6eab12501a7ebd96e3ad61bfec2e5\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0-alpha02] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\0ed6eab12501a7ebd96e3ad61bfec2e5\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0-alpha03] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\ddc6b88eb242ebc76da4814d027d4af4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0-alpha03] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\ddc6b88eb242ebc76da4814d027d4af4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\50a99e4ade5a822921b8ce6cc7764cc8\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\50a99e4ade5a822921b8ce6cc7764cc8\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\0c1a5657dce594836963560288a541b4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\0c1a5657dce594836963560288a541b4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\9722b86ada1d11c1f2a2aea9b377f566\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\9722b86ada1d11c1f2a2aea9b377f566\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\0162088f127f7e98d15c34fefa487c5e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\0162088f127f7e98d15c34fefa487c5e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\86756147ed48060ca65f26ae57e727cf\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\86756147ed48060ca65f26ae57e727cf\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\c37ca7230fa717f7eedc429af5af5445\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\c37ca7230fa717f7eedc429af5af5445\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2c8ab33def0a3e3ec32e65d9150bc472\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2c8ab33def0a3e3ec32e65d9150bc472\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\37987b49d300b2a6d040d11f4ebc9f83\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\37987b49d300b2a6d040d11f4ebc9f83\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\723538caa9a4da3ce29fe48574023856\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\723538caa9a4da3ce29fe48574023856\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\1b50294fc50ea81bc652bc50f461d257\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\1b50294fc50ea81bc652bc50f461d257\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3348cb98cbacfc5a67cced329553d46e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3348cb98cbacfc5a67cced329553d46e\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
