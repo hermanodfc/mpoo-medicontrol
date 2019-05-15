@@ -2,17 +2,17 @@ package com.adht.android.medicontrol.usuario.model;
 
 public class Usuario {
 
-    private int id;
+    private String id; // o de Gabriel usa String aqui e parte do código não rodava sem essa alteração
     private String email;
     private String name;
     private String surname;
     private String password;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
