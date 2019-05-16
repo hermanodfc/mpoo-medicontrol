@@ -21,3 +21,7 @@ Esse projeto nasceu da realidade dos seus próprios desenvolvedores, que enfrent
 
 ![Atividade](projetompoo/Diagrama%20de%20Atividade.png)
 
+## Diagrama de Sequências
+
+![Atividade](projetompoo/Diagrama%20de%20Sequências.png)
+
