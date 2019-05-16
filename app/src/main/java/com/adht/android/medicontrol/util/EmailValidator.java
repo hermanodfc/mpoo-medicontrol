@@ -31,7 +31,7 @@ public class EmailValidator {
      * @param email
      * @return boolean
      */
-    public boolean validateEmail(String email) {
+    public boolean isValidEmail(String email) {
         matcher = pattern.matcher(email);
         return matcher.matches();
     }
