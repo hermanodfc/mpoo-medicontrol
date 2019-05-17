@@ -50,13 +50,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        Usuario usuario = Sessao.instance.getUsuario();
-        TextView welcomeView = findViewById(R.id.welcome_view);
-        welcomeView.setText(getString(R.string.lbl_welcome, usuario.getEmail()));
-        TextView ultimoAcessoView = findViewById(R.id.ultimo_acesso_view);
-        String ultimoAcesso = getString(R.string.lbl_ultimo_acesso, Sessao.instance.getUltimoAcesso());
-        ultimoAcessoView.setText(ultimoAcesso);
     }
 
     @Override
@@ -117,6 +110,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_exit) {
             UsuarioServices services = new UsuarioServices();
             services.logout();
+            finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
 

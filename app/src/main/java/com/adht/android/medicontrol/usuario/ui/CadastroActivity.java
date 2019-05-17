@@ -2,11 +2,15 @@ package com.adht.android.medicontrol.usuario.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +23,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.adht.android.medicontrol.R;
-import com.adht.android.medicontrol.infra.ui.MainActivity;
 import com.adht.android.medicontrol.infra.ui.TaskResult;
 import com.adht.android.medicontrol.infra.ui.TaskResultType;
 import com.adht.android.medicontrol.usuario.dominio.Sexo;
@@ -92,14 +95,14 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
             }
         });
 
-        mNascimentoView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if (hasFocus) {
-                    showDatePicker();
-                }
-            }
-        });
+//        mNascimentoView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View view, boolean hasFocus) {
+//                if (hasFocus) {
+//                    showDatePicker();
+//                }
+//            }
+//        });
     }
 
     private void cadastrar() {
@@ -236,6 +239,27 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mCadastroFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
+
+    }
+
+    public void showAlertDialogButtonClicked(String titulo, String mensagem, final Handler handler) {
+
+        // setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(titulo);
+        builder.setMessage(mensagem);
+
+        // add a button
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                handler.sendMessage(handler.obtainMessage());
+            }
+        });
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     public class UserRegisterTask extends AsyncTask<Void, Void, TaskResult> {
@@ -295,7 +319,23 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
             if (result.getType() == TaskResultType.FAIL) {
                 mEmailView.requestFocus();
             }
-            Toast.makeText(CadastroActivity.this, result.getMsg(), Toast.LENGTH_LONG).show();
+
+            //Toast.makeText(CadastroActivity.this, result.getMsg(), Toast.LENGTH_LONG).show();
+            final Handler handler = new Handler()
+            {
+
+                @Override
+                public void handleMessage(Message mesg)
+                {
+                    throw new RuntimeException();
+                }
+            };
+
+
+            showAlertDialogButtonClicked("Atenção", result.getMsg(), handler);
+
+            try{ Looper.loop(); }
+            catch(RuntimeException e){}
 
             if (result.getType() == TaskResultType.SUCCESS) {
                 finish();

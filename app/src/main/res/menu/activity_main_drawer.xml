@@ -6,20 +6,20 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/lbl_import" />
+            android:icon="@drawable/ic_baseline_add_alarm_24px"
+            android:title="@string/lbl_alarmadd" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/lbl_galery" />
+            android:icon="@drawable/ic_baseline_access_alarms_24px"
+            android:title="@string/lbl_alarmacess" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/lbl_slideshow" />
+            android:icon="@drawable/ic_baseline_person_add_24px"
+            android:title="@string/lbl_amigoadd" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/lbl_tools" />
+            android:icon="@drawable/ic_baseline_group_24px"
+            android:title="@string/lbl_amigos" />
     </group>
 
     <item android:title="@string/lbl_communicate">

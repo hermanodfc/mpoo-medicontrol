@@ -43,4 +43,8 @@
     <string name="lbl_sample_email">foo@foo.com</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="lbl_alarmadd">Adicionar alarme</string>
+    <string name="lbl_alarmacess">Acessar alarmes</string>
+    <string name="lbl_amigoadd">Adicionar amigo</string>
+    <string name="lbl_amigos">Lista de amigos</string>
 </resources>
