@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.adht.android.medicontrol.R;
 
@@ -68,6 +69,13 @@ public class MainActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main, menu);
         TextView headerEmailView = (TextView)findViewById(R.id.header_email_view);
         TextView headerNameView = (TextView)findViewById(R.id.textViewHeaderName);
+        ImageView imageView = (ImageView)findViewById(R.id.imageViewFoto);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         Usuario usuario = Sessao.instance.getUsuario();
         headerEmailView.setText(usuario.getEmail());
         headerNameView.setText(usuario.getNome());
