@@ -22,6 +22,19 @@ public class DBHelper extends SQLiteOpenHelper {
             TABELA_USUARIO
     };
 
+    // TABELA DOS ALARMES
+
+    public static final String TABELA_ALARME = "TB_ALARME";
+    public static final String CAMPO_NOME_ALARME = "NOME_ALARME";
+    public static final String CAMPO_ID_ALARME = "ID_ALARME";
+    public static final String CAMPO_FREQUENCIA = "FREQUENCIA";
+    public static final String CAMPO_INICIO = "INICIO";
+    public static final String CAMPO_COMPLEMENTO = "COMPLEMENTO";
+
+    public static final String[] TABELAS_DE_ALARMES = {
+            TABELA_ALARME
+    };
+
     DBHelper(){
         super(MediControlApp.getContext(), NOME_DB,null, VERSAO);
     }
@@ -29,6 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         createTabelaUsuario(db);
+        createTabelaAlarme(db);
     }
 
     private void createTabelaUsuario(SQLiteDatabase db) {
@@ -47,9 +61,25 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(sqlTbUsuario);
     }
 
+    private void createTabelaAlarme(SQLiteDatabase db){
+        String sqlTbAlarme =
+                "CREATE TABLE %1$s ( "  +
+                        "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "  %3$s TEXT NOT NULL UNIQUE, " +
+                        "  %4$s TEXT, " +
+                        "  %5$s INTEGER NOT NULL, " +
+                        "  %6$s INTEGER NOT NULL" +
+                        ");";
+        sqlTbAlarme = String.format(sqlTbAlarme,
+                TABELA_ALARME, CAMPO_ID_ALARME, CAMPO_NOME_ALARME, CAMPO_COMPLEMENTO, CAMPO_INICIO,
+                CAMPO_FREQUENCIA);
+        db.execSQL(sqlTbAlarme);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         dropTables(db);
+        dropTableAlarme(db);
         onCreate(db);
     }
 
@@ -62,5 +92,16 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         db.execSQL(dropTables.toString());
     }
-}
+
+    private void dropTableAlarme(SQLiteDatabase db) {
+        StringBuilder dropTableAlarme = new StringBuilder();
+        for (String tabela: TABELAS_DE_ALARMES){
+            dropTableAlarme.append(" DROP TABLE IF EXISTS ");
+            dropTableAlarme.append(tabela);
+            dropTableAlarme.append("; ");
+        }
+        db.execSQL(dropTableAlarme.toString());
+        }
+    }
+
 

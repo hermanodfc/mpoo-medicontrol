@@ -47,4 +47,15 @@
     <string name="lbl_alarmacess">Acessar alarmes</string>
     <string name="lbl_amigoadd">Adicionar amigo</string>
     <string name="lbl_amigos">Lista de amigos</string>
+    <string name="nome_do_alarme">Nome do alarme</string>
+    <string name="complemento">Complemento</string>
+    <string name="ex_complemento">Ex.: 500 mg</string>
+    <string name="hora_de_inicio">Hora de início</string>
+    <string name="ex_inicio">Ex.: 18:00</string>
+    <string name="frequencia">Frequência</string>
+    <string name="ex_frequencia">Ex.: 3</string>
+
+    //Strings da validação de cadastro dos alarmes
+    <string name="nome_incorreto">Por favor preencha o campo</string>
+
 </resources>

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-34:12
 MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2e18527b87ab490d7ccacd1e4c0631aa\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\691fcc3da0d52d983022a5a42b5ecf0a\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\6b91db436cbee95cdcafdde8a03b2e3e\AndroidManifest.xml:17:1-22:12
@@ -36,37 +36,37 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\thami\.gradle\
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\723538caa9a4da3ce29fe48574023856\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\1b50294fc50ea81bc652bc50f461d257\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3348cb98cbacfc5a67cced329553d46e\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-34:12
 	package
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:3:5-43
-		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:3:5-43
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
-		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-34:12
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-28:12
-		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:1-34:12
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.GET_ACCOUNTS
-ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:5:5-71
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:5:5-71
 	android:name
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:5:22-68
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:5:22-68
 uses-permission#android.permission.READ_PROFILE
-ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:6:5-71
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:6:5-71
 	android:name
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:6:22-68
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:6:22-68
 uses-permission#android.permission.READ_CONTACTS
-ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:7:5-72
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:7:5-72
 	android:name
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:7:22-69
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:7:22-69
 application
-ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:9:5-26:19
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:9:5-32:19
 MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2e18527b87ab490d7ccacd1e4c0631aa\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2e18527b87ab490d7ccacd1e4c0631aa\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\28fbe0bf90f4b5c1517702cc85e51da0\AndroidManifest.xml:9:5-20
@@ -78,41 +78,55 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0-alpha03] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\ddc6b88eb242ebc76da4814d027d4af4\AndroidManifest.xml:22:18-86
 	android:supportsRtl
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:15:9-35
 	android:label
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:12:9-41
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:13:9-41
 	android:roundIcon
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:13:9-54
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:14:9-54
 	android:icon
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:11:9-43
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:12:9-43
 	android:allowBackup
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:15:9-40
-activity#com.adht.android.medicontrol.view.cadastro.CadastroActivity
-ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:16:9-77
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:16:9-40
 	android:name
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:16:19-65
-activity#com.adht.android.medicontrol.view.LoginActivity
-ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:17:9-25:20
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:10:9-48
+activity#com.adht.android.medicontrol.alarme.ui.AlarmeCadastroActivity
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:17:9-79
+	android:name
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:17:19-67
+activity#com.adht.android.medicontrol.usuario.ui.CadastroActivity
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:18:9-65
+	android:name
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:18:19-62
+activity#com.adht.android.medicontrol.usuario.ui.LoginActivity
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:19:9-27:20
 	android:label
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:19:13-57
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:21:13-45
 	android:name
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:18:13-47
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:20:13-53
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:20:13-24:29
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:21:17-69
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:23:17-69
 	android:name
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:21:25-66
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:23:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:23:17-77
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml:23:27-74
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:25:27-74
+activity#com.adht.android.medicontrol.infra.ui.MainActivity
+ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:28:9-31:59
+	android:label
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:30:13-56
+	android:theme
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:31:13-56
+	android:name
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml:29:13-50
 uses-sdk
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
 MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2e18527b87ab490d7ccacd1e4c0631aa\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\2e18527b87ab490d7ccacd1e4c0631aa\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\691fcc3da0d52d983022a5a42b5ecf0a\AndroidManifest.xml:20:5-44
@@ -177,13 +191,13 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\thami\.g
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\1b50294fc50ea81bc652bc50f461d257\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3348cb98cbacfc5a67cced329553d46e\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\thami\.gradle\caches\transforms-2\files-2.1\3348cb98cbacfc5a67cced329553d46e\AndroidManifest.xml:20:5-44
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\src\main\AndroidManifest.xml
