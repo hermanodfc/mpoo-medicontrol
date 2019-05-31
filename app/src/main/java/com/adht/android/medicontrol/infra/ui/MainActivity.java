@@ -109,13 +109,15 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_add_alarme) {
+            finish();
+            startActivity(new Intent(this, AlarmeCadastroActivity.class));
             //Abre a atividade de cadastro de alarme
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_lista_alarmes) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_add_amigo) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_lista_amigos) {
 
         } else if (id == R.id.nav_share) {
 

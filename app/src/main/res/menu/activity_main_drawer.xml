@@ -5,19 +5,19 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_add_alarme"
             android:icon="@drawable/ic_baseline_add_alarm_24px"
             android:title="@string/lbl_alarmadd" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_lista_alarmes"
             android:icon="@drawable/ic_baseline_access_alarms_24px"
             android:title="@string/lbl_alarmacess" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_add_amigo"
             android:icon="@drawable/ic_baseline_person_add_24px"
             android:title="@string/lbl_amigoadd" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_lista_amigos"
             android:icon="@drawable/ic_baseline_group_24px"
             android:title="@string/lbl_amigos" />
     </group>

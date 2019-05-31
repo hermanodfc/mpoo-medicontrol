@@ -6,6 +6,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,11 +15,13 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
 import com.adht.android.medicontrol.alarme.negocio.AlarmeServices;
+import com.adht.android.medicontrol.infra.ui.MainActivity;
 import com.adht.android.medicontrol.infra.ui.TaskResult;
 import com.adht.android.medicontrol.infra.ui.TaskResultType;
 
@@ -45,6 +48,26 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         complementoView = findViewById(R.id.editTextComplemento);
         inicioView = findViewById(R.id.editTextInicio);
         frequenciaView = findViewById(R.id.editTextFrequencia);
+
+        Button buttonCadastrar = findViewById(R.id.buttonRegister);
+        Button buttonCancelar = findViewById(R.id.buttonCancel);
+
+        //chamando o cadastrar com o botão
+        buttonCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cadastrar();
+            }
+        });
+
+        //chamando o cancelar com o botão
+        buttonCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                //aprender a voltar para a outra tela sem fechar o app
+            }
+        });
 
     }
     private void cadastrar() {
@@ -85,14 +108,14 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         }
 
         // Check for a valid alarm start, if the user entered one.
-        if (TextUtils.isEmpty(nome)) {
+        if (TextUtils.isEmpty(inicio)) {
             inicioView.setError(getString(R.string.nome_incorreto));
             focusView = inicioView;
             result = false;
         }
 
         // Check for a valid frequency, if the user entered one.
-        if (TextUtils.isEmpty(nome)) {
+        if (TextUtils.isEmpty(frequencia)) {
             frequenciaView.setError(getString(R.string.nome_incorreto));
             focusView = frequenciaView;
             result = false;
@@ -164,14 +187,14 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
 
         private final String nome;
         private final String complemento;
-        private final int inicio;
-        private final int frequencia;
+        private final String inicio;
+        private final String frequencia;
 
         AlarmeCadastroTask() {
             nome = nomeView.getText().toString();
             complemento = complementoView.getText().toString();
-            inicio = inicioView.getInputType();
-            frequencia = frequenciaView.getInputType();
+            inicio = inicioView.getText().toString();
+            frequencia = frequenciaView.getText().toString();
         }
 
         @Override

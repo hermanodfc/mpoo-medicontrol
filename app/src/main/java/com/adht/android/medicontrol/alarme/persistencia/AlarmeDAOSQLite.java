@@ -38,8 +38,8 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
         Alarme result = new Alarme();
         result.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.CAMPO_ID_ALARME)));
         result.setNome(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_NOME_ALARME)));
-        result.setInicio(cursor.getInt(cursor.getColumnIndex(DBHelper.CAMPO_INICIO)));
-        result.setFrequencia(cursor.getInt(cursor.getColumnIndex(DBHelper.CAMPO_FREQUENCIA)));
+        result.setInicio(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_INICIO)));
+        result.setFrequencia(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_FREQUENCIA)));
         result.setComplemento(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_COMPLEMENTO)));
         return result;
     }

@@ -7,8 +7,8 @@ import java.util.Date;
 public class Alarme {
     private int id;
     private String nome;
-    private int inicio;
-    private int frequencia;
+    private String inicio;
+    private String frequencia;
     private String complemento;
 
     public int getId() {
@@ -32,19 +32,19 @@ public class Alarme {
         this.nome = nome;
     }
 
-    public int getInicio() {
+    public String getInicio() {
         return inicio;
     }
 
-    public void setInicio(int inicio) {
+    public void setInicio(String inicio) {
         this.inicio = inicio;
     }
 
-    public int getFrequencia() {
+    public String getFrequencia() {
         return frequencia;
     }
 
-    public void setFrequencia(int frequencia) {
+    public void setFrequencia(String frequencia) {
         this.frequencia = frequencia;
     }
 

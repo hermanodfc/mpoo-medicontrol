@@ -1436,13 +1436,13 @@ id mtrl_card_checked_layer_id
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
-id nav_camera
+id nav_add_alarme
+id nav_add_amigo
 id nav_exit
-id nav_gallery
-id nav_manage
+id nav_lista_alarmes
+id nav_lista_amigos
 id nav_send
 id nav_share
-id nav_slideshow
 id nav_view
 id navigation_header_container
 id never
