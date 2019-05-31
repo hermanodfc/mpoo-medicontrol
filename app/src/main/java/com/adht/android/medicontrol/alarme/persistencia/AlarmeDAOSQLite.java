@@ -30,6 +30,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
         values.put(DBHelper.CAMPO_COMPLEMENTO, alarme.getComplemento());
         values.put(DBHelper.CAMPO_INICIO, alarme.getInicio());
         values.put(DBHelper.CAMPO_FREQUENCIA, alarme.getFrequencia());
+        values.put(DBHelper.CAMPO_DIAS, alarme.getDias());
         db.insert(DBHelper.TABELA_ALARME, null, values);
         super.close(db);
     }
@@ -41,6 +42,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
         result.setInicio(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_INICIO)));
         result.setFrequencia(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_FREQUENCIA)));
         result.setComplemento(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_COMPLEMENTO)));
+        result.setDias(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_DIAS)));
         return result;
     }
 

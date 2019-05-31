@@ -6,7 +6,7 @@
     density="xhdpi"
     format="10"
     plugin-version="3.4.0"
-    timestamp="1559259684990"
+    timestamp="1559337429702"
     token="7884979160851482904"
     verifier="FULL_BUILD_REQUESTED" >
 
@@ -62,7 +62,7 @@
 
     <build
         build-mode="FULL"
-        timestamp="1559259684990"
+        timestamp="1559337429702"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\thami\Documents\UFRPE\Projeto Android\mpoo-medicontrol\app\build\intermediates\split-apk\debug\dep\dependencies.apk"

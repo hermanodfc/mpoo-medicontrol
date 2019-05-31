@@ -1379,6 +1379,7 @@ id direct
 id disableHome
 id drawer_layout
 id editTextComplemento
+id editTextDias
 id editTextEmail
 id editTextFrequencia
 id editTextInicio
@@ -1541,6 +1542,7 @@ id textSpacerNoTitle
 id textStart
 id textViewBirthday
 id textViewComplemento
+id textViewDias
 id textViewEmail
 id textViewFrequencia
 id textViewGender
@@ -1738,6 +1740,7 @@ string error_incorrect_password
 string error_invalid_email
 string error_invalid_password
 string ex_complemento
+string ex_dias
 string ex_frequencia
 string ex_inicio
 string fab_transformation_scrim_behavior
@@ -1796,6 +1799,7 @@ string permission_rationale
 string project_id
 string prompt_email
 string prompt_password
+string quantidade_de_dias
 string register
 string search_menu_title
 string status_bar_notification_info_overflow

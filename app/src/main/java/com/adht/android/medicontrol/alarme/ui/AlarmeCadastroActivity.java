@@ -31,6 +31,7 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
     private EditText complementoView;
     private EditText inicioView;
     private EditText frequenciaView;
+    private EditText diasView;
     private View cadastroAlarmeFormView;
     private View progressBarAlarmCadastro;
     private AlarmeCadastroTask alarmeCadastroTask = null;
@@ -48,6 +49,7 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         complementoView = findViewById(R.id.editTextComplemento);
         inicioView = findViewById(R.id.editTextInicio);
         frequenciaView = findViewById(R.id.editTextFrequencia);
+        diasView = findViewById(R.id.editTextDias);
 
         Button buttonCadastrar = findViewById(R.id.buttonRegister);
         Button buttonCancelar = findViewById(R.id.buttonCancel);
@@ -97,6 +99,7 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         String nome = nomeView.getText().toString();
         String inicio = inicioView.getText().toString();
         String frequencia = frequenciaView.getText().toString();
+        String dias = diasView.getText().toString();
 
         View focusView = null;
 
@@ -111,6 +114,13 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(inicio)) {
             inicioView.setError(getString(R.string.nome_incorreto));
             focusView = inicioView;
+            result = false;
+        }
+
+        // Check for a valid frequency, if the user entered one.
+        if (TextUtils.isEmpty(dias)) {
+            diasView.setError(getString(R.string.nome_incorreto));
+            focusView = diasView;
             result = false;
         }
 
@@ -188,12 +198,14 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         private final String nome;
         private final String complemento;
         private final String inicio;
+        private final String dias;
         private final String frequencia;
 
         AlarmeCadastroTask() {
             nome = nomeView.getText().toString();
             complemento = complementoView.getText().toString();
             inicio = inicioView.getText().toString();
+            dias = diasView.getText().toString();
             frequencia = frequenciaView.getText().toString();
         }
 
@@ -210,6 +222,7 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
                 alarme.setNome(nome);
                 alarme.setComplemento(complemento);
                 alarme.setInicio(inicio);
+                alarme.setDias(dias);
                 alarme.setFrequencia(frequencia);
                 services.cadastrar(alarme);
             } catch (Exception e) {

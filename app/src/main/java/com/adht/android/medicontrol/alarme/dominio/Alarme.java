@@ -10,6 +10,7 @@ public class Alarme {
     private String inicio;
     private String frequencia;
     private String complemento;
+    private String dias;
 
     public int getId() {
         return id;
@@ -54,5 +55,13 @@ public class Alarme {
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    public String getDias() {
+        return dias;
+    }
+
+    public void setDias(String dias) {
+        this.dias = dias;
     }
 }

@@ -30,6 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_FREQUENCIA = "FREQUENCIA";
     public static final String CAMPO_INICIO = "INICIO";
     public static final String CAMPO_COMPLEMENTO = "COMPLEMENTO";
+    public static final String CAMPO_DIAS = "DIAS";
 
     public static final String[] TABELAS_DE_ALARMES = {
             TABELA_ALARME
@@ -68,11 +69,12 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %3$s TEXT NOT NULL UNIQUE, " +
                         "  %4$s TEXT, " +
                         "  %5$s INTEGER NOT NULL, " +
-                        "  %6$s INTEGER NOT NULL" +
+                        "  %6$s INTEGER NOT NULL," +
+                        "  %7$s INTEGER NOT NULL" +
                         ");";
         sqlTbAlarme = String.format(sqlTbAlarme,
                 TABELA_ALARME, CAMPO_ID_ALARME, CAMPO_NOME_ALARME, CAMPO_COMPLEMENTO, CAMPO_INICIO,
-                CAMPO_FREQUENCIA);
+                CAMPO_FREQUENCIA, CAMPO_DIAS);
         db.execSQL(sqlTbAlarme);
     }
 
