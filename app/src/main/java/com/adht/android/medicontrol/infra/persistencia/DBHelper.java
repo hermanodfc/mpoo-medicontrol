@@ -31,6 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_INICIO = "INICIO";
     public static final String CAMPO_COMPLEMENTO = "COMPLEMENTO";
     public static final String CAMPO_DIAS = "DIAS";
+    public static final String CAMPO_ID_USUARIO = "ID_USUARIO";
 
     public static final String[] TABELAS_DE_ALARMES = {
             TABELA_ALARME
@@ -59,7 +60,26 @@ public class DBHelper extends SQLiteOpenHelper {
         sqlTbUsuario = String.format(sqlTbUsuario,
                 TABELA_USUARIO, CAMPO_ID, CAMPO_EMAIL, CAMPO_PASSWORD, CAMPO_NOME,
                 CAMPO_NASCIMENTO, CAMPO_SEXO);
+
+/*        String sqlTbAlarme =
+                "CREATE TABLE %1$s ( "  +
+                        "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "  %3$s TEXT NOT NULL UNIQUE, " +
+                        "  %4$s TEXT, " +
+                        "  %5$s INTEGER NOT NULL, " +
+                        "  %6$s INTEGER NOT NULL," +
+                        "  %7$s INTEGER NOT NULL," +
+                        "  %8$s INTEGER, " +
+                        "  FOREIGN KEY(%8$s) REFERENCES %9$s(%10$s)" +
+                        ");";
+        sqlTbAlarme = String.format(sqlTbAlarme,
+                TABELA_ALARME, CAMPO_ID_ALARME, CAMPO_NOME_ALARME, CAMPO_COMPLEMENTO, CAMPO_INICIO,
+                CAMPO_FREQUENCIA, CAMPO_DIAS, CAMPO_ID_USUARIO, TABELA_USUARIO, CAMPO_ID);*/
+
+
+
         db.execSQL(sqlTbUsuario);
+        //db.execSQL(sqlTbAlarme);
     }
 
     private void createTabelaAlarme(SQLiteDatabase db){
@@ -70,11 +90,13 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %4$s TEXT, " +
                         "  %5$s INTEGER NOT NULL, " +
                         "  %6$s INTEGER NOT NULL," +
-                        "  %7$s INTEGER NOT NULL" +
+                        "  %7$s INTEGER NOT NULL," +
+                        "  %8$s INTEGER, " +
+                        "  FOREIGN KEY(%8$s) REFERENCES %9$s(%10$s)" +
                         ");";
         sqlTbAlarme = String.format(sqlTbAlarme,
                 TABELA_ALARME, CAMPO_ID_ALARME, CAMPO_NOME_ALARME, CAMPO_COMPLEMENTO, CAMPO_INICIO,
-                CAMPO_FREQUENCIA, CAMPO_DIAS);
+                CAMPO_FREQUENCIA, CAMPO_DIAS, CAMPO_ID_USUARIO, TABELA_USUARIO, CAMPO_ID);
         db.execSQL(sqlTbAlarme);
     }
 

@@ -24,6 +24,7 @@ import com.adht.android.medicontrol.alarme.negocio.AlarmeServices;
 import com.adht.android.medicontrol.infra.ui.MainActivity;
 import com.adht.android.medicontrol.infra.ui.TaskResult;
 import com.adht.android.medicontrol.infra.ui.TaskResultType;
+import com.adht.android.medicontrol.usuario.ui.CadastroActivity;
 
 public class AlarmeCadastroActivity extends AppCompatActivity {
 
@@ -67,7 +68,8 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                //aprender a voltar para a outra tela sem fechar o app
+                startActivity(new Intent(AlarmeCadastroActivity.this, MainActivity.class));
+
             }
         });
 
@@ -82,6 +84,7 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
             alarmeCadastroTask = new AlarmeCadastroTask();
             alarmeCadastroTask.execute((Void) null);
         }
+
     }
 
     private boolean validateFields() {
@@ -273,6 +276,9 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         private void resetTask() {
             alarmeCadastroTask = null;
             showProgress(false);
+            finish();
+            //Talvez seja melhor chamar a tela de listagem de alarmes após fazer o cadastro dos mesmos
+            startActivity(new Intent(AlarmeCadastroActivity.this, MainActivity.class));
         }
     }
 

@@ -6,11 +6,13 @@ import java.util.Date;
 
 public class Alarme {
     private int id;
+    private int id_usuario;
     private String nome;
     private String inicio;
     private String frequencia;
     private String complemento;
     private String dias;
+
 
     public int getId() {
         return id;
@@ -63,5 +65,13 @@ public class Alarme {
 
     public void setDias(String dias) {
         this.dias = dias;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 }
