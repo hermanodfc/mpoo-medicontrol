@@ -59,5 +59,7 @@
     <string name="nome_incorreto">Por favor preencha o campo</string>
     <string name="quantidade_de_dias">Quantidade de dias</string>
     <string name="ex_dias">Ex.: 4</string>
+    <string name="buscar">Buscar</string>
+    <string name="resultado">RESULTADO</string>
 
 </resources>

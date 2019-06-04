@@ -221,13 +221,13 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         private TaskResult registerAlarme() {
             TaskResult result = TaskResult.SUCCESS;
             try {
-                Alarme alarme = new Alarme();
-                alarme.setNome(nome);
-                alarme.setComplemento(complemento);
-                alarme.setInicio(inicio);
-                alarme.setDias(dias);
-                alarme.setFrequencia(frequencia);
-                services.cadastrar(alarme);
+//                Alarme alarme = new Alarme();
+//                alarme.setNome(nome);
+//                alarme.setComplemento(complemento);
+//                alarme.setInicio(inicio);
+//                alarme.setDias(dias);
+//                alarme.setFrequencia(frequencia);
+//                services.cadastrar(alarme);
             } catch (Exception e) {
                 result = new TaskResult(TaskResultType.FAIL, e.getMessage());
             }

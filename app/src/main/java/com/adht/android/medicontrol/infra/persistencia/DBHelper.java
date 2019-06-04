@@ -7,14 +7,13 @@ import com.adht.android.medicontrol.infra.ui.MediControlApp;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final String NOME_DB = "medicontrol.db";
-    private static final int VERSAO = 3;
+    private static final int VERSAO = 4;
 
     // TABELA DOS USUARIOS
     public static final String TABELA_USUARIO = "TB_USUARIO";
     public static final String TABELA_USUARIO_CAMPO_ID = "ID";
     public static final String TABELA_USUARIO_CAMPO_EMAIL = "EMAIL";
     public static final String TABELA_USUARIO_CAMPO_PASSWORD = "PASSWORD";
-
 
     // TABELA DOS PACIENTES
     public static final String TABELA_PACIENTE = "TB_PACIENTE";
@@ -24,20 +23,25 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABELA_PACIENTE_CAMPO_GENERO = "SEXO";
     public static final String TABELA_PACIENTE_CAMPO_ID_USUARIO = "ID_USUARIO";
 
-//    // TABELA DOS ALARMES
-//
-//    public static final String TABELA_ALARME = "TB_ALARME";
-//    public static final String CAMPO_NOME_ALARME = "NOME_ALARME";
-//    public static final String CAMPO_ID_ALARME = "ID_ALARME";
-//    public static final String CAMPO_FREQUENCIA = "FREQUENCIA";
-//    public static final String CAMPO_INICIO = "INICIO";
-//    public static final String CAMPO_COMPLEMENTO = "COMPLEMENTO";
-//    public static final String CAMPO_DIAS = "DIAS";
-//    public static final String CAMPO_ID_PACIENTE = "ID_USUARIO";
+    // TABELA DOS ALARMES
+    public static final String TABELA_ALARME = "TB_ALARME";
+    public static final String TABELA_ALARME_CAMPO_ID = "ID_ALARME";
+    public static final String TABELA_ALARME_CAMPO_NOME_MEDICAMENTO = "NOME_MEDICAMENTO";
+    public static final String TABELA_ALARME_CAMPO_HORARIO_INICIO = "INICIO";
+    public static final String TABELA_ALARME_CAMPO_COMPLEMENTO = "COMPLEMENTO";
+    public static final String TABELA_ALARME_CAMPO_FREQUENCIA_HORAS = "FREQUENCIA";
+    public static final String TABELA_ALARME_CAMPO_DURACAO_DIAS = "DIAS";
+    public static final String TABELA_ALARME_CAMPO_ID_PACIENTE = "ID_USUARIO";
 
+    // TABELA DAS AMIZADES
+    public static final String TABELA_AMIZADE = "TB_AMIZADE";
+    public static final String TABELA_AMIZADE_CAMPO_ID = "ID";
+    public static final String TABELA_AMIZADE_CAMPO_ID_PACIENTE = "ID_PACIENTE";
+    public static final String TABELA_AMIZADE_CAMPO_ID_AMIGO = "ID_AMIGO";
+    public static final String TABELA_AMIZADE_CAMPO_STATUS_AMIZADE = "STATUS_AMIZADE";
 
     private static final String[] TABELAS = {
-            TABELA_USUARIO, TABELA_PACIENTE
+            TABELA_USUARIO, TABELA_PACIENTE, TABELA_ALARME, TABELA_AMIZADE
     };
 
     DBHelper() {
@@ -48,11 +52,29 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         createTabelaUsuario(db);
         createTabelaPaciente(db);
+        createTabelaAlarme(db);
+        createTabelaAmizade(db);
     }
 
+    private void createTabelaAmizade(SQLiteDatabase db) {
+        String sqlTbAmizade =
+                "CREATE TABLE " + TABELA_AMIZADE + " (" +
+                        TABELA_AMIZADE_CAMPO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        TABELA_AMIZADE_CAMPO_ID_PACIENTE + " INTEGER NOT NULL, " +
+                        TABELA_AMIZADE_CAMPO_ID_AMIGO + " INTEGER NOT NULL, " +
+                        TABELA_AMIZADE_CAMPO_STATUS_AMIZADE + " INTEGER NOT NULL, " +
+                        "FOREIGN KEY(" + TABELA_AMIZADE_CAMPO_ID_PACIENTE + ") " +
+                            "REFERENCES " + TABELA_PACIENTE + "(" +
+                                TABELA_PACIENTE_CAMPO_ID_USUARIO + "), " +
+                        "FOREIGN KEY(" + TABELA_AMIZADE_CAMPO_ID_PACIENTE + ") " +
+                        "REFERENCES " + TABELA_PACIENTE + "(" +
+                        TABELA_AMIZADE_CAMPO_ID_AMIGO + ")" +
+                ");";
+        db.execSQL(sqlTbAmizade);
+    }
     private void createTabelaUsuario(SQLiteDatabase db) {
         String sqlTbUsuario =
-                "CREATE TABLE " + TABELA_USUARIO + " ( " +
+                "CREATE TABLE " + TABELA_USUARIO + " (" +
                         TABELA_USUARIO_CAMPO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         TABELA_USUARIO_CAMPO_EMAIL + " TEXT NOT NULL UNIQUE, " +
                         TABELA_USUARIO_CAMPO_PASSWORD + " TEXT NOT NULL" +
@@ -76,23 +98,21 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(sqlTbPaciente);
     }
 
-//    private void createTabelaAlarme(SQLiteDatabase db) {
-//        String sqlTbAlarme =
-//                "CREATE TABLE %1$s ( " +
-//                        "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//                        "  %3$s TEXT NOT NULL UNIQUE, " +
-//                        "  %4$s TEXT, " +
-//                        "  %5$s INTEGER NOT NULL, " +
-//                        "  %6$s INTEGER NOT NULL," +
-//                        "  %7$s INTEGER NOT NULL," +
-//                        "  %8$s INTEGER, " +
-//                        "  FOREIGN KEY(%8$s) REFERENCES %9$s(%10$s)" +
-//                        ");";
-//        sqlTbAlarme = String.format(sqlTbAlarme,
-//                TABELA_ALARME, CAMPO_ID_ALARME, CAMPO_NOME_ALARME, CAMPO_COMPLEMENTO, CAMPO_INICIO,
-//                CAMPO_FREQUENCIA, CAMPO_DIAS, CAMPO_ID_USUARIO, TABELA_USUARIO, CAMPO_ID);
-//        db.execSQL(sqlTbAlarme);
-//    }
+    private void createTabelaAlarme(SQLiteDatabase db) {
+        String sqlTbAlarme =
+                "CREATE TABLE " + TABELA_ALARME + "(" +
+                        TABELA_ALARME_CAMPO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        TABELA_ALARME_CAMPO_NOME_MEDICAMENTO + " TEXT NOT NULL, " +
+                        TABELA_ALARME_CAMPO_HORARIO_INICIO + " REAL NOT NULL, " +
+                        TABELA_ALARME_CAMPO_COMPLEMENTO + " TEXT NOT NULL, " +
+                        TABELA_ALARME_CAMPO_FREQUENCIA_HORAS + " INTEGER NOT NULL," +
+                        TABELA_ALARME_CAMPO_DURACAO_DIAS + " INTEGER NOT NULL," +
+                        TABELA_ALARME_CAMPO_ID_PACIENTE  + " INTEGER NOT NULL, " +
+                        "FOREIGN KEY(" + TABELA_ALARME_CAMPO_ID_PACIENTE + ")" +
+                            "REFERENCES " + TABELA_USUARIO + "(" + TABELA_USUARIO_CAMPO_ID + ")" +
+                        ");";
+        db.execSQL(sqlTbAlarme);
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

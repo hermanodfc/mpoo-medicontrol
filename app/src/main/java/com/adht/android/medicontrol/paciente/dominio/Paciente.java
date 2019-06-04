@@ -2,6 +2,7 @@ package com.adht.android.medicontrol.paciente.dominio;
 
 import com.adht.android.medicontrol.infra.MediControlException;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class Paciente {
@@ -10,6 +11,21 @@ public class Paciente {
     private String nome;
     private GregorianCalendar nascimento;
     private Genero genero;
+    private ArrayList<Amizade> amizades = new ArrayList<>();
+
+    public ArrayList<Amizade> getAmizades() {
+        return amizades;
+    }
+
+    public void setAmizades(ArrayList<Amizade> amizades) {
+        this.amizades = amizades;
+    }
+
+    public void adicionarAmizade(Paciente paciente, StatusAmizade statusAmizade) {
+        Amizade amizade = new Amizade();
+        amizade.setPaciente(paciente);
+        amizade.setStatusAmizade(statusAmizade);
+    }
 
     public int getId() {
         return id;

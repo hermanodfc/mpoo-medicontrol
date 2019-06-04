@@ -6,13 +6,11 @@ import java.util.Date;
 
 public class Alarme {
     private int id;
-    private int id_usuario;
-    private String nome;
-    private String inicio;
-    private String frequencia;
+    private String nomeMedicamento;
     private String complemento;
-    private String dias;
-
+    private Date horarioInicial;
+    private int frequenciaHoras;
+    private int duracaoDias;
 
     public int getId() {
         return id;
@@ -22,33 +20,15 @@ public class Alarme {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeMedicamento() {
+        return nomeMedicamento;
     }
 
-    public void setNome(String nome) throws MediControlException {
-
-        if (nome == null || nome.trim() == "") {
+    public void setNomeMedicamento(String nomeMedicamento) throws MediControlException {
+        if (nomeMedicamento == null || nomeMedicamento.trim() == "") {
             throw new MediControlException("Nome inválido");
         }
-
-        this.nome = nome;
-    }
-
-    public String getInicio() {
-        return inicio;
-    }
-
-    public void setInicio(String inicio) {
-        this.inicio = inicio;
-    }
-
-    public String getFrequencia() {
-        return frequencia;
-    }
-
-    public void setFrequencia(String frequencia) {
-        this.frequencia = frequencia;
+        this.nomeMedicamento = nomeMedicamento;
     }
 
     public String getComplemento() {
@@ -59,19 +39,27 @@ public class Alarme {
         this.complemento = complemento;
     }
 
-    public String getDias() {
-        return dias;
+    public Date getHorarioInicial() {
+        return horarioInicial;
     }
 
-    public void setDias(String dias) {
-        this.dias = dias;
+    public void setHorarioInicial(Date horarioInicial) {
+        this.horarioInicial = horarioInicial;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
+    public int getFrequenciaHoras() {
+        return frequenciaHoras;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setFrequenciaHoras(int frequenciaHoras) {
+        this.frequenciaHoras = frequenciaHoras;
+    }
+
+    public int getDuracaoDias() {
+        return duracaoDias;
+    }
+
+    public void setDuracaoDias(int duracaoDias) {
+        this.duracaoDias = duracaoDias;
     }
 }

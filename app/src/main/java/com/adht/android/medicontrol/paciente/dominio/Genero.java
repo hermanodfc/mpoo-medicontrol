@@ -5,7 +5,7 @@ public enum Genero {
     FEMININO(1),
     MASCULINO(2);
 
-    private int valor;
+    private final int valor;
 
     private Genero(int valor) {
         this.valor = valor;

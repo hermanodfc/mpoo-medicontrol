@@ -4,6 +4,6 @@ import com.adht.android.medicontrol.alarme.dominio.Alarme;
 import com.adht.android.medicontrol.infra.MediControlException;
 
 public interface IAlarmeDao {
-    Alarme getAlarme(String nome) throws MediControlException;
-    void cadastrar(Alarme alarme) throws MediControlException;
+    Alarme getAlarmes(int idPaciente) throws MediControlException;
+    void cadastrar(Alarme alarme, int idPaciente) throws MediControlException;
 }
