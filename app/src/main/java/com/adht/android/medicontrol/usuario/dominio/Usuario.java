@@ -1,28 +1,26 @@
 package com.adht.android.medicontrol.usuario.dominio;
 
 import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.util.EmailValidator;
-import java.util.GregorianCalendar;
 
 public class Usuario {
 
-    private int mId;
-    private String mEmail;
-    private String mNome;
-    private GregorianCalendar mNascimento;
-    private Sexo mSexo;
-    private String mSenha;
+    private int id;
+    private String email;
+    private String senha;
+    private Paciente paciente;
 
     public int getId() {
-        return mId;
+        return id;
     }
 
     public void setId(int id) {
-        mId = id;
+        this.id = id;
     }
 
     public String getEmail() {
-        return mEmail;
+        return email;
     }
 
     public void setEmail(String email) throws MediControlException {
@@ -33,50 +31,11 @@ public class Usuario {
             throw new MediControlException("Endereço de email inválido");
         }
 
-        mEmail = email;
-    }
-
-    public String getNome() {
-        return mNome;
-    }
-
-    public void setNome(String nome) throws MediControlException {
-
-        if (nome == null || nome.trim() == "") {
-            throw new MediControlException("Nome inválido");
-        }
-
-        mNome = nome;
-    }
-
-    public GregorianCalendar getNascimento() {
-        return mNascimento;
-    }
-
-    public void setNascimento(GregorianCalendar nascimento) throws MediControlException {
-
-        if (nascimento == null) {
-            throw new MediControlException("Data de nascimento inválida");
-        }
-
-        mNascimento = nascimento;
-    }
-
-    public Sexo getSexo() {
-        return mSexo;
-    }
-
-    public void setSexo(Sexo sexo) throws MediControlException {
-
-        if (sexo == null) {
-            throw new MediControlException("Sexo inválido");
-        }
-
-        mSexo = sexo;
+        this.email = email;
     }
 
     public String getSenha() {
-        return mSenha;
+        return senha;
     }
 
     public void setSenha(String senha) throws MediControlException {
@@ -87,6 +46,18 @@ public class Usuario {
             throw new MediControlException("A senha deve ter, pelo menos, 6 caracteres");
         }
 
-        mSenha = senha;
+        this.senha = senha;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) throws MediControlException {
+        if (paciente == null) {
+            throw new MediControlException("Paciente inválido");
+        }
+
+        this.paciente = paciente;
     }
 }

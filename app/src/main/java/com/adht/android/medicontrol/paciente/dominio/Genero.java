@@ -1,13 +1,13 @@
-package com.adht.android.medicontrol.usuario.dominio;
+package com.adht.android.medicontrol.paciente.dominio;
 
-public enum Sexo {
+public enum Genero {
 
     FEMININO(1),
     MASCULINO(2);
 
     private int valor;
 
-    private Sexo(int valor) {
+    private Genero(int valor) {
         this.valor = valor;
     }
 
@@ -15,8 +15,8 @@ public enum Sexo {
         return this.valor;
     }
 
-    public static Sexo instanciaValor(int valor) {
-        Sexo retorno = MASCULINO;
+    public static Genero instanciaValor(int valor) {
+        Genero retorno = MASCULINO;
         if (valor == 1) {
             return FEMININO;
         }

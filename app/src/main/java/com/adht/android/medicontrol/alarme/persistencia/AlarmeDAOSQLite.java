@@ -18,23 +18,18 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
 
     public Alarme getAlarme(String nome) throws MediControlException {
         Alarme result = null;
-        SQLiteDatabase db = super.getReadableDatabase();
+/*        SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_ALARME+ " U WHERE U." + DBHelper.CAMPO_NOME_ALARME + " LIKE ?;";
         Cursor cursor = db.rawQuery(sql, new String[]{nome});
         if (cursor.moveToFirst()) {
             result = createAlarme(cursor);
         }
-        super.close(cursor, db);
+        super.close(cursor, db);*/
         return result;
     }
 
-
-
-
-
-
     public void cadastrar(Alarme alarme) throws MediControlException {
-        SQLiteDatabase db = getWritableDatabase();
+/*        SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_NOME_ALARME, alarme.getNome());
         values.put(DBHelper.CAMPO_COMPLEMENTO, alarme.getComplemento());
@@ -43,18 +38,18 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
         values.put(DBHelper.CAMPO_DIAS, alarme.getDias());
         values.put(DBHelper.CAMPO_ID_USUARIO, usuario.getId());
         db.insert(DBHelper.TABELA_ALARME, null, values);
-        super.close(db);
+        super.close(db);*/
     }
 
     private Alarme createAlarme(Cursor cursor) throws MediControlException {
         Alarme result = new Alarme();
-        result.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.CAMPO_ID_ALARME)));
+/*        result.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.CAMPO_ID_ALARME)));
         result.setNome(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_NOME_ALARME)));
         result.setInicio(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_INICIO)));
         result.setFrequencia(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_FREQUENCIA)));
         result.setComplemento(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_COMPLEMENTO)));
         result.setDias(cursor.getString(cursor.getColumnIndex(DBHelper.CAMPO_DIAS)));
-        result.setId_usuario(cursor.getInt(cursor.getColumnIndex(DBHelper.CAMPO_ID_USUARIO)));
+        result.setId_usuario(cursor.getInt(cursor.getColumnIndex(DBHelper.CAMPO_ID_USUARIO)));*/
         return result;
     }
 

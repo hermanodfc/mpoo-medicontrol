@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.adht.android.medicontrol.R;
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity
         });
         Usuario usuario = Sessao.instance.getUsuario();
         headerEmailView.setText(usuario.getEmail());
-        headerNameView.setText(usuario.getNome());
+        headerNameView.setText(usuario.getPaciente().getNome());
         return true;
     }
 

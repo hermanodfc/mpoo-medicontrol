@@ -18,14 +18,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.infra.ui.TaskResult;
 import com.adht.android.medicontrol.infra.ui.TaskResultType;
-import com.adht.android.medicontrol.usuario.dominio.Sexo;
+import com.adht.android.medicontrol.paciente.dominio.Genero;
+import com.adht.android.medicontrol.paciente.dominio.Paciente;
+import com.adht.android.medicontrol.paciente.negocio.PacienteServices;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
 import com.adht.android.medicontrol.usuario.negocio.UsuarioServices;
 import com.adht.android.medicontrol.util.EmailValidator;
@@ -48,7 +49,8 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
     private View mProgressView;
     private UserRegisterTask mUserRegisterTask = null;
 
-    private final UsuarioServices services = new UsuarioServices();
+    private final UsuarioServices usuarioServices = new UsuarioServices();
+    private final PacienteServices pacienteServices = new PacienteServices();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -267,7 +269,7 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
         private final String mEmail;
         private final String mPassword;
         private final String mNome;
-        private Sexo mGenero;
+        private Genero mGenero;
         private GregorianCalendar mNascimento;
 
         UserRegisterTask() {
@@ -275,9 +277,9 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
             mPassword = mPasswordView.getText().toString();
             mNome = mNomeView.getText().toString();
             if (mFemininoView.isChecked()) {
-                mGenero = Sexo.FEMININO;
+                mGenero = Genero.FEMININO;
             } else {
-                mGenero = Sexo.MASCULINO;
+                mGenero = Genero.MASCULINO;
             }
 
             String nascimentoString = mNascimentoView.getText().toString();
@@ -299,10 +301,16 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
                 Usuario usuario = new Usuario();
                 usuario.setEmail(mEmail);
                 usuario.setSenha(mPassword);
-                usuario.setNome(mNome);
-                usuario.setSexo(mGenero);
-                usuario.setNascimento(mNascimento);
-                services.cadastrar(usuario);
+                usuario = usuarioServices.cadastrar(usuario);
+
+
+                Paciente paciente = new Paciente();
+                paciente.setNome(mNome);
+                paciente.setGenero(mGenero);
+                paciente.setNascimento(mNascimento);
+
+                pacienteServices.cadastrar(paciente, usuario);
+
             } catch (Exception e) {
                 result = new TaskResult(TaskResultType.FAIL, e.getMessage());
             }
