@@ -26,6 +26,8 @@ import com.adht.android.medicontrol.infra.ui.TaskResult;
 import com.adht.android.medicontrol.infra.ui.TaskResultType;
 import com.adht.android.medicontrol.usuario.ui.CadastroActivity;
 
+import java.util.Date;
+
 public class AlarmeCadastroActivity extends AppCompatActivity {
 
     private EditText nomeView;
@@ -200,16 +202,16 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
 
         private final String nome;
         private final String complemento;
-        private final String inicio;
-        private final String dias;
-        private final String frequencia;
+        private final int inicio;
+        private final int dias;
+        private final int frequencia;
 
         AlarmeCadastroTask() {
             nome = nomeView.getText().toString();
             complemento = complementoView.getText().toString();
-            inicio = inicioView.getText().toString();
-            dias = diasView.getText().toString();
-            frequencia = frequenciaView.getText().toString();
+            inicio = Integer.parseInt(inicioView.getText().toString());
+            dias = Integer.parseInt(diasView.getText().toString());
+            frequencia = Integer.parseInt(frequenciaView.getText().toString());
         }
 
         @Override
@@ -221,13 +223,14 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         private TaskResult registerAlarme() {
             TaskResult result = TaskResult.SUCCESS;
             try {
-//                Alarme alarme = new Alarme();
-//                alarme.setNome(nome);
-//                alarme.setComplemento(complemento);
-//                alarme.setInicio(inicio);
-//                alarme.setDias(dias);
-//                alarme.setFrequencia(frequencia);
-//                services.cadastrar(alarme);
+                Alarme alarme = new Alarme();
+                alarme.setNomeMedicamento(nome);
+                alarme.setComplemento(complemento);
+                Date date = new Date();
+                alarme.setHorarioInicial(date);
+                alarme.setDuracaoDias(dias);
+                alarme.setFrequenciaHoras(frequencia);
+               services.cadastrar(alarme);
             } catch (Exception e) {
                 result = new TaskResult(TaskResultType.FAIL, e.getMessage());
             }

@@ -17,6 +17,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.adht.android.medicontrol.alarme.ui.AlarmeCadastroActivity;
+import com.adht.android.medicontrol.alarme.ui.AlarmesListaActivity;
 import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
 import com.adht.android.medicontrol.usuario.negocio.UsuarioServices;
@@ -109,11 +110,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add_alarme) {
-            finish();
             startActivity(new Intent(this, AlarmeCadastroActivity.class));
             //Abre a atividade de cadastro de alarme
         } else if (id == R.id.nav_lista_alarmes) {
-
+            startActivity(new Intent(this, AlarmesListaActivity.class));
         } else if (id == R.id.nav_add_amigo) {
 
         } else if (id == R.id.nav_lista_amigos) {

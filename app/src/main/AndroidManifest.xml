@@ -17,6 +17,8 @@
         <activity android:name=".alarme.ui.AlarmeCadastroActivity"></activity>
         <activity android:name=".usuario.ui.CadastroActivity" />
         <activity
+            android:name=".alarme.ui.AlarmesListaActivity"></activity>
+        <activity
             android:name=".usuario.ui.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
