@@ -8,7 +8,9 @@ import com.adht.android.medicontrol.infra.MediControlException;
 import com.adht.android.medicontrol.infra.persistencia.AbstractSQLite;
 import com.adht.android.medicontrol.infra.persistencia.DBHelper;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
 
@@ -49,4 +51,23 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
         result.setDuracaoDias(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_DURACAO_DIAS)));
         return result;
     }
+
+
+    public List<Alarme> listar() throws MediControlException {
+        List<Alarme> alarmes = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM TABELA_ALARME", null);
+        while(cursor.moveToNext()){
+
+            alarmes.add(createAlarme(cursor));
+
+        }
+        cursor.close();
+        return  alarmes;
+
+
+
+    }
+
+
 }
