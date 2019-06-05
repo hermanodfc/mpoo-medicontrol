@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:2:1-36:12
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:2:1-36:12
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:2:1-36:12
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:2:1-36:12
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:2:1-36:12
 MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\48a1e762059c841d6fb715c868305412\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\25cab74ce6c975c43cf7c06fbe6ffbd5\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\8065dd86a8af263e7fa642419c3948be\AndroidManifest.xml:17:1-22:12
@@ -36,37 +36,37 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\Alessandro Mel
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\31649812b13b7e50c9e470981dc91ad8\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\6885a793532dbe06b9933f7fb601b3ce\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\04ded1675d5b12f23509fee027ceaf6c\AndroidManifest.xml:17:1-22:12
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:2:1-36:12
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:2:1-36:12
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:2:1-36:12
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:2:1-36:12
 	package
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:3:5-43
-		INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
-		INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:3:5-43
+		INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:2:1-36:12
-		INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:2:1-36:12
+		INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:2:1-36:12
-		INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:2:1-36:12
+		INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.GET_ACCOUNTS
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:5:5-71
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:5:5-71
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:5:22-68
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:5:22-68
 uses-permission#android.permission.READ_PROFILE
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:6:5-71
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:6:5-71
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:6:22-68
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:6:22-68
 uses-permission#android.permission.READ_CONTACTS
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:7:5-72
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:7:5-72
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:7:22-69
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:7:22-69
 application
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:9:5-34:19
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:9:5-34:19
 MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\48a1e762059c841d6fb715c868305412\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\48a1e762059c841d6fb715c868305412\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\c715e1ca6a19702adcb39dc4838e250f\AndroidManifest.xml:9:5-20
@@ -78,59 +78,59 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0-alpha03] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\e8ae3cdbb8d8ba8d2f41469f7ff96b8f\AndroidManifest.xml:22:18-86
 	android:supportsRtl
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:15:9-35
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:15:9-35
 	android:label
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:13:9-41
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:13:9-41
 	android:roundIcon
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:14:9-54
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:14:9-54
 	android:icon
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:12:9-43
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:12:9-43
 	android:allowBackup
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:11:9-35
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:16:9-40
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:16:9-40
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:10:9-48
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:10:9-48
 activity#com.adht.android.medicontrol.alarme.ui.AlarmeCadastroActivity
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:17:9-79
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:17:9-79
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:17:19-67
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:17:19-67
 activity#com.adht.android.medicontrol.usuario.ui.CadastroActivity
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:18:9-65
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:18:9-65
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:18:19-62
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:18:19-62
 activity#com.adht.android.medicontrol.alarme.ui.AlarmesListaActivity
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:19:9-20:71
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:19:9-20:71
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:20:13-59
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:20:13-59
 activity#com.adht.android.medicontrol.usuario.ui.LoginActivity
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:21:9-29:20
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:21:9-29:20
 	android:label
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:23:13-45
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:23:13-45
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:22:13-53
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:22:13-53
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:24:13-28:29
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:24:13-28:29
 action#android.intent.action.MAIN
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:25:17-69
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:25:17-69
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:25:25-66
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:25:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:27:17-77
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:27:17-77
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:27:27-74
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:27:27-74
 activity#com.adht.android.medicontrol.infra.ui.MainActivity
-ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:30:9-33:59
+ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:30:9-33:59
 	android:label
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:32:13-56
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:32:13-56
 	android:theme
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:33:13-56
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:33:13-56
 	android:name
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml:31:13-50
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml:31:13-50
 uses-sdk
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
 MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\48a1e762059c841d6fb715c868305412\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.1.0-alpha05] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\48a1e762059c841d6fb715c868305412\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\25cab74ce6c975c43cf7c06fbe6ffbd5\AndroidManifest.xml:20:5-44
@@ -195,13 +195,13 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Alessand
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\6885a793532dbe06b9933f7fb601b3ce\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\04ded1675d5b12f23509fee027ceaf6c\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Alessandro Melo\.gradle\caches\transforms-2\files-2.1\04ded1675d5b12f23509fee027ceaf6c\AndroidManifest.xml:20:5-44
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
-INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
+INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
-		INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
-		ADDED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
-		INJECTED from D:\mpoo-medicontrol-master\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
+		ADDED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Projeto MediControl\app\src\main\AndroidManifest.xml
