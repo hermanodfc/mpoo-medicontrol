@@ -38,11 +38,7 @@
             android:name="com.adht.android.medicontrol.infra.ui.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <provider
-            android:name="com.android.tools.ir.server.InstantRunContentProvider"
-            android:authorities="com.adht.android.medicontrol.com.android.tools.ir.server.InstantRunContentProvider"
-            android:multiprocess="true" />
+        <activity android:name="com.adht.android.medicontrol.paciente.ui.AdicionarAmigoActivity" />
     </application>
 
 </manifest>

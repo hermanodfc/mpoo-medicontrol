@@ -1,29 +1,21 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\thami\\Documents\\UFRPE\\Projeto Android\\mpoo-medicontrol\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
+            "outputFile": "D:\\Projects\\mpoo-medicontrol\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\thami\\.gradle\\caches\\transforms-2\\files-2.1\\2e18527b87ab490d7ccacd1e4c0631aa\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\herma\\.gradle\\caches\\transforms-2\\files-2.1\\bb36f7d8d8ba2f57f86cca90e05b8df8\\res\\values-v23\\values-v23.xml",
                     "from": {
-                        "startLines": "2,5",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,215",
-                        "endLines": "4,7",
-                        "endColumns": "10,10",
-                        "endOffsets": "210,379"
-                    },
-                    "to": {
-                        "startLines": "48,51",
-                        "startColumns": "4,4",
-                        "startOffsets": "3250,3410",
-                        "endLines": "50,53",
-                        "endColumns": "10,10",
-                        "endOffsets": "3405,3574"
+                        "startLines": "2,3,4,5,6,19,32,33,34,38,39,40,41",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,190,325,400,487,1277,2079,2206,2311,2535,2650,2757,2870",
+                        "endLines": "2,3,4,5,18,31,32,33,37,38,39,40,44",
+                        "endColumns": "134,134,74,86,12,12,126,104,12,114,106,112,12",
+                        "endOffsets": "185,320,395,482,1272,2074,2201,2306,2530,2645,2752,2865,3095"
                     }
                 },
                 {
-                    "source": "C:\\Users\\thami\\.gradle\\caches\\transforms-2\\files-2.1\\6b91db436cbee95cdcafdde8a03b2e3e\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\herma\\.gradle\\caches\\transforms-2\\files-2.1\\bc810a92f5f24cdb2592a65fb5af20f6\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -42,14 +34,22 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\thami\\.gradle\\caches\\transforms-2\\files-2.1\\691fcc3da0d52d983022a5a42b5ecf0a\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\herma\\.gradle\\caches\\transforms-2\\files-2.1\\5e83b874e825c4c27231f18d67c24e90\\res\\values-v23\\values-v23.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,19,32,33,34,38,39,40,41",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,190,325,400,487,1277,2079,2206,2311,2535,2650,2757,2870",
-                        "endLines": "2,3,4,5,18,31,32,33,37,38,39,40,44",
-                        "endColumns": "134,134,74,86,12,12,126,104,12,114,106,112,12",
-                        "endOffsets": "185,320,395,482,1272,2074,2201,2306,2530,2645,2752,2865,3095"
+                        "startLines": "2,5",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,215",
+                        "endLines": "4,7",
+                        "endColumns": "10,10",
+                        "endOffsets": "210,379"
+                    },
+                    "to": {
+                        "startLines": "48,51",
+                        "startColumns": "4,4",
+                        "startOffsets": "3250,3410",
+                        "endLines": "50,53",
+                        "endColumns": "10,10",
+                        "endOffsets": "3405,3574"
                     }
                 }
             ]

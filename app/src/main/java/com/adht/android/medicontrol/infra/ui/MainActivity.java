@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.adht.android.medicontrol.alarme.ui.AlarmeCadastroActivity;
 import com.adht.android.medicontrol.infra.Sessao;
+import com.adht.android.medicontrol.paciente.ui.AdicionarAmigoActivity;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
 import com.adht.android.medicontrol.usuario.negocio.UsuarioServices;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -105,6 +106,8 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        Intent intent;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -115,7 +118,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_lista_alarmes) {
 
         } else if (id == R.id.nav_add_amigo) {
-
+            intent = new Intent(MainActivity.this, AdicionarAmigoActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_lista_amigos) {
 
         } else if (id == R.id.nav_share) {
@@ -131,6 +135,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }
