@@ -38,11 +38,12 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
         Alarme alarme = listaAlarmes.get(position);
+
         myViewHolder.nomeRemedio.setText(alarme.getNomeMedicamento());
-        myViewHolder.inicio.setText(alarme.getHorarioInicial().toString());
+        //myViewHolder.inicio.setText(alarme.getHorarioInicial().toString());
         myViewHolder.complemento.setText(alarme.getComplemento());
-        myViewHolder.frequencia.setText(alarme.getFrequenciaHoras());
-        myViewHolder.dias.setText(alarme.getDuracaoDias());
+        myViewHolder.frequencia.setText(Integer.toString(alarme.getFrequenciaHoras()));
+        myViewHolder.dias.setText(Integer.toString(alarme.getDuracaoDias()));
 
     }
 
@@ -67,7 +68,7 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
             super(itemView);
 
             nomeRemedio = itemView.findViewById(R.id.textRemedio);
-            inicio = itemView.findViewById(R.id.textHora);
+            //inicio = itemView.findViewById(R.id.textHora);
             frequencia = itemView.findViewById(R.id.textFrequencia);
             complemento = itemView.findViewById(R.id.textComplemento);
             dias = itemView.findViewById(R.id.textDias);

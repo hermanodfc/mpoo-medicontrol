@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\mpoo-medicontrol-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pl\\values-pl.xml",
+            "outputFile": "D:\\Projeto MediControl\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pl\\values-pl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Alessandro Melo\\.gradle\\caches\\transforms-2\\files-2.1\\e8ae3cdbb8d8ba8d2f41469f7ff96b8f\\res\\values-pl\\values-pl.xml",

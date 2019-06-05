@@ -1,11 +1,11 @@
 #Internal package file, do not edit.
-#Tue Jun 04 22:46:40 GFT 2019
-1.base=D\:\\mpoo-medicontrol-master\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out
+#Wed Jun 05 17:06:37 GFT 2019
+1.base=D\:\\Projeto MediControl\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
 0.baseType=DIRECTORY
 1.baseType=DIRECTORY
 count=2
 1.set=DEX
 0.path=classes.dex
 0.set=DEX
-0.base=D\:\\mpoo-medicontrol-master\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
+0.base=D\:\\Projeto MediControl\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out
 1.path=classes.dex

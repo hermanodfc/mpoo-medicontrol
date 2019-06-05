@@ -1,4 +1,0 @@
-#Sun Jun 02 07:32:18 BRT 2019
-base.0=C\:\\Users\\thami\\Documents\\UFRPE\\Projeto Android\\mpoo-medicontrol\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\8
-path.0=classes.dex
-renamed.0=classes.dex

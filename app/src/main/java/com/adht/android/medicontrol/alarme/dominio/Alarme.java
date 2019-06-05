@@ -11,6 +11,15 @@ public class Alarme {
     private Date horarioInicial;
     private int frequenciaHoras;
     private int duracaoDias;
+    private int id_paciente;
+
+    public int getId_paciente() {
+        return id_paciente;
+    }
+
+    public void setId_paciente(int id_paciente) {
+        this.id_paciente = id_paciente;
+    }
 
     public int getId() {
         return id;

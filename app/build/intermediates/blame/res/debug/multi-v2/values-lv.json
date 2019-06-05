@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\thami\\Documents\\UFRPE\\Projeto Android\\mpoo-medicontrol\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lv\\values-lv.xml",
+            "outputFile": "D:\\Projeto MediControl\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lv\\values-lv.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\thami\\.gradle\\caches\\transforms-2\\files-2.1\\ddc6b88eb242ebc76da4814d027d4af4\\res\\values-lv\\values-lv.xml",
+                    "source": "C:\\Users\\Alessandro Melo\\.gradle\\caches\\transforms-2\\files-2.1\\e8ae3cdbb8d8ba8d2f41469f7ff96b8f\\res\\values-lv\\values-lv.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\thami\\.gradle\\caches\\transforms-2\\files-2.1\\691fcc3da0d52d983022a5a42b5ecf0a\\res\\values-lv\\values-lv.xml",
+                    "source": "C:\\Users\\Alessandro Melo\\.gradle\\caches\\transforms-2\\files-2.1\\25cab74ce6c975c43cf7c06fbe6ffbd5\\res\\values-lv\\values-lv.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
