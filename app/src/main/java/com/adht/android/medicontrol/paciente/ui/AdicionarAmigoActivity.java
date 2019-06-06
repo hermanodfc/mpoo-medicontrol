@@ -12,12 +12,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.adht.android.medicontrol.R;
-import com.adht.android.medicontrol.infra.exception.MediControlException;
+import com.adht.android.medicontrol.infra.exception.AmizadeExistenteException;
 import com.adht.android.medicontrol.infra.Sessao;
+import com.adht.android.medicontrol.infra.exception.UsuarioNaoCadastradoException;
 import com.adht.android.medicontrol.paciente.dominio.Amizade;
 import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.paciente.dominio.StatusAmizade;
@@ -25,6 +24,8 @@ import com.adht.android.medicontrol.paciente.negocio.AmizadeServices;
 import com.adht.android.medicontrol.paciente.negocio.PacienteServices;
 import com.adht.android.medicontrol.util.Dialog;
 import com.adht.android.medicontrol.util.EmailValidator;
+
+import java.io.IOException;
 
 public class AdicionarAmigoActivity extends AppCompatActivity {
 
@@ -80,7 +81,7 @@ public class AdicionarAmigoActivity extends AppCompatActivity {
 
         String email = emailView.getText().toString();
 
-        Paciente paciente;
+        Paciente paciente = null;
 
         final Handler handler = new Handler()
         {
@@ -94,8 +95,7 @@ public class AdicionarAmigoActivity extends AppCompatActivity {
 
         try {
             paciente = pacienteServices.getPaciente(email);
-        } catch (MediControlException exception) {
-            paciente = null;
+        } catch (UsuarioNaoCadastradoException exception) {
             AlertDialog dialog = Dialog.alertDialogOkButton("Adicionar Amigo",
                     "Amigo não localizado.", this, new DialogInterface.OnClickListener() {
                         @Override
@@ -108,6 +108,8 @@ public class AdicionarAmigoActivity extends AppCompatActivity {
                 Looper.loop();
             } catch (RuntimeException runtimeException) { }
             emailView.requestFocus();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         if (paciente != null) {
@@ -142,13 +144,34 @@ public class AdicionarAmigoActivity extends AppCompatActivity {
         amizade.setStatusAmizade(StatusAmizade.ENVIADO_PENDENTE);
         Paciente usuarioPaciente = Sessao.instance.getUsuario().getPaciente();
 
+        final Handler handler = new Handler()
+        {
+
+            @Override
+            public void handleMessage(Message mesg)
+            {
+                throw new RuntimeException();
+            }
+        };
+
         try {
             amizadeServices.cadastrarPedidoAmizade(usuarioPaciente, amizade);
-        } catch (MediControlException e) {
+            usuarioPaciente.adicionarAmizade(amizade);
+        } catch (AmizadeExistenteException e) {
+            AlertDialog dialog = Dialog.alertDialogOkButton("Adicionar Amigo",
+                    "Vocês já são amigos.", this, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            handler.handleMessage(handler.obtainMessage());
+                        }
+                    });
+            dialog.show();
+            try {
+                Looper.loop();
+            } catch (RuntimeException runtimeException) { }
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-        usuarioPaciente.adicionarAmizade(amizade);
     }
 
     private boolean dadosValidos() {

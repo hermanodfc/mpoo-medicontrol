@@ -4,17 +4,18 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
-import com.adht.android.medicontrol.infra.exception.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MedicamentoNomeInvalidoException;
 import com.adht.android.medicontrol.infra.persistencia.AbstractSQLite;
 import com.adht.android.medicontrol.infra.persistencia.DBHelper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
+public class AlarmeDAOSQLite extends AbstractSQLite {
 
-    public Alarme getAlarmes(int idPaciente) throws MediControlException {
+    public Alarme getAlarmes(int idPaciente) throws IOException {
         Alarme result = null;
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_ALARME + " U WHERE U." + DBHelper.TABELA_ALARME_CAMPO_ID_PACIENTE + " = ?;";
@@ -26,7 +27,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
         return result;
     }
 
-    public void cadastrar(Alarme alarme, int idPaciente) throws MediControlException {
+    public void cadastrar(Alarme alarme, int idPaciente) throws IOException {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.TABELA_ALARME_CAMPO_NOME_MEDICAMENTO, alarme.getNomeMedicamento());
@@ -39,10 +40,14 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
         super.close(db);
     }
 
-    private Alarme createAlarme(Cursor cursor) throws MediControlException {
+    private Alarme createAlarme(Cursor cursor)  {
         Alarme result = new Alarme();
         result.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_ID)));
-        result.setNomeMedicamento(cursor.getString(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_NOME_MEDICAMENTO)));
+        try {
+            result.setNomeMedicamento(cursor.getString(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_NOME_MEDICAMENTO)));
+        } catch (MedicamentoNomeInvalidoException e) {
+            e.printStackTrace();
+        }
         Date date = new Date();
         date.setTime((long) cursor.getDouble(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_HORARIO_INICIO)));
         result.setHorarioInicial(date);
@@ -53,14 +58,12 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
     }
 
 
-    public List<Alarme> listar() throws MediControlException {
+    public List<Alarme> listar() {
         List<Alarme> alarmes = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM TABELA_ALARME", null);
         while(cursor.moveToNext()){
-
             alarmes.add(createAlarme(cursor));
-
         }
         cursor.close();
         return  alarmes;

@@ -1,6 +1,9 @@
 package com.adht.android.medicontrol.usuario.dominio;
 
 import com.adht.android.medicontrol.infra.exception.MediControlException;
+import com.adht.android.medicontrol.infra.exception.PacienteInvalidoException;
+import com.adht.android.medicontrol.infra.exception.UsuarioEmailInvalidoException;
+import com.adht.android.medicontrol.infra.exception.UsuarioSenhaInvalidaException;
 import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.util.EmailValidator;
 
@@ -23,12 +26,12 @@ public class Usuario {
         return email;
     }
 
-    public void setEmail(String email) throws MediControlException {
+    public void setEmail(String email) throws UsuarioEmailInvalidoException {
 
         EmailValidator emailValidator = new EmailValidator();
 
         if (email == null || !emailValidator.isValidEmail(email)) {
-            throw new MediControlException("Endereço de email inválido");
+            throw new UsuarioEmailInvalidoException("Endereço de email inválido");
         }
 
         this.email = email;
@@ -38,12 +41,12 @@ public class Usuario {
         return senha;
     }
 
-    public void setSenha(String senha) throws MediControlException {
+    public void setSenha(String senha) throws UsuarioSenhaInvalidaException {
 
         if (senha == null) {
-            throw new MediControlException("Senha inválida");
+            throw new UsuarioSenhaInvalidaException("Senha inválida");
         } else if (senha.length() < 6) {
-            throw new MediControlException("A senha deve ter, pelo menos, 6 caracteres");
+            throw new UsuarioSenhaInvalidaException("A senha deve ter, pelo menos, 6 caracteres");
         }
 
         this.senha = senha;
@@ -53,9 +56,9 @@ public class Usuario {
         return paciente;
     }
 
-    public void setPaciente(Paciente paciente) throws MediControlException {
+    public void setPaciente(Paciente paciente) throws PacienteInvalidoException {
         if (paciente == null) {
-            throw new MediControlException("Paciente inválido");
+            throw new PacienteInvalidoException("Paciente inválido");
         }
 
         this.paciente = paciente;

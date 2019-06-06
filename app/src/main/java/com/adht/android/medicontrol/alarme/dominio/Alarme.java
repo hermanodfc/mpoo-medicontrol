@@ -1,6 +1,6 @@
 package com.adht.android.medicontrol.alarme.dominio;
 
-import com.adht.android.medicontrol.infra.exception.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MedicamentoNomeInvalidoException;
 
 import java.util.Date;
 
@@ -24,9 +24,9 @@ public class Alarme {
         return nomeMedicamento;
     }
 
-    public void setNomeMedicamento(String nomeMedicamento) throws MediControlException {
+    public void setNomeMedicamento(String nomeMedicamento) throws MedicamentoNomeInvalidoException {
         if (nomeMedicamento == null || nomeMedicamento.trim() == "") {
-            throw new MediControlException("Nome inválido");
+            throw new MedicamentoNomeInvalidoException("Nome inválido");
         }
         this.nomeMedicamento = nomeMedicamento;
     }
