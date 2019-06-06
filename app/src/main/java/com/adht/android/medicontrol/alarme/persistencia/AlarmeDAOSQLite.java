@@ -7,13 +7,8 @@ import com.adht.android.medicontrol.alarme.dominio.Alarme;
 import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.infra.persistencia.AbstractSQLite;
 import com.adht.android.medicontrol.infra.persistencia.DBHelper;
-
-<<<<<<< HEAD
-=======
 import java.io.IOException;
->>>>>>> versao-0.2
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class AlarmeDAOSQLite extends AbstractSQLite {
@@ -61,21 +56,14 @@ public class AlarmeDAOSQLite extends AbstractSQLite {
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_ALARME + " U WHERE U." + DBHelper.TABELA_ALARME_CAMPO_ID_PACIENTE + " = ?;";
         Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(idPaciente)});
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
 
             alarmes.add(createAlarme(cursor));
 
         }
         cursor.close();
-        return  alarmes;
-
+        return alarmes;
 
 
     }
-
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> versao-0.2

@@ -10,24 +10,14 @@ import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.adapter.AlarmeAdapter;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
 import com.adht.android.medicontrol.alarme.persistencia.AlarmeDAOSQLite;
-<<<<<<< HEAD
-import com.adht.android.medicontrol.infra.MediControlException;
-import com.adht.android.medicontrol.infra.Sessao;
-=======
 import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.infra.exception.MediControlException;
->>>>>>> versao-0.2
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class AlarmesListaActivity extends AppCompatActivity {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> versao-0.2
     private RecyclerView recyclerViewAlarmes;
 
     private List<Alarme> listaAlarme = new ArrayList<Alarme>();
@@ -59,9 +49,4 @@ public class AlarmesListaActivity extends AppCompatActivity {
 
 
     }
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> versao-0.2

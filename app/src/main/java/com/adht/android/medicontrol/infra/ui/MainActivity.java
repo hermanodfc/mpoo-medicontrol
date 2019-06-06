@@ -17,10 +17,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.adht.android.medicontrol.alarme.ui.AlarmeCadastroActivity;
-<<<<<<< HEAD
-=======
-//import com.adht.android.medicontrol.alarme.ui.AlarmesListaActivity;
->>>>>>> versao-0.2
 import com.adht.android.medicontrol.alarme.ui.AlarmesListaActivity;
 import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.paciente.ui.AdicionarAmigoActivity;

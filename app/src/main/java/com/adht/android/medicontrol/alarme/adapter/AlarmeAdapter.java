@@ -1,39 +1,21 @@
 package com.adht.android.medicontrol.alarme.adapter;
 
-<<<<<<< HEAD
-import android.database.sqlite.SQLiteDatabase;
-=======
->>>>>>> versao-0.2
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-<<<<<<< HEAD
-
-=======
->>>>>>> versao-0.2
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
-<<<<<<< HEAD
-import com.adht.android.medicontrol.alarme.persistencia.AlarmeDAOSQLite;
-import com.adht.android.medicontrol.infra.persistencia.DBHelper;
 
-
-=======
->>>>>>> versao-0.2
 import java.util.List;
 
 public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHolder> {
 
     private final List<Alarme> listaAlarmes;
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> versao-0.2
     public AlarmeAdapter(List<Alarme> lista) {
         this.listaAlarmes = lista;
     }
@@ -59,19 +41,12 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
 
     }
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> versao-0.2
     @Override
     public int getItemCount() {
         return listaAlarmes.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView nomeRemedio;
         TextView inicio;
@@ -89,8 +64,4 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
             dias = itemView.findViewById(R.id.textDias);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> versao-0.2
