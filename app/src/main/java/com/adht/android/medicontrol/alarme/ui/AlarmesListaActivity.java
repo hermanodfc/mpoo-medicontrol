@@ -19,7 +19,6 @@ import java.util.List;
 
 public class AlarmesListaActivity extends AppCompatActivity {
 
-
     private RecyclerView recyclerViewAlarmes;
 
     private List<Alarme> listaAlarme = new ArrayList<Alarme>();

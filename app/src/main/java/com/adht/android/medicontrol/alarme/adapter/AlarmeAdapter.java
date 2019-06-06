@@ -1,26 +1,18 @@
 package com.adht.android.medicontrol.alarme.adapter;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
-import com.adht.android.medicontrol.alarme.persistencia.AlarmeDAOSQLite;
-import com.adht.android.medicontrol.infra.persistencia.DBHelper;
-
-
 import java.util.List;
 
 public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHolder> {
 
     private final List<Alarme> listaAlarmes;
-
-
 
     public AlarmeAdapter(List<Alarme> lista) {
         this.listaAlarmes = lista;
@@ -46,10 +38,6 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
         myViewHolder.dias.setText(Integer.toString(alarme.getDuracaoDias()));
 
     }
-
-
-
-
 
     @Override
     public int getItemCount() {

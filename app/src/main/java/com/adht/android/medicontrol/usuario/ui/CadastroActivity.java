@@ -48,7 +48,6 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
     private View mCadastroFormView;
     private View mProgressView;
     private UserRegisterTask mUserRegisterTask = null;
-
     private final UsuarioServices usuarioServices = new UsuarioServices();
     private final PacienteServices pacienteServices = new PacienteServices();
 
@@ -340,7 +339,7 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
             };
 
 
-            showAlertDialogButtonClicked("Atenção", result.getMsg(), handler);
+            showAlertDialogButtonClicked("Cadastro de Usuário", result.getMsg(), handler);
 
             try{ Looper.loop(); }
             catch(RuntimeException e){}

@@ -13,6 +13,7 @@ import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.paciente.dominio.StatusAmizade;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class AmizadeDAOSQLite extends AbstractSQLite {
 
@@ -49,6 +50,22 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
         result.setStatusAmizade(StatusAmizade.instanciaValor(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE))));
         PacienteDAOSQLite pacienteDAOSQLite = new PacienteDAOSQLite();
         result.setAmigo(pacienteDAOSQLite.getPacienteById(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_AMIZADE_CAMPO_ID_AMIGO))));
+        return result;
+    }
+
+    public ArrayList<Amizade> getAmizades(Paciente paciente) throws IOException {
+        ArrayList<Amizade> result = new ArrayList<>();
+
+        SQLiteDatabase db = super.getReadableDatabase();
+        String sql = "SELECT * FROM " +DBHelper.TABELA_AMIZADE+ " U WHERE U." +
+                DBHelper.TABELA_AMIZADE_CAMPO_ID_PACIENTE + " = ?;";
+
+        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(paciente.getId())});
+        while(cursor.moveToNext()){
+            result.add(createAmizade(cursor));
+        }
+
+        super.close(cursor, db);
         return result;
     }
 }
