@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
+import androidx.annotation.NonNull ;
 import androidx.recyclerview.widget.RecyclerView;
 import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
@@ -32,12 +32,15 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
         Alarme alarme = listaAlarmes.get(position);
+        final String diasComplemento = " Dias";
+        final String frequenciaComplemento1 = "A cada ";
+        final String frequenciaComplemento2 = " hora(s)";
 
         myViewHolder.nomeRemedio.setText(alarme.getNomeMedicamento());
         //myViewHolder.inicio.setText(alarme.getHorarioInicial().toString());
         myViewHolder.complemento.setText(alarme.getComplemento());
-        myViewHolder.frequencia.setText(Integer.toString(alarme.getFrequenciaHoras()));
-        myViewHolder.dias.setText(Integer.toString(alarme.getDuracaoDias()));
+        myViewHolder.frequencia.setText(frequenciaComplemento1 + Integer.toString(alarme.getFrequenciaHoras()) + frequenciaComplemento2);
+        myViewHolder.dias.setText(Integer.toString(alarme.getDuracaoDias()) + diasComplemento);
 
     }
 

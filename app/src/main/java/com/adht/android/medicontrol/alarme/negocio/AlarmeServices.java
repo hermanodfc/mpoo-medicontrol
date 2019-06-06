@@ -7,6 +7,8 @@ import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlarmeServices {
     public void cadastrar(Alarme alarme) throws MediControlException, IOException {
@@ -18,6 +20,13 @@ public class AlarmeServices {
         }*/
         int idPaciente = usuario.getPaciente().getId();
         dao.cadastrar(alarme, idPaciente);
+    }
+
+    public List<Alarme> listar(int idPaciente) throws MediControlException {
+
+        AlarmeDAOSQLite daoAlarme = new AlarmeDAOSQLite();
+
+        return daoAlarme.listar(idPaciente);
     }
 
     public void logout() {

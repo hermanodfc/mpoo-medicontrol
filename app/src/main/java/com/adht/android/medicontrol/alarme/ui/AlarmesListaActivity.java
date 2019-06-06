@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.adapter.AlarmeAdapter;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
+import com.adht.android.medicontrol.alarme.negocio.AlarmeServices;
 import com.adht.android.medicontrol.alarme.persistencia.AlarmeDAOSQLite;
 import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.infra.exception.MediControlException;
@@ -31,10 +32,10 @@ public class AlarmesListaActivity extends AppCompatActivity {
 
         recyclerViewAlarmes = findViewById(R.id.recyclerViewAlarmes);
 
-        //configurar adapter e listando alarmes
-        AlarmeDAOSQLite daoAlarme = new AlarmeDAOSQLite();
+        //configurar adapter e adicionando alarmes em um array
+        AlarmeServices alarmeServices = new AlarmeServices();
         try {
-            listaAlarme = daoAlarme.listar(idPaciente);
+            listaAlarme = alarmeServices.listar(idPaciente);
         } catch (MediControlException e) {
             e.printStackTrace();
         }
