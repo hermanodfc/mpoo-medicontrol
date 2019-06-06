@@ -17,14 +17,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
 import com.adht.android.medicontrol.alarme.negocio.AlarmeServices;
 import com.adht.android.medicontrol.infra.ui.MainActivity;
 import com.adht.android.medicontrol.infra.ui.TaskResult;
 import com.adht.android.medicontrol.infra.ui.TaskResultType;
-import com.adht.android.medicontrol.usuario.ui.CadastroActivity;
+
 
 import java.util.Date;
 
@@ -39,12 +38,15 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
     private View progressBarAlarmCadastro;
     private AlarmeCadastroTask alarmeCadastroTask = null;
 
-    private final AlarmeServices services = new AlarmeServices(); //não sei direito o que faz
+    private final AlarmeServices services = new AlarmeServices();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarme_cadastro);
+
+
+
 
         cadastroAlarmeFormView = findViewById(R.id.scrollViewAlarmeCadastro);
         progressBarAlarmCadastro = findViewById(R.id.progressBarAlarmeCadastro);
@@ -222,15 +224,16 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
 
         private TaskResult registerAlarme() {
             TaskResult result = TaskResult.SUCCESS;
+
             try {
                 Alarme alarme = new Alarme();
                 alarme.setNomeMedicamento(nome);
                 alarme.setComplemento(complemento);
-                Date date = new Date();
-                alarme.setHorarioInicial(date);
+                //Date date = new Date();
+                //alarme.setHorarioInicial(date);
                 alarme.setDuracaoDias(dias);
                 alarme.setFrequenciaHoras(frequencia);
-               services.cadastrar(alarme);
+                services.cadastrar(alarme);
             } catch (Exception e) {
                 result = new TaskResult(TaskResultType.FAIL, e.getMessage());
             }
@@ -279,7 +282,6 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         private void resetTask() {
             alarmeCadastroTask = null;
             showProgress(false);
-            finish();
             //Talvez seja melhor chamar a tela de listagem de alarmes após fazer o cadastro dos mesmos
             startActivity(new Intent(AlarmeCadastroActivity.this, MainActivity.class));
         }
@@ -289,5 +291,4 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
 
 
 
-    }
-
+}

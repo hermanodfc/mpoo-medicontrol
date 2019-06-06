@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABELA_ALARME = "TB_ALARME";
     public static final String TABELA_ALARME_CAMPO_ID = "ID_ALARME";
     public static final String TABELA_ALARME_CAMPO_NOME_MEDICAMENTO = "NOME_MEDICAMENTO";
-    public static final String TABELA_ALARME_CAMPO_HORARIO_INICIO = "INICIO";
+    //public static final String TABELA_ALARME_CAMPO_HORARIO_INICIO = "INICIO";
     public static final String TABELA_ALARME_CAMPO_COMPLEMENTO = "COMPLEMENTO";
     public static final String TABELA_ALARME_CAMPO_FREQUENCIA_HORAS = "FREQUENCIA";
     public static final String TABELA_ALARME_CAMPO_DURACAO_DIAS = "DIAS";
@@ -103,13 +103,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + TABELA_ALARME + "(" +
                         TABELA_ALARME_CAMPO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         TABELA_ALARME_CAMPO_NOME_MEDICAMENTO + " TEXT NOT NULL, " +
-                        TABELA_ALARME_CAMPO_HORARIO_INICIO + " REAL NOT NULL, " +
+                        //TABELA_ALARME_CAMPO_HORARIO_INICIO + " REAL NOT NULL, " +
                         TABELA_ALARME_CAMPO_COMPLEMENTO + " TEXT NOT NULL, " +
                         TABELA_ALARME_CAMPO_FREQUENCIA_HORAS + " INTEGER NOT NULL," +
                         TABELA_ALARME_CAMPO_DURACAO_DIAS + " INTEGER NOT NULL," +
                         TABELA_ALARME_CAMPO_ID_PACIENTE  + " INTEGER NOT NULL, " +
                         "FOREIGN KEY(" + TABELA_ALARME_CAMPO_ID_PACIENTE + ")" +
-                            "REFERENCES " + TABELA_USUARIO + "(" + TABELA_USUARIO_CAMPO_ID + ")" +
+                        "REFERENCES " + TABELA_USUARIO + "(" + TABELA_USUARIO_CAMPO_ID + ")" +
                         ");";
         db.execSQL(sqlTbAlarme);
     }
