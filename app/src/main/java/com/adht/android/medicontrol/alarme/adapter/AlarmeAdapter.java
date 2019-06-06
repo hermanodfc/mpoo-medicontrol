@@ -76,8 +76,6 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
             MenuItem Delete = menu.add(menu.NONE, 2, 2, "Delete");
 //            Edit.setOnMenuItemClickListener(onEditMenu);
 //            Delete.setOnMenuItemClickListener(onEditMenu);
-//            menu.add(this.getAdapterPosition(), 121, 0, "Delete");
-//            menu.add(this.getAdapterPosition(), 122, 1, "Edit");
 
         }
 
