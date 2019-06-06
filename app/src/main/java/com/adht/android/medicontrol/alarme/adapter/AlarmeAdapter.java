@@ -1,7 +1,9 @@
 package com.adht.android.medicontrol.alarme.adapter;
 
 
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -49,7 +51,7 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
         return listaAlarmes.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
 
         TextView nomeRemedio;
         TextView inicio;
@@ -65,6 +67,19 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
             frequencia = itemView.findViewById(R.id.textFrequencia);
             complemento = itemView.findViewById(R.id.textComplemento);
             dias = itemView.findViewById(R.id.textDias);
+            itemView.setOnCreateContextMenuListener(this);
         }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+            MenuItem Edit = menu.add(menu.NONE, 1, 1, "Edit");
+            MenuItem Delete = menu.add(menu.NONE, 2, 2, "Delete");
+//            Edit.setOnMenuItemClickListener(onEditMenu);
+//            Delete.setOnMenuItemClickListener(onEditMenu);
+//            menu.add(this.getAdapterPosition(), 121, 0, "Delete");
+//            menu.add(this.getAdapterPosition(), 122, 1, "Edit");
+
+        }
+
     }
 }

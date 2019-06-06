@@ -3,6 +3,7 @@ package com.adht.android.medicontrol.alarme.ui;
 import android.os.Bundle;
 
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,7 +11,6 @@ import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.adapter.AlarmeAdapter;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
 import com.adht.android.medicontrol.alarme.negocio.AlarmeServices;
-import com.adht.android.medicontrol.alarme.persistencia.AlarmeDAOSQLite;
 import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
@@ -32,6 +32,7 @@ public class AlarmesListaActivity extends AppCompatActivity {
 
         recyclerViewAlarmes = findViewById(R.id.recyclerViewAlarmes);
 
+
         //configurar adapter e adicionando alarmes em um array
         AlarmeServices alarmeServices = new AlarmeServices();
         try {
@@ -48,6 +49,15 @@ public class AlarmesListaActivity extends AppCompatActivity {
         recyclerViewAlarmes.setHasFixedSize(true);
         recyclerViewAlarmes.setAdapter(alarmeAdapter);
 
+//        registerForContextMenu(recyclerViewAlarmes);
+
 
     }
+
+
+//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+//        super.onCreateContextMenu(menu, v, menuInfo);
+//        MenuInflater menuinflater = getMenuInflater();
+//        menuinflater.inflate(R.menu.menu_contexto, menu);
+//    }
 }
