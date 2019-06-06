@@ -29,8 +29,8 @@
             android:name=".infra.ui.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".paciente.ui.AdicionarAmigoActivity"/>
+        
     </application>
 
 </manifest>

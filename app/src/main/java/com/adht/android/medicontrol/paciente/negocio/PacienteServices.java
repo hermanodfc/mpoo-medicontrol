@@ -1,6 +1,6 @@
 package com.adht.android.medicontrol.paciente.negocio;
 
-import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.paciente.persistencia.IPacienteDAO;
 import com.adht.android.medicontrol.paciente.persistencia.PacienteDAOSQLite;
@@ -28,5 +28,22 @@ public class PacienteServices {
         IPacienteDAO dao = new PacienteDAOSQLite();
         Paciente paciente = dao.getPaciente(usuario.getId());
         return  paciente;
+    }
+
+    public Paciente getPaciente(String email) throws MediControlException {
+
+        UsuarioServices usuarioServices = new UsuarioServices();
+
+        int idUsuario;
+
+        try {
+            idUsuario = usuarioServices.getUsuario(email);
+        } catch (MediControlException exception) {
+            throw exception;
+        }
+
+        PacienteDAOSQLite pacienteDAOSQLite = new PacienteDAOSQLite();
+
+        return pacienteDAOSQLite.getPaciente(idUsuario);
     }
 }

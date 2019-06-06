@@ -1,9 +1,7 @@
 package com.adht.android.medicontrol.alarme.negocio;
 
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
-import com.adht.android.medicontrol.alarme.persistencia.AlarmeDAOSQLite;
-import com.adht.android.medicontrol.alarme.persistencia.IAlarmeDao;
-import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.infra.Sessao;
 
 public class AlarmeServices {

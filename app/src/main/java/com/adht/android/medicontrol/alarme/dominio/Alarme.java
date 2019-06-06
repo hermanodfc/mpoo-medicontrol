@@ -1,6 +1,6 @@
 package com.adht.android.medicontrol.alarme.dominio;
 
-import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MediControlException;
 
 import java.util.Date;
 

@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.infra.persistencia.AbstractSQLite;
 import com.adht.android.medicontrol.infra.persistencia.DBHelper;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;

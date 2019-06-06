@@ -1,6 +1,6 @@
 package com.adht.android.medicontrol.usuario.persistencia;
 
-import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
 
 public interface IUsuarioDAO {

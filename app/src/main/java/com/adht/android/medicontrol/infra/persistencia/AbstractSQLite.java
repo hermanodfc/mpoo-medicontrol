@@ -2,7 +2,7 @@ package com.adht.android.medicontrol.infra.persistencia;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MediControlException;
 
 import java.io.Closeable;
 import java.io.IOException;

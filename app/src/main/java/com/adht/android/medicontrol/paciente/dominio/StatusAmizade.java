@@ -13,11 +13,11 @@ public enum StatusAmizade {
         this.valor = valor;
     }
 
-    private int getValor() {
+    public int getValor() {
         return this.valor;
     }
 
-    public StatusAmizade instanciaValor(int valor){
+    public static StatusAmizade instanciaValor(int valor){
         StatusAmizade result = null;
         switch (valor) {
             case 1:

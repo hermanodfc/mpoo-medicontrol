@@ -1,8 +1,7 @@
 package com.adht.android.medicontrol.usuario.negocio;
 
-import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.infra.Sessao;
-import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.paciente.negocio.PacienteServices;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
 import com.adht.android.medicontrol.usuario.persistencia.IUsuarioDAO;
@@ -35,5 +34,15 @@ public class UsuarioServices {
 
     public boolean isUsuarioCadastro(int idUsuario) throws MediControlException {
         return new UsuarioDAOSQLite().isUsuarioCadastrado(idUsuario);
+    }
+
+    public int getUsuario(String email) throws MediControlException {
+        IUsuarioDAO dao = new UsuarioDAOSQLite();
+        Usuario usuario = dao.getUsuario(email);
+        if (usuario == null) {
+            throw new MediControlException("Usuário já cadastrado");
+        }
+
+        return usuario.getId();
     }
 }
