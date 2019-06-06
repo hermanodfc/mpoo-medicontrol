@@ -1,18 +1,25 @@
 package com.adht.android.medicontrol.paciente.dominio;
 
-import com.adht.android.medicontrol.usuario.dominio.Usuario;
-
 public class Amizade {
 
-    private Paciente paciente;
+    private int id;
+    private Paciente amigo;
     private StatusAmizade statusAmizade;
 
-    public Paciente getPaciente() {
-        return paciente;
+    public int getId() {
+        return id;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Paciente getAmigo() {
+        return amigo;
+    }
+
+    public void setAmigo(Paciente amigo) {
+        this.amigo = amigo;
     }
 
     public StatusAmizade getStatusAmizade() {

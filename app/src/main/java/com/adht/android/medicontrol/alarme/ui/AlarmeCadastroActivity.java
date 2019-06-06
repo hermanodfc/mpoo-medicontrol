@@ -17,7 +17,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
 import com.adht.android.medicontrol.alarme.negocio.AlarmeServices;
@@ -25,8 +24,14 @@ import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.infra.ui.MainActivity;
 import com.adht.android.medicontrol.infra.ui.TaskResult;
 import com.adht.android.medicontrol.infra.ui.TaskResultType;
+<<<<<<< HEAD
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
 import com.adht.android.medicontrol.usuario.ui.CadastroActivity;
+=======
+
+
+import java.util.Date;
+>>>>>>> versao-0.2
 
 import java.util.Date;
 
@@ -294,5 +299,4 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
 
 
 
-    }
-
+}

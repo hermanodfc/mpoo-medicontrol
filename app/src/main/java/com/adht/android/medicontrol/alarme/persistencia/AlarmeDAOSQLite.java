@@ -4,17 +4,20 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
-import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.infra.persistencia.AbstractSQLite;
 import com.adht.android.medicontrol.infra.persistencia.DBHelper;
 
+<<<<<<< HEAD
+=======
+import java.io.IOException;
+>>>>>>> versao-0.2
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
-
-    public Alarme getAlarmes(int idPaciente) throws MediControlException {
+public class AlarmeDAOSQLite extends AbstractSQLite {
+    public Alarme getAlarmes(int idPaciente) throws MediControlException, IOException {
         Alarme result = null;
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_ALARME + " U WHERE U." + DBHelper.TABELA_ALARME_CAMPO_ID_PACIENTE + " = ?;";
@@ -26,7 +29,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
         return result;
     }
 
-    public void cadastrar(Alarme alarme, int idPaciente) throws MediControlException {
+    public void cadastrar(Alarme alarme, int idPaciente) throws MediControlException, IOException {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.TABELA_ALARME_CAMPO_NOME_MEDICAMENTO, alarme.getNomeMedicamento());
@@ -71,4 +74,8 @@ public class AlarmeDAOSQLite extends AbstractSQLite implements IAlarmeDao {
     }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> versao-0.2

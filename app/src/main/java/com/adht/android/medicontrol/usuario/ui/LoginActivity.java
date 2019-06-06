@@ -45,22 +45,11 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity {
 
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
-    private static final int REQUEST_READ_CONTACTS = 0;
-
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
     private UserLoginTask mUserLoginTask = null;;
-
-    // UI references.
     private EditText mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-
     private final UsuarioServices services = new UsuarioServices();
 
     @Override
@@ -120,8 +109,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void cadastrarUsuario() {
         startActivity(new Intent(LoginActivity.this, CadastroActivity.class));
+        mEmailView.setText("");
+        mPasswordView.setText("");
     }
-
 
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
@@ -201,29 +191,6 @@ public class LoginActivity extends AppCompatActivity {
         return password.length() > 5;
     }
 
-
-    private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
-        return false;
-    }
-
     public class UserLoginTask extends AsyncTask<Void, Void, TaskResult> {
 
         private final String mEmail;
@@ -253,19 +220,6 @@ public class LoginActivity extends AppCompatActivity {
             return result;
         }
 
-        private TaskResult registerUser() {
-            TaskResult result = TaskResult.SUCCESS;
-            try {
-                Usuario usuario = new Usuario();
-                usuario.setEmail(mEmail);
-                usuario.setSenha(mPassword);
-                services.cadastrar(usuario);
-            } catch (Exception e) {
-                result = new TaskResult(TaskResultType.FAIL, e.getMessage());
-            }
-            return result;
-        }
-
         @Override
         protected void onPostExecute(final TaskResult result) {
             if (result == null) {
@@ -275,7 +229,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if (result.getType() == TaskResultType.FAIL) {
                 mEmailView.requestFocus();
-                Toast.makeText(LoginActivity.this, result.getMsg(), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Usuário ou senha inválidos.", Toast.LENGTH_LONG).show();
             }
 
             if (result.getType() == TaskResultType.SUCCESS) {

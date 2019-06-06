@@ -109,7 +109,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         TABELA_ALARME_CAMPO_DURACAO_DIAS + " INTEGER NOT NULL," +
                         TABELA_ALARME_CAMPO_ID_PACIENTE  + " INTEGER NOT NULL, " +
                         "FOREIGN KEY(" + TABELA_ALARME_CAMPO_ID_PACIENTE + ")" +
-                            "REFERENCES " + TABELA_USUARIO + "(" + TABELA_USUARIO_CAMPO_ID + ")" +
+                        "REFERENCES " + TABELA_USUARIO + "(" + TABELA_USUARIO_CAMPO_ID + ")" +
                         ");";
         db.execSQL(sqlTbAlarme);
     }

@@ -48,7 +48,6 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
     private View mCadastroFormView;
     private View mProgressView;
     private UserRegisterTask mUserRegisterTask = null;
-
     private final UsuarioServices usuarioServices = new UsuarioServices();
     private final PacienteServices pacienteServices = new PacienteServices();
 
@@ -285,7 +284,7 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
             String nascimentoString = mNascimentoView.getText().toString();
             int dia = Integer.parseInt(nascimentoString.substring(0, 2));
             int mes = Integer.parseInt(nascimentoString.substring(3, 5)) - 1;
-            int ano = Integer.parseInt(nascimentoString.substring(7));
+            int ano = Integer.parseInt(nascimentoString.substring(6));
             mNascimento = new GregorianCalendar(ano, mes, dia);
         }
 
@@ -340,7 +339,7 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
             };
 
 
-            showAlertDialogButtonClicked("Atenção", result.getMsg(), handler);
+            showAlertDialogButtonClicked("Cadastro de Usuário", result.getMsg(), handler);
 
             try{ Looper.loop(); }
             catch(RuntimeException e){}

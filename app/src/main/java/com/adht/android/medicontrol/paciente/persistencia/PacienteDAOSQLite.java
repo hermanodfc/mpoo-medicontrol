@@ -4,19 +4,21 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MediControlException;
+import com.adht.android.medicontrol.infra.exception.PacienteNascimentoInvalidoException;
+import com.adht.android.medicontrol.infra.exception.PacienteNomeInvalidoException;
 import com.adht.android.medicontrol.infra.persistencia.DBHelper;
+import com.adht.android.medicontrol.infra.persistencia.PacienteGeneroInvalidoException;
 import com.adht.android.medicontrol.paciente.dominio.Genero;
 import com.adht.android.medicontrol.paciente.dominio.Paciente;
-import com.adht.android.medicontrol.usuario.dominio.Usuario;
 import com.adht.android.medicontrol.infra.persistencia.AbstractSQLite;
 
+import java.io.IOException;
 import java.util.GregorianCalendar;
 
-public class PacienteDAOSQLite extends AbstractSQLite implements IPacienteDAO {
+public class PacienteDAOSQLite extends AbstractSQLite {
 
-    @Override
-    public void cadastrar(Paciente paciente, int idUsuario) throws MediControlException {
+    public void cadastrar(Paciente paciente, int idUsuario) throws IOException {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -28,7 +30,7 @@ public class PacienteDAOSQLite extends AbstractSQLite implements IPacienteDAO {
         super.close(db);
     }
 
-    public Paciente getPaciente(int idUsuario) throws MediControlException {
+    public Paciente getPaciente(int idUsuario) throws IOException {
         Paciente result = null;
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " +DBHelper.TABELA_PACIENTE+ " U WHERE U." +
@@ -41,13 +43,40 @@ public class PacienteDAOSQLite extends AbstractSQLite implements IPacienteDAO {
         return result;
     }
 
-    private Paciente createPaciente(Cursor cursor) throws MediControlException {
+    public Paciente getPacienteById(int idPaciente) throws IOException {
+        Paciente result = null;
+        SQLiteDatabase db = super.getReadableDatabase();
+        String sql = "SELECT * FROM " +DBHelper.TABELA_PACIENTE+ " U WHERE U." +
+                DBHelper.TABELA_PACIENTE_CAMPO_ID + " = ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(idPaciente)});
+        if (cursor.moveToFirst()) {
+            result = createPaciente(cursor);
+        }
+        super.close(cursor, db);
+        return result;
+    }
+
+
+    private Paciente createPaciente(Cursor cursor)  {
         Paciente result = new Paciente();
         result.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_ID)));
-        result.setNome(cursor.getString(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_NOME)));
+        try {
+            result.setNome(cursor.getString(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_NOME)));
+        } catch (PacienteNomeInvalidoException e) {
+            e.printStackTrace();
+        }
         GregorianCalendar nascimento = new GregorianCalendar();
         nascimento.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_NASCIMENTO)));
-        result.setGenero(Genero.instanciaValor(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_GENERO))));
+        try {
+            result.setNascimento(nascimento);
+        } catch (PacienteNascimentoInvalidoException e) {
+            e.printStackTrace();
+        }
+        try {
+            result.setGenero(Genero.instanciaValor(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_GENERO))));
+        } catch (PacienteGeneroInvalidoException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 }

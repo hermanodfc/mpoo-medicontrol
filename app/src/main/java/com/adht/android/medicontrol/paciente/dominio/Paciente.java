@@ -1,6 +1,9 @@
 package com.adht.android.medicontrol.paciente.dominio;
 
-import com.adht.android.medicontrol.infra.MediControlException;
+import com.adht.android.medicontrol.infra.exception.MediControlException;
+import com.adht.android.medicontrol.infra.exception.PacienteNascimentoInvalidoException;
+import com.adht.android.medicontrol.infra.exception.PacienteNomeInvalidoException;
+import com.adht.android.medicontrol.infra.persistencia.PacienteGeneroInvalidoException;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -21,10 +24,8 @@ public class Paciente {
         this.amizades = amizades;
     }
 
-    public void adicionarAmizade(Paciente paciente, StatusAmizade statusAmizade) {
-        Amizade amizade = new Amizade();
-        amizade.setPaciente(paciente);
-        amizade.setStatusAmizade(statusAmizade);
+    public void adicionarAmizade(Amizade amizade) {
+        amizades.add(amizade);
     }
 
     public int getId() {
@@ -39,10 +40,10 @@ public class Paciente {
         return nome;
     }
 
-    public void setNome(String nome) throws MediControlException {
+    public void setNome(String nome) throws PacienteNomeInvalidoException {
 
         if (nome == null || nome.trim() == "") {
-            throw new MediControlException("Nome inválido");
+            throw new PacienteNomeInvalidoException("Nome inválido");
         }
 
         this.nome = nome;
@@ -52,10 +53,10 @@ public class Paciente {
         return nascimento;
     }
 
-    public void setNascimento(GregorianCalendar nascimento) throws MediControlException {
+    public void setNascimento(GregorianCalendar nascimento) throws PacienteNascimentoInvalidoException {
 
         if (nascimento == null) {
-            throw new MediControlException("Data de nascimento inválida");
+            throw new PacienteNascimentoInvalidoException("Data de nascimento inválida");
         }
 
         this.nascimento = nascimento;
@@ -65,10 +66,10 @@ public class Paciente {
         return genero;
     }
 
-    public void setGenero(Genero genero) throws MediControlException {
+    public void setGenero(Genero genero) throws PacienteGeneroInvalidoException {
 
         if (genero == null) {
-            throw new MediControlException("Genero inválido");
+            throw new PacienteGeneroInvalidoException("Genero inválido");
         }
 
         this.genero = genero;
