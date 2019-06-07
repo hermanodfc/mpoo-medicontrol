@@ -55,14 +55,17 @@ public class AlarmeDAOSQLite extends AbstractSQLite {
         String sql = "SELECT * FROM " + DBHelper.TABELA_ALARME + " U WHERE U." + DBHelper.TABELA_ALARME_CAMPO_ID_PACIENTE + " = ?;";
         Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(idPaciente)});
         while (cursor.moveToNext()) {
-
             alarmes.add(createAlarme(cursor));
-
         }
         cursor.close();
         return alarmes;
+    }
 
-
+    public void deletarAlarme(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "DELETE FROM " + DBHelper.TABELA_ALARME +
+                " WHERE " + DBHelper.TABELA_ALARME_CAMPO_ID + " = ?;";
+        db.execSQL(sql);
     }
 
     public void atualizar (Alarme alarme, int idAlarme) throws IOException{

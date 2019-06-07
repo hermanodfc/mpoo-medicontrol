@@ -36,8 +36,8 @@ public class DBHelper extends SQLiteOpenHelper {
     // TABELA DAS AMIZADES
     public static final String TABELA_AMIZADE = "TB_AMIZADE";
     public static final String TABELA_AMIZADE_CAMPO_ID = "ID";
-    public static final String TABELA_AMIZADE_CAMPO_ID_PACIENTE = "ID_PACIENTE";
-    public static final String TABELA_AMIZADE_CAMPO_ID_AMIGO = "ID_AMIGO";
+    public static final String TABELA_AMIZADE_CAMPO_ID_SOLICITANTE = "ID_PACIENTE";
+    public static final String TABELA_AMIZADE_CAMPO_ID_CONVIDADO = "ID_AMIGO";
     public static final String TABELA_AMIZADE_CAMPO_STATUS_AMIZADE = "STATUS_AMIZADE";
 
     private static final String[] TABELAS = {
@@ -60,15 +60,15 @@ public class DBHelper extends SQLiteOpenHelper {
         String sqlTbAmizade =
                 "CREATE TABLE " + TABELA_AMIZADE + " (" +
                         TABELA_AMIZADE_CAMPO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        TABELA_AMIZADE_CAMPO_ID_PACIENTE + " INTEGER NOT NULL, " +
-                        TABELA_AMIZADE_CAMPO_ID_AMIGO + " INTEGER NOT NULL, " +
+                        TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + " INTEGER NOT NULL, " +
+                        TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " INTEGER NOT NULL, " +
                         TABELA_AMIZADE_CAMPO_STATUS_AMIZADE + " INTEGER NOT NULL, " +
-                        "FOREIGN KEY(" + TABELA_AMIZADE_CAMPO_ID_PACIENTE + ") " +
+                        "FOREIGN KEY(" + TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + ") " +
                             "REFERENCES " + TABELA_PACIENTE + "(" +
                                 TABELA_PACIENTE_CAMPO_ID_USUARIO + "), " +
-                        "FOREIGN KEY(" + TABELA_AMIZADE_CAMPO_ID_PACIENTE + ") " +
+                        "FOREIGN KEY(" + TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + ") " +
                         "REFERENCES " + TABELA_PACIENTE + "(" +
-                        TABELA_AMIZADE_CAMPO_ID_AMIGO + ")" +
+                        TABELA_AMIZADE_CAMPO_ID_CONVIDADO + ")" +
                 ");";
         db.execSQL(sqlTbAmizade);
     }

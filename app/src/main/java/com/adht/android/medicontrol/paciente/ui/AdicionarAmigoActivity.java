@@ -139,10 +139,11 @@ public class AdicionarAmigoActivity extends AppCompatActivity {
 
     private void enviarPedido(Paciente amigo) {
         AmizadeServices amizadeServices = new AmizadeServices();
+        Paciente solicitante = Sessao.instance.getUsuario().getPaciente();
         Amizade amizade = new Amizade();
-        amizade.setAmigo(amigo);
-        amizade.setStatusAmizade(StatusAmizade.ENVIADO_PENDENTE);
-        Paciente usuarioPaciente = Sessao.instance.getUsuario().getPaciente();
+        amizade.setSolicitante(solicitante);
+        amizade.setConvidado(amigo);
+        amizade.setStatusAmizade(StatusAmizade.PENDENTE);
 
         final Handler handler = new Handler()
         {
@@ -155,8 +156,8 @@ public class AdicionarAmigoActivity extends AppCompatActivity {
         };
 
         try {
-            amizadeServices.cadastrarPedidoAmizade(usuarioPaciente, amizade);
-            usuarioPaciente.adicionarAmizade(amizade);
+            amizadeServices.cadastrarPedidoAmizade(amizade);
+            solicitante.adicionarAmizade(amizade);
         } catch (AmizadeExistenteException e) {
             AlertDialog dialog = Dialog.alertDialogOkButton("Adicionar Amigo",
                     "Vocês já são amigos.", this, new DialogInterface.OnClickListener() {
