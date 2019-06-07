@@ -14,10 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".alarme.ui.AlarmeCadastroActivity"></activity>
+        <activity android:name=".alarme.ui.AlarmeAtualizacaoActivity"></activity>
+        <activity android:name=".alarme.ui.AlarmeCadastroActivity" />
         <activity android:name=".usuario.ui.CadastroActivity" />
-        <activity
-            android:name=".alarme.ui.AlarmesListaActivity"></activity>
+        <activity android:name=".alarme.ui.AlarmesListaActivity" />
         <activity
             android:name=".usuario.ui.LoginActivity"
             android:label="@string/app_name">
@@ -31,9 +31,9 @@
             android:name=".infra.ui.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".alarme.ui.AlarmesListaActivity"/>
-        <activity android:name=".paciente.ui.AdicionarAmigoActivity"/>
-        <activity android:name=".paciente.ui.ListarAmigosActivity"/>
+        <activity android:name=".alarme.ui.AlarmesListaActivity" />
+        <activity android:name=".paciente.ui.AdicionarAmigoActivity" />
+        <activity android:name=".paciente.ui.ListarAmigosActivity" />
     </application>
 
 </manifest>

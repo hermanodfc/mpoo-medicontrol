@@ -11,13 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlarmeServices {
-    public void cadastrar(Alarme alarme) throws MediControlException, IOException {
+    public void cadastrar(Alarme alarme) throws IOException {
         AlarmeDAOSQLite dao = new AlarmeDAOSQLite();
         Usuario usuario = Sessao.instance.getUsuario();
-        // Arranjar um jeito de validar se o remédio já não está cadastro (precisa checar se é o mesmo usuário antes)
-/*        if (dao.getAlarme(alarme.getNome()) != null) {
-            throw new MediControlException("Remédio já cadastrado");
-        }*/
         int idPaciente = usuario.getPaciente().getId();
         dao.cadastrar(alarme, idPaciente);
     }
@@ -29,8 +25,28 @@ public class AlarmeServices {
         return daoAlarme.listar(idPaciente);
     }
 
-    public void logout() {
-        Sessao sessao = Sessao.instance;
-        sessao.reset();
+    public void atualizar(Alarme alarme, int idAlarme) throws IOException {
+        AlarmeDAOSQLite dao = new AlarmeDAOSQLite();
+        dao.atualizar(alarme, idAlarme);
+    }
+
+    public void deletar(int idAlarme){
+        AlarmeDAOSQLite dao = new AlarmeDAOSQLite();
+        dao.deletar(idAlarme);
+    }
+
+    public Alarme getAlarme(int idAlarme){
+        Alarme alarme = new Alarme();
+        AlarmeDAOSQLite dao = new AlarmeDAOSQLite();
+        try {
+            alarme = dao.getAlarme(idAlarme);
+        } catch (MediControlException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return alarme;
+
     }
 }

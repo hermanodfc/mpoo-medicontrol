@@ -40,7 +40,8 @@ public class AlarmesListaActivity extends AppCompatActivity {
         } catch (MediControlException e) {
             e.printStackTrace();
         }
-        AlarmeAdapter alarmeAdapter = new AlarmeAdapter(listaAlarme);
+        AlarmeAdapter alarmeAdapter = new AlarmeAdapter(this, listaAlarme);
+
 
 
         //configurar recycle view
