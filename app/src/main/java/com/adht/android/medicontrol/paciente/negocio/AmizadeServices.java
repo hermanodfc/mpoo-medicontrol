@@ -15,15 +15,15 @@ import java.util.List;
 
 public class AmizadeServices {
 
-    public void cadastrarPedidoAmizade(Paciente paciente, Amizade amizade)
+    public void cadastrarPedidoAmizade(Amizade amizade)
             throws AmizadeExistenteException, IOException {
         AmizadeDAOSQLite dao = new AmizadeDAOSQLite();
-        Amizade result = dao.getAmizade(paciente, amizade.getAmigo());
+        Amizade result = dao.getAmizade(amizade.getSolicitante(), amizade.getConvidado());
 
         if (result != null) {
             throw new AmizadeExistenteException("Amizade já existente.");
         }
-        dao.cadastrarPedidoAmizade(paciente, amizade);
+        dao.cadastrarPedidoAmizade(amizade);
     }
 
     public List<Amizade> getAmigos(Paciente paciente) throws IOException, AmizadeSemAmigos {
@@ -33,5 +33,15 @@ public class AmizadeServices {
             throw new AmizadeSemAmigos("Você ainda não tem amigos");
         }
         return result;
+    }
+
+    public void desfazerAmizade(Amizade amizade) throws IOException {
+        AmizadeDAOSQLite dao = new AmizadeDAOSQLite();
+        dao.desfazerAmizade(amizade);
+    }
+
+    public void atualizar(Amizade amizade) {
+        AmizadeDAOSQLite dao = new AmizadeDAOSQLite();
+        dao.atualizar(amizade);
     }
 }
