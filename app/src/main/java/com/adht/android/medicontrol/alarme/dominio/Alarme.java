@@ -8,7 +8,7 @@ public class Alarme {
     private int id;
     private String nomeMedicamento;
     private String complemento;
-    private Date horarioInicial;
+    private String horarioInicial;
     private int frequenciaHoras;
     private int duracaoDias;
     private int id_paciente;
@@ -48,11 +48,11 @@ public class Alarme {
         this.complemento = complemento;
     }
 
-    public Date getHorarioInicial() {
+    public String getHorarioInicial() {
         return horarioInicial;
     }
 
-    public void setHorarioInicial(Date horarioInicial) {
+    public void setHorarioInicial(String horarioInicial) {
         this.horarioInicial = horarioInicial;
     }
 

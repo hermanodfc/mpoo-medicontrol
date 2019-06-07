@@ -14,9 +14,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.dominio.Alarme;
 import com.adht.android.medicontrol.alarme.negocio.AlarmeServices;
@@ -24,7 +26,7 @@ import com.adht.android.medicontrol.infra.ui.MainActivity;
 import com.adht.android.medicontrol.infra.ui.TaskResult;
 import com.adht.android.medicontrol.infra.ui.TaskResultType;
 
-public class AlarmeCadastroActivity extends AppCompatActivity {
+public class AlarmeAtualizacaoActivity extends AppCompatActivity {
 
     private EditText nomeView;
     private EditText complementoView;
@@ -33,15 +35,24 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
     private EditText diasView;
     private View cadastroAlarmeFormView;
     private View progressBarAlarmCadastro;
-    private AlarmeCadastroTask alarmeCadastroTask = null;
+
+    private AlarmeAtualizacaoTask alarmeAtualizacaoTask = null;
 
     private final AlarmeServices services = new AlarmeServices();
+
+    private int idAlarme;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alarme_cadastro);
+        setContentView(R.layout.activity_alarme_atualizacao);
 
+        Intent intent = getIntent();
+        idAlarme = intent.getIntExtra("ALARME_ID", 0);
+
+        Alarme alarme = services.getAlarme(idAlarme);
 
 
 
@@ -53,37 +64,43 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         frequenciaView = findViewById(R.id.editTextFrequencia);
         diasView = findViewById(R.id.editTextDias);
 
-        Button buttonCadastrar = findViewById(R.id.buttonRegister);
-        Button buttonCancelar = findViewById(R.id.buttonCancel);
+        nomeView.setText(alarme.getNomeMedicamento());
+        complementoView.setText(alarme.getComplemento());
+        frequenciaView.setText(Integer.toString(alarme.getFrequenciaHoras()));
+        diasView.setText(Integer.toString(alarme.getDuracaoDias()));
+        inicioView.setText(alarme.getHorarioInicial());
 
-        //chamando o cadastrar com o botão
-        buttonCadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cadastrar();
-            }
-        });
 
-        //chamando o cancelar com o botão
+
+        Button buttonAtualizar = findViewById(R.id.buttonAtualizar);
+        Button buttonCancelar = findViewById(R.id.buttonCancelAtualizacao);
+
         buttonCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                startActivity(new Intent(AlarmeCadastroActivity.this, MainActivity.class));
+                startActivity(new Intent(AlarmeAtualizacaoActivity.this, MainActivity.class));
+            }
+        });
+
+        buttonAtualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                atualizar();
 
             }
         });
 
     }
-    private void cadastrar() {
-        if (alarmeCadastroTask != null) {
+
+    private void atualizar() {
+        if (alarmeAtualizacaoTask != null) {
             return;
         }
 
         if (validateFields()) {
             showProgress(true);
-            alarmeCadastroTask = new AlarmeCadastroTask();
-            alarmeCadastroTask.execute((Void) null);
+            alarmeAtualizacaoTask = new AlarmeAtualizacaoTask();
+            alarmeAtualizacaoTask.execute((Void) null);
         }
 
     }
@@ -198,7 +215,7 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public class AlarmeCadastroTask extends AsyncTask<Void, Void, TaskResult> {
+    public class AlarmeAtualizacaoTask extends AsyncTask<Void, Void, TaskResult> {
 
         private final String nome;
         private final String complemento;
@@ -206,7 +223,7 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         private final int dias;
         private final int frequencia;
 
-        AlarmeCadastroTask() {
+        AlarmeAtualizacaoTask() {
             nome = nomeView.getText().toString();
             complemento = complementoView.getText().toString();
             inicio = inicioView.getText().toString();
@@ -216,11 +233,11 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
 
         @Override
         protected TaskResult doInBackground(Void... params) {
-            TaskResult result = registerAlarme();
+            TaskResult result = atualizarAlarme();
             return result;
         }
 
-        private TaskResult registerAlarme() {
+        private TaskResult atualizarAlarme() {
             TaskResult result = TaskResult.SUCCESS;
 
             try {
@@ -230,7 +247,7 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
                 alarme.setHorarioInicial(inicio);
                 alarme.setDuracaoDias(dias);
                 alarme.setFrequenciaHoras(frequencia);
-                services.cadastrar(alarme);
+                services.atualizar(alarme, idAlarme);
             } catch (Exception e) {
                 result = new TaskResult(TaskResultType.FAIL, e.getMessage());
             }
@@ -277,14 +294,10 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         }
 
         private void resetTask() {
-            alarmeCadastroTask = null;
+            alarmeAtualizacaoTask = null;
             showProgress(false);
-            startActivity(new Intent(AlarmeCadastroActivity.this, MainActivity.class));
+
+            startActivity(new Intent(AlarmeAtualizacaoActivity.this, MainActivity.class));
         }
     }
-
-
-
-
-
 }

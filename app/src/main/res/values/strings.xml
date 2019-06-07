@@ -63,5 +63,6 @@
     <string name="resultado">RESULTADO</string>
     <string name="amigos">Amigos</string>
     <string name="status_amizade">Status:</string>
+    <string name="atualizar">Atualizar</string>
 
 </resources>
