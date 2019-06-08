@@ -15,14 +15,18 @@ import java.util.ArrayList;
 
 public class AmizadeDAOSQLite extends AbstractSQLite {
 
-    public Amizade getAmizade(Paciente paciente, Paciente amigo) throws IOException {
+    public Amizade getAmizade(Paciente solicitante, Paciente amigo) throws IOException {
         Amizade result = null;
         SQLiteDatabase db = super.getReadableDatabase();
-        String sql = "SELECT * FROM " +DBHelper.TABELA_AMIZADE+ " U WHERE U." +
+        String sql = "SELECT * FROM " +DBHelper.TABELA_AMIZADE+ " U WHERE (U." +
                 DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + " = ? AND U." +
-                DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO +" = ?;";
+                DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " = ?) OR (U." +
+                DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " = ? AND U." +
+                DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + " = ?);";
 
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(paciente.getId()),
+        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(solicitante.getId()),
+                                                      Integer.toString(amigo.getId()),
+                                                      Integer.toString(solicitante.getId()),
                                                       Integer.toString(amigo.getId())});
         if (cursor.moveToFirst()) {
             result = createAmizade(cursor);
