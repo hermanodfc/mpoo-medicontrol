@@ -2,8 +2,6 @@ package com.adht.android.medicontrol.alarme.dominio;
 
 import com.adht.android.medicontrol.infra.exception.MediControlException;
 
-import java.util.Date;
-
 public class Alarme {
     private int id;
     private String nomeMedicamento;
@@ -11,14 +9,14 @@ public class Alarme {
     private String horarioInicial;
     private int frequenciaHoras;
     private int duracaoDias;
-    private int id_paciente;
+    private int idPaciente;
 
-    public int getId_paciente() {
-        return id_paciente;
+    public int getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setId_paciente(int id_paciente) {
-        this.id_paciente = id_paciente;
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public int getId() {
