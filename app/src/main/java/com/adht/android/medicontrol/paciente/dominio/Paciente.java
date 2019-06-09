@@ -1,6 +1,5 @@
 package com.adht.android.medicontrol.paciente.dominio;
 
-import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.infra.exception.PacienteNascimentoInvalidoException;
 import com.adht.android.medicontrol.infra.exception.PacienteNomeInvalidoException;
 import com.adht.android.medicontrol.infra.persistencia.PacienteGeneroInvalidoException;
@@ -42,7 +41,7 @@ public class Paciente {
 
     public void setNome(String nome) throws PacienteNomeInvalidoException {
 
-        if (nome == null || nome.trim() == "") {
+        if (nome == null || nome.trim().equals("")) {
             throw new PacienteNomeInvalidoException("Nome inválido");
         }
 

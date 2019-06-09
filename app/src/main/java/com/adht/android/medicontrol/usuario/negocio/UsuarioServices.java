@@ -30,11 +30,11 @@ public class UsuarioServices {
         }
 
         usuario.setPaciente(new PacienteServices().getPaciente(usuario));
-        Sessao.instance.setUsuario(usuario);
+        Sessao.INSTANCE.setUsuario(usuario);
     }
 
     public void logout() {
-        Sessao.instance.reset();
+        Sessao.INSTANCE.reset();
     }
 
     public boolean isUsuarioCadastro(int idUsuario) throws IOException {

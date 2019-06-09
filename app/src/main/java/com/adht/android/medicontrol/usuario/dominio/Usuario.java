@@ -1,6 +1,5 @@
 package com.adht.android.medicontrol.usuario.dominio;
 
-import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.infra.exception.PacienteInvalidoException;
 import com.adht.android.medicontrol.infra.exception.UsuarioEmailInvalidoException;
 import com.adht.android.medicontrol.infra.exception.UsuarioSenhaInvalidaException;

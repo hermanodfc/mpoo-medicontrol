@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-        Usuario usuario = Sessao.instance.getUsuario();
+        Usuario usuario = Sessao.INSTANCE.getUsuario();
         headerEmailView.setText(usuario.getEmail());
         headerNameView.setText(usuario.getPaciente().getNome());
         return true;
@@ -124,10 +124,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_lista_amigos) {
             intent = new Intent(MainActivity.this, ListarAmigosActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         } else if (id == R.id.nav_exit) {
             UsuarioServices services = new UsuarioServices();
             services.logout();

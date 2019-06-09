@@ -7,13 +7,12 @@ import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AlarmeServices {
     public void cadastrar(Alarme alarme) throws IOException {
         AlarmeDAOSQLite dao = new AlarmeDAOSQLite();
-        Usuario usuario = Sessao.instance.getUsuario();
+        Usuario usuario = Sessao.INSTANCE.getUsuario();
         int idPaciente = usuario.getPaciente().getId();
         dao.cadastrar(alarme, idPaciente);
     }

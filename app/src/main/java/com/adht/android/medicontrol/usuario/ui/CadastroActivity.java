@@ -96,14 +96,6 @@ public class CadastroActivity extends AppCompatActivity implements DatePickerDia
             }
         });
 
-//        mNascimentoView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View view, boolean hasFocus) {
-//                if (hasFocus) {
-//                    showDatePicker();
-//                }
-//            }
-//        });
     }
 
     private void cadastrar() {
