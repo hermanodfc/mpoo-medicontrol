@@ -24,7 +24,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite {
         return result;
     }
 
-    public void cadastrar(Alarme alarme, int idPaciente) throws IOException {
+    public void cadastrar(Alarme alarme, long idPaciente) throws IOException {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.TABELA_ALARME_CAMPO_NOME_MEDICAMENTO, alarme.getNomeMedicamento());
@@ -49,23 +49,16 @@ public class AlarmeDAOSQLite extends AbstractSQLite {
     }
 
 
-    public List<Alarme> listar(int idPaciente) throws MediControlException {
+    public List<Alarme> listar(long idPaciente) throws MediControlException {
         List<Alarme> alarmes = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_ALARME + " U WHERE U." + DBHelper.TABELA_ALARME_CAMPO_ID_PACIENTE + " = ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(idPaciente)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(idPaciente)});
         while (cursor.moveToNext()) {
             alarmes.add(createAlarme(cursor));
         }
         cursor.close();
         return alarmes;
-    }
-
-    public void deletarAlarme(int id){
-        SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "DELETE FROM " + DBHelper.TABELA_ALARME +
-                " WHERE " + DBHelper.TABELA_ALARME_CAMPO_ID + " = ?;";
-        db.execSQL(sql);
     }
 
     public void atualizar (Alarme alarme, int idAlarme) throws IOException{
@@ -80,7 +73,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite {
         super.close(db);
     }
 
-    public void deletar(int idAlarme){
+    public void deletar(long idAlarme){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(DBHelper.TABELA_ALARME, DBHelper.TABELA_ALARME_CAMPO_ID + "=" + idAlarme, null);
     }

@@ -39,7 +39,7 @@ public class PacienteServices {
 
         UsuarioServices usuarioServices = new UsuarioServices();
 
-        int idUsuario = usuarioServices.getUsuario(email);
+        long idUsuario = usuarioServices.getUsuario(email);
 
         PacienteDAOSQLite pacienteDAOSQLite = new PacienteDAOSQLite();
 

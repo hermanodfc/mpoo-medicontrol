@@ -13,11 +13,11 @@ public class AlarmeServices {
     public void cadastrar(Alarme alarme) throws IOException {
         AlarmeDAOSQLite dao = new AlarmeDAOSQLite();
         Usuario usuario = Sessao.INSTANCE.getUsuario();
-        int idPaciente = usuario.getPaciente().getId();
+        long idPaciente = usuario.getPaciente().getId();
         dao.cadastrar(alarme, idPaciente);
     }
 
-    public List<Alarme> listar(int idPaciente) throws MediControlException {
+    public List<Alarme> listar(long idPaciente) throws MediControlException {
 
         AlarmeDAOSQLite daoAlarme = new AlarmeDAOSQLite();
 
@@ -29,7 +29,7 @@ public class AlarmeServices {
         dao.atualizar(alarme, idAlarme);
     }
 
-    public void deletar(int idAlarme){
+    public void deletar(long idAlarme){
         AlarmeDAOSQLite dao = new AlarmeDAOSQLite();
         dao.deletar(idAlarme);
     }

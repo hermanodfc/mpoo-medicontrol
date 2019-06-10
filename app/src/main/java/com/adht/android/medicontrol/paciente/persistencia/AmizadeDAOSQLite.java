@@ -24,10 +24,10 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
                 DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " = ? AND U." +
                 DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + " = ?);";
 
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(solicitante.getId()),
-                                                      Integer.toString(amigo.getId()),
-                                                      Integer.toString(solicitante.getId()),
-                                                      Integer.toString(amigo.getId())});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(solicitante.getId()),
+                                                      Long.toString(amigo.getId()),
+                                                      Long.toString(solicitante.getId()),
+                                                      Long.toString(amigo.getId())});
         if (cursor.moveToFirst()) {
             result = createAmizade(cursor);
         }
@@ -40,7 +40,7 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
         ContentValues values = new ContentValues();
         values.put(DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE, amizade.getSolicitante().getId());
         values.put(DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO, amizade.getConvidado().getId());
-        values.put(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE, amizade.getStatus().getValor());
+        values.put(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE, amizade.getStatus().ordinal());
         db.insert(DBHelper.TABELA_AMIZADE, null, values);
         super.close(db);
     }
@@ -49,8 +49,8 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
         Amizade result = new Amizade();
         result.setId(cursor.getInt(cursor.getColumnIndex(
                 DBHelper.TABELA_AMIZADE_CAMPO_ID)));
-        result.setStatusAmizade(StatusAmizade.instanciaValor(cursor.getInt(
-                cursor.getColumnIndex(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE))));
+        result.setStatusAmizade(StatusAmizade.values()[cursor.getInt(
+                cursor.getColumnIndex(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE))]);
         PacienteDAOSQLite pacienteDAOSQLite = new PacienteDAOSQLite();
         result.setSolicitante(pacienteDAOSQLite.getPacienteById(cursor.getInt(
                 cursor.getColumnIndex(DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE))));
@@ -67,8 +67,8 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
                 DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + " = ? " +
                 "OR U." + DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " = ?;";
 
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(paciente.getId()),
-                Integer.toString(paciente.getId())});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(paciente.getId()),
+                                                      Long.toString(paciente.getId())});
         while(cursor.moveToNext()){
             result.add(createAmizade(cursor));
         }
@@ -81,7 +81,7 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "DELETE FROM " + DBHelper.TABELA_AMIZADE + " WHERE " +
                 DBHelper.TABELA_AMIZADE_CAMPO_ID + " = ?;";
-        db.execSQL(sql, new String[] {Integer.toString(amizade.getId())});
+        db.execSQL(sql, new String[] {Long.toString(amizade.getId())});
         super.close(db);
     }
 
@@ -90,9 +90,9 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
         ContentValues values = new ContentValues();
         values.put(DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE, amizade.getSolicitante().getId());
         values.put(DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO, amizade.getConvidado().getId());
-        values.put(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE, amizade.getStatus().getValor());
+        values.put(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE, amizade.getStatus().ordinal());
         db.update(DBHelper.TABELA_AMIZADE, values, DBHelper.TABELA_AMIZADE_CAMPO_ID + " = ?",
-                new String[] {Integer.toString(amizade.getId())});
+                new String[] {Long.toString(amizade.getId())});
     }
 }
 

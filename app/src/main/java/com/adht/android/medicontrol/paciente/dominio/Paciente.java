@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 
 public class Paciente {
 
-    private int id;
+    private long id;
     private String nome;
     private GregorianCalendar nascimento;
     private Genero genero;
@@ -27,11 +27,11 @@ public class Paciente {
         amizades.add(amizade);
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

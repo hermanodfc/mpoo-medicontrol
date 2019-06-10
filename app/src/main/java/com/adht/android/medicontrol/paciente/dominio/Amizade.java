@@ -2,16 +2,16 @@ package com.adht.android.medicontrol.paciente.dominio;
 
 public class Amizade {
 
-    private int id;
+    private long id;
     private Paciente solicitante;
     private Paciente convidado;
     private StatusAmizade statusAmizade;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

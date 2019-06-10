@@ -37,11 +37,11 @@ public class UsuarioServices {
         Sessao.INSTANCE.reset();
     }
 
-    public boolean isUsuarioCadastro(int idUsuario) throws IOException {
+    public boolean isUsuarioCadastro(long idUsuario) throws IOException {
         return new UsuarioDAOSQLite().isUsuarioCadastrado(idUsuario);
     }
 
-    public int getUsuario(String email) throws UsuarioNaoCadastradoException, IOException {
+    public long getUsuario(String email) throws UsuarioNaoCadastradoException, IOException {
         UsuarioDAOSQLite dao = new UsuarioDAOSQLite();
         Usuario usuario = dao.getUsuario(email);
         if (usuario == null) {

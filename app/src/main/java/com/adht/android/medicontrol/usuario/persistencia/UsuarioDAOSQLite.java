@@ -35,11 +35,11 @@ public class UsuarioDAOSQLite extends AbstractSQLite {
         return result;
     }
 
-    private Usuario getUsuario(int id) throws IOException {
+    private Usuario getUsuario(long id) throws IOException {
         Usuario result = null;
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " +DBHelper.TABELA_USUARIO+ " U WHERE U." + DBHelper.TABELA_USUARIO_CAMPO_ID + " = ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(id)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result = createUsuario(cursor);
         }
@@ -47,7 +47,7 @@ public class UsuarioDAOSQLite extends AbstractSQLite {
         return result;
     }
 
-    public boolean isUsuarioCadastrado(int idUsuario) throws IOException {
+    public boolean isUsuarioCadastrado(long idUsuario) throws IOException {
         Usuario usuario = getUsuario(idUsuario);
 
         boolean result = true;

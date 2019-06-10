@@ -17,19 +17,19 @@ import java.util.GregorianCalendar;
 
 public class PacienteDAOSQLite extends AbstractSQLite {
 
-    public void cadastrar(Paciente paciente, int idUsuario) throws IOException {
+    public void cadastrar(Paciente paciente, long idUsuario) throws IOException {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.TABELA_PACIENTE_CAMPO_NOME, paciente.getNome());
-        values.put(DBHelper.TABELA_PACIENTE_CAMPO_GENERO, paciente.getGenero().getValor());
+        values.put(DBHelper.TABELA_PACIENTE_CAMPO_GENERO, paciente.getGenero().ordinal());
         values.put(DBHelper.TABELA_PACIENTE_CAMPO_NASCIMENTO, paciente.getNascimento().getTimeInMillis());
         values.put(DBHelper.TABELA_PACIENTE_CAMPO_ID_USUARIO, idUsuario);
         db.insert(DBHelper.TABELA_PACIENTE, null, values);
         super.close(db);
     }
 
-    public Paciente getPaciente(int idUsuario) throws IOException {
+    public Paciente getPaciente(long idUsuario) throws IOException {
         Paciente result = null;
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " +DBHelper.TABELA_PACIENTE+ " U WHERE U." +
@@ -72,7 +72,7 @@ public class PacienteDAOSQLite extends AbstractSQLite {
             e.printStackTrace();
         }
         try {
-            result.setGenero(Genero.instanciaValor(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_GENERO))));
+            result.setGenero(Genero.values()[cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_GENERO))]);
         } catch (PacienteGeneroInvalidoException e) {
             e.printStackTrace();
         }
