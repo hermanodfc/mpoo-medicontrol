@@ -1,10 +1,7 @@
 package com.adht.android.medicontrol.paciente.negocio;
 
 import com.adht.android.medicontrol.infra.exception.AmizadeExistenteException;
-import com.adht.android.medicontrol.infra.exception.PacienteNascimentoInvalidoException;
-import com.adht.android.medicontrol.infra.exception.PacienteNomeInvalidoException;
 import com.adht.android.medicontrol.infra.persistencia.AmizadeSemAmigos;
-import com.adht.android.medicontrol.infra.persistencia.PacienteGeneroInvalidoException;
 import com.adht.android.medicontrol.paciente.dominio.Amizade;
 import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.paciente.persistencia.AmizadeDAOSQLite;

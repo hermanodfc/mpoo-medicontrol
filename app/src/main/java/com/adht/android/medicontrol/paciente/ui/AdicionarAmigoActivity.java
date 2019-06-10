@@ -139,7 +139,7 @@ public class AdicionarAmigoActivity extends AppCompatActivity {
 
     private void enviarPedido(Paciente amigo) {
         AmizadeServices amizadeServices = new AmizadeServices();
-        Paciente solicitante = Sessao.instance.getUsuario().getPaciente();
+        Paciente solicitante = Sessao.INSTANCE.getUsuario().getPaciente();
         Amizade amizade = new Amizade();
         amizade.setSolicitante(solicitante);
         amizade.setConvidado(amigo);
@@ -189,7 +189,7 @@ public class AdicionarAmigoActivity extends AppCompatActivity {
         } else if (!emailValidator.isValidEmail(email)) {
             emailView.setError(getString(R.string.error_invalid_email));
             result = false;
-        } else if (email.equals(Sessao.instance.getUsuario().getEmail())) {
+        } else if (email.equals(Sessao.INSTANCE.getUsuario().getEmail())) {
             emailView.setError(getString(R.string.error_invalid_email));
             result = false;
         }

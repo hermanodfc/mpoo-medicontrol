@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Sessao {
-    public static final Sessao instance = new Sessao();
+    public static final Sessao INSTANCE = new Sessao();
     @SuppressLint("SimpleDateFormat")
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     private final Map<String,Object> values = new HashMap<>();

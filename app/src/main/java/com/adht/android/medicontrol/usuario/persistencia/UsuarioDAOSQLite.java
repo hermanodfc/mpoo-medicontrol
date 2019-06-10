@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.infra.exception.UsuarioEmailInvalidoException;
 import com.adht.android.medicontrol.infra.exception.UsuarioSenhaInvalidaException;
 import com.adht.android.medicontrol.infra.persistencia.AbstractSQLite;

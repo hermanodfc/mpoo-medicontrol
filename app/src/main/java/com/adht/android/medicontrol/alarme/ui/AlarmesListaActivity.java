@@ -22,7 +22,7 @@ public class AlarmesListaActivity extends AppCompatActivity {
     private RecyclerView recyclerViewAlarmes;
 
     private List<Alarme> listaAlarme = new ArrayList<Alarme>();
-    Usuario usuario = Sessao.instance.getUsuario();
+    Usuario usuario = Sessao.INSTANCE.getUsuario();
     int idPaciente = usuario.getPaciente().getId();
 
 
@@ -50,15 +50,6 @@ public class AlarmesListaActivity extends AppCompatActivity {
         recyclerViewAlarmes.setHasFixedSize(true);
         recyclerViewAlarmes.setAdapter(alarmeAdapter);
 
-//        registerForContextMenu(recyclerViewAlarmes);
-
-
     }
 
-
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        super.onCreateContextMenu(menu, v, menuInfo);
-//        MenuInflater menuinflater = getMenuInflater();
-//        menuinflater.inflate(R.menu.menu_contexto, menu);
-//    }
 }

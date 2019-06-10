@@ -32,7 +32,7 @@ public class Alarme {
     }
 
     public void setNomeMedicamento(String nomeMedicamento) throws MediControlException {
-        if (nomeMedicamento == null || nomeMedicamento.trim() == "") {
+        if (nomeMedicamento == null || nomeMedicamento.trim().equals("")) {
             throw new MediControlException("Nome inválido");
         }
         this.nomeMedicamento = nomeMedicamento;

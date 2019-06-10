@@ -1,12 +1,7 @@
 package com.adht.android.medicontrol.paciente.negocio;
 
 import com.adht.android.medicontrol.infra.exception.PacienteInvalidoException;
-import com.adht.android.medicontrol.infra.exception.PacienteNascimentoInvalidoException;
-import com.adht.android.medicontrol.infra.exception.PacienteNomeInvalidoException;
-import com.adht.android.medicontrol.infra.exception.UsuarioEmailInvalidoException;
 import com.adht.android.medicontrol.infra.exception.UsuarioNaoCadastradoException;
-import com.adht.android.medicontrol.infra.exception.UsuarioSenhaInvalidaException;
-import com.adht.android.medicontrol.infra.persistencia.PacienteGeneroInvalidoException;
 import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.paciente.persistencia.PacienteDAOSQLite;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;

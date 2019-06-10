@@ -86,10 +86,10 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
-            MenuItem Edit = menu.add(menu.NONE, 1, 1, "Edit");
-            MenuItem Delete = menu.add(menu.NONE, 2, 2, "Delete");
-            Edit.setOnMenuItemClickListener(onEditMenu);
-            Delete.setOnMenuItemClickListener(onEditMenu);
+            MenuItem edit = menu.add(menu.NONE, 1, 1, "Edit");
+            MenuItem delete = menu.add(menu.NONE, 2, 2, "Delete");
+            edit.setOnMenuItemClickListener(onEditMenu);
+            delete.setOnMenuItemClickListener(onEditMenu);
 
         }
 
@@ -97,16 +97,11 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
         private final MenuItem.OnMenuItemClickListener onEditMenu = new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
-
-
-
                 switch (item.getItemId()) {
                     case 1:
                         Intent intent = new Intent(activity, AlarmeAtualizacaoActivity.class);
                         intent.putExtra("ALARME_ID", idAlarme);
                         activity.startActivity(intent);
-
                         break;
 
                     case 2:
@@ -114,7 +109,6 @@ public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHold
                         activity.finish();
                         Intent intent2 = new Intent(activity, AlarmesListaActivity.class);
                         activity.startActivity(intent2);
-
                         break;
                 }
                 return true;

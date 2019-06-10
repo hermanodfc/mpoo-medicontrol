@@ -13,7 +13,6 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -48,7 +47,7 @@ public class ListarAmigosActivity extends AppCompatActivity {
         AmizadeServices amizadeServices = new AmizadeServices();
 
         try {
-            listaAmigos = amizadeServices.getAmigos(Sessao.instance.getUsuario().getPaciente());
+            listaAmigos = amizadeServices.getAmigos(Sessao.INSTANCE.getUsuario().getPaciente());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (AmizadeSemAmigos amizadeSemAmigos) {
@@ -84,7 +83,7 @@ public class ListarAmigosActivity extends AppCompatActivity {
         recyclerAmigos.setAdapter(new ListarAmizadeAdapter(listaAmigos));
         recyclerAmigos.setHasFixedSize(true);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeCallback());
-        itemTouchHelper.attachToRecyclerView(recyclerAmigos);;
+        itemTouchHelper.attachToRecyclerView(recyclerAmigos);
         recyclerAmigos.addItemDecoration(new ItemDecorator());
     }
 
@@ -298,7 +297,7 @@ public class ListarAmigosActivity extends AppCompatActivity {
         private boolean isUsuarioConvidado() {
             boolean result = false;
 
-            if (Sessao.instance.getUsuario().getPaciente().getId() == amizade.getConvidado().getId()) {
+            if (Sessao.INSTANCE.getUsuario().getPaciente().getId() == amizade.getConvidado().getId()) {
                 result = true;
             }
 
