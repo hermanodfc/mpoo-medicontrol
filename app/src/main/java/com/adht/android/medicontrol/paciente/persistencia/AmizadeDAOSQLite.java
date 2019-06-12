@@ -52,9 +52,9 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
         result.setStatusAmizade(StatusAmizade.values()[cursor.getInt(
                 cursor.getColumnIndex(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE))]);
         PacienteDAOSQLite pacienteDAOSQLite = new PacienteDAOSQLite();
-        result.setSolicitante(pacienteDAOSQLite.getPacienteById(cursor.getInt(
+        result.setSolicitante(pacienteDAOSQLite.getPacienteById(cursor.getLong(
                 cursor.getColumnIndex(DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE))));
-        result.setConvidado(pacienteDAOSQLite.getPacienteById(cursor.getInt(
+        result.setConvidado(pacienteDAOSQLite.getPacienteById(cursor.getLong(
                 cursor.getColumnIndex(DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO))));
         return result;
     }
