@@ -70,7 +70,7 @@ public class UsuarioDAOSQLite extends AbstractSQLite {
 
     private Usuario createUsuario(Cursor cursor) {
         Usuario result = new Usuario();
-        result.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_USUARIO_CAMPO_ID)));
+        result.setId(cursor.getLong(cursor.getColumnIndex(DBHelper.TABELA_USUARIO_CAMPO_ID)));
         try {
             result.setSenha(cursor.getString(cursor.getColumnIndex(DBHelper.TABELA_USUARIO_CAMPO_PASSWORD)));
         } catch (UsuarioSenhaInvalidaException e) {

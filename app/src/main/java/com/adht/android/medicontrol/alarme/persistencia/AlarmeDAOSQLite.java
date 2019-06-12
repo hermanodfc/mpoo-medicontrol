@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlarmeDAOSQLite extends AbstractSQLite {
-    public Alarme getAlarme(int idAlarme) throws MediControlException, IOException {
+    public Alarme getAlarme(long idAlarme) throws MediControlException, IOException {
         Alarme result = null;
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_ALARME + " U WHERE U." + DBHelper.TABELA_ALARME_CAMPO_ID + " = ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(idAlarme)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(idAlarme)});
         if (cursor.moveToFirst()) {
             result = createAlarme(cursor);
         }
@@ -39,7 +39,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite {
 
     private Alarme createAlarme(Cursor cursor) throws MediControlException {
         Alarme result = new Alarme();
-        result.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_ID)));
+        result.setId(cursor.getLong(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_ID)));
         result.setNomeMedicamento(cursor.getString(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_NOME_MEDICAMENTO)));
         result.setHorarioInicial(cursor.getString(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_HORARIO_INICIO)));
         result.setFrequenciaHoras(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_FREQUENCIA_HORAS)));
@@ -61,7 +61,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite {
         return alarmes;
     }
 
-    public void atualizar (Alarme alarme, int idAlarme) throws IOException{
+    public void atualizar (Alarme alarme, long idAlarme) throws IOException{
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.TABELA_ALARME_CAMPO_NOME_MEDICAMENTO, alarme.getNomeMedicamento());

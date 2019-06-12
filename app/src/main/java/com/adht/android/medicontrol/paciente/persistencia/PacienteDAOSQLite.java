@@ -34,7 +34,7 @@ public class PacienteDAOSQLite extends AbstractSQLite {
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " +DBHelper.TABELA_PACIENTE+ " U WHERE U." +
                 DBHelper.TABELA_PACIENTE_CAMPO_ID_USUARIO + " = ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(idUsuario)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(idUsuario)});
         if (cursor.moveToFirst()) {
             result = createPaciente(cursor);
         }
@@ -42,12 +42,12 @@ public class PacienteDAOSQLite extends AbstractSQLite {
         return result;
     }
 
-    public Paciente getPacienteById(int idPaciente) throws IOException {
+    public Paciente getPacienteById(long idPaciente) throws IOException {
         Paciente result = null;
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " +DBHelper.TABELA_PACIENTE+ " U WHERE U." +
                 DBHelper.TABELA_PACIENTE_CAMPO_ID + " = ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(idPaciente)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(idPaciente)});
         if (cursor.moveToFirst()) {
             result = createPaciente(cursor);
         }
