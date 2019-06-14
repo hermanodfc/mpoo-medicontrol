@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".alarme.ui.AlarmeAtualizacaoActivity"></activity>
+        <activity android:name=".alarme.ui.AlarmesListaAmigo"></activity>
+        <activity android:name=".alarme.ui.AlarmeAtualizacaoActivity" />
         <activity android:name=".alarme.ui.AlarmeCadastroActivity" />
         <activity android:name=".usuario.ui.CadastroActivity" />
         <activity android:name=".alarme.ui.AlarmesListaActivity" />

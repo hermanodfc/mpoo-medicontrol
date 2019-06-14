@@ -1,6 +1,7 @@
 package com.adht.android.medicontrol.paciente.ui;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.adht.android.medicontrol.R;
+import com.adht.android.medicontrol.alarme.ui.AlarmesListaAmigo;
 import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.infra.persistencia.AmizadeSemAmigos;
 import com.adht.android.medicontrol.paciente.dominio.Amizade;
@@ -38,6 +40,8 @@ public class ListarAmigosActivity extends AppCompatActivity {
     private RecyclerView recyclerAmigos;
 
     private List<Amizade> listaAmigos;
+
+    long idPaciente = Sessao.INSTANCE.getUsuario().getPaciente().getId();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,6 +89,9 @@ public class ListarAmigosActivity extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeCallback());
         itemTouchHelper.attachToRecyclerView(recyclerAmigos);
         recyclerAmigos.addItemDecoration(new ItemDecorator());
+        //novo swipe
+        ItemTouchHelper itemTouchHelper2 = new ItemTouchHelper(new SwipeCallbackRight());
+        itemTouchHelper2.attachToRecyclerView(recyclerAmigos);
     }
 
     class ItemDecorator extends RecyclerView.ItemDecoration {
@@ -395,6 +402,87 @@ public class ListarAmigosActivity extends AppCompatActivity {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
 
+    }
+
+    class SwipeCallbackRight extends ItemTouchHelper.SimpleCallback{
+
+
+        public SwipeCallbackRight() {
+            super(0, ItemTouchHelper.RIGHT);
+        }
+
+        Drawable background;
+        Drawable xMark;
+        int xMarkMargin;
+        boolean initiated;
+
+        private void init() {
+            background = new ColorDrawable(Color.RED);
+            xMark = ContextCompat.getDrawable(ListarAmigosActivity.this, R.drawable.ic_baseline_access_alarms_24px);
+            xMark.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+            xMarkMargin = (int) ListarAmigosActivity.this.getResources().getDimension(R.dimen.ic_clear_margin);
+            initiated = true;
+        }
+
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getAdapterPosition();
+            long idConvidado;
+            long idSolicitante;
+            idConvidado = listaAmigos.get(position).getConvidado().getId();
+            idSolicitante = listaAmigos.get(position).getSolicitante().getId();
+            finish();
+            if(idPaciente == idConvidado){
+                Intent intent = new Intent(ListarAmigosActivity.this, AlarmesListaAmigo.class);
+                intent.putExtra("AMIGO_ID", idSolicitante);
+                finish();
+                startActivity(intent);
+
+            }else{
+                Intent intent = new Intent(ListarAmigosActivity.this, AlarmesListaAmigo.class);
+                intent.putExtra("AMIGO_ID", idConvidado);
+                finish();
+                startActivity(intent);
+            }
+
+
+
+        }
+
+        @Override
+        public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            View itemView = viewHolder.itemView;
+
+            if (viewHolder.getAdapterPosition() == -1) {
+                return;
+            }
+
+            if (!initiated) {
+                init();
+            }
+
+            background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom());
+            background.draw(c);
+
+            int itemHeight = itemView.getBottom() - itemView.getTop();
+            int intrinsicWidth = xMark.getIntrinsicWidth();
+            int intrinsicHeight = xMark.getIntrinsicWidth();
+
+            int xMarkLeft = itemView.getRight() - xMarkMargin - intrinsicWidth;
+            int xMarkRight = itemView.getRight() - xMarkMargin;
+            int xMarkTop = itemView.getTop() + (itemHeight - intrinsicHeight)/2;
+            int xMarkBottom = xMarkTop + intrinsicHeight;
+            xMark.setBounds(xMarkLeft, xMarkTop, xMarkRight, xMarkBottom);
+
+            xMark.draw(c);
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
     }
 }
 

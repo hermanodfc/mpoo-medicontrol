@@ -1,6 +1,5 @@
 package com.adht.android.medicontrol.alarme.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,7 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,7 +31,6 @@ import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.infra.exception.MediControlException;
 import com.adht.android.medicontrol.usuario.dominio.Usuario;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -70,12 +67,15 @@ public class AlarmesListaActivity extends AppCompatActivity {
 
     private void setUpRecyclerView() {
         recyclerViewAlarmes.setHasFixedSize(true);
-        alarmeAdapter = new AlarmeAdapter(this, listaAlarme);
+        alarmeAdapter = new AlarmeAdapter(listaAlarme);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeCallback());
         itemTouchHelper.attachToRecyclerView(recyclerViewAlarmes);
         recyclerViewAlarmes.addItemDecoration(new ItemDecorator());
         recyclerViewAlarmes.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewAlarmes.setAdapter(alarmeAdapter);
+        //novo swipe
+        ItemTouchHelper itemTouchHelper2 = new ItemTouchHelper(new SwipeCallbackRight());
+        itemTouchHelper2.attachToRecyclerView(recyclerViewAlarmes);
     }
 
     @Override
@@ -181,16 +181,13 @@ public class AlarmesListaActivity extends AppCompatActivity {
 
         private List<Alarme> listaAlarmes;
         private List<Alarme> listaAlarmesFull;
-        private Activity activity;
         final List<Alarme> itemsPendingRemoval = new ArrayList<>();
-        private final AlarmeServices services = new AlarmeServices();
         private Handler handler = new Handler();
         HashMap<Alarme, Runnable> pendingRunnables = new HashMap<>();
         private static final int PENDING_REMOVAL_TIMEOUT = 3000; // 3sec
         boolean undoOn;
 
-        public AlarmeAdapter(Activity activity, List<Alarme> lista) {
-            this.activity = activity;
+        public AlarmeAdapter(List<Alarme> lista) {
             this.listaAlarmes = lista;
             listaAlarmesFull = new ArrayList<>(listaAlarmes);
         }
@@ -407,6 +404,76 @@ public class AlarmesListaActivity extends AppCompatActivity {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
 
+    }
+
+    class SwipeCallbackRight extends ItemTouchHelper.SimpleCallback{
+
+
+        public SwipeCallbackRight() {
+            super(0, ItemTouchHelper.RIGHT);
+        }
+
+        Drawable background;
+        Drawable xMark;
+        int xMarkMargin;
+        boolean initiated;
+
+        private void init() {
+            background = new ColorDrawable(Color.RED);
+            xMark = ContextCompat.getDrawable(AlarmesListaActivity.this, R.drawable.ic_menu_manage);
+            xMark.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+            xMarkMargin = (int) AlarmesListaActivity.this.getResources().getDimension(R.dimen.ic_clear_margin);
+            initiated = true;
+        }
+
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getAdapterPosition();
+            long idAlarme;
+            Alarme alarme = listaAlarme.get(position);
+            idAlarme = alarme.getId();
+            finish();
+            Intent intent = new Intent(AlarmesListaActivity.this, AlarmeAtualizacaoActivity.class);
+            intent.putExtra("ALARME_ID", idAlarme);
+            startActivity(intent);
+
+
+        }
+
+        @Override
+        public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            View itemView = viewHolder.itemView;
+
+            if (viewHolder.getAdapterPosition() == -1) {
+                return;
+            }
+
+            if (!initiated) {
+                init();
+            }
+
+            background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom());
+            background.draw(c);
+
+            int itemHeight = itemView.getBottom() - itemView.getTop();
+            int intrinsicWidth = xMark.getIntrinsicWidth();
+            int intrinsicHeight = xMark.getIntrinsicWidth();
+
+            int xMarkLeft = itemView.getRight() - xMarkMargin - intrinsicWidth;
+            int xMarkRight = itemView.getRight() - xMarkMargin;
+            int xMarkTop = itemView.getTop() + (itemHeight - intrinsicHeight)/2;
+            int xMarkBottom = xMarkTop + intrinsicHeight;
+            xMark.setBounds(xMarkLeft, xMarkTop, xMarkRight, xMarkBottom);
+
+            xMark.draw(c);
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
     }
 
 }
