@@ -58,7 +58,7 @@ public class PacienteDAOSQLite extends AbstractSQLite {
 
     private Paciente createPaciente(Cursor cursor)  {
         Paciente result = new Paciente();
-        result.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_ID)));
+        result.setId(cursor.getLong(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_ID)));
         try {
             result.setNome(cursor.getString(cursor.getColumnIndex(DBHelper.TABELA_PACIENTE_CAMPO_NOME)));
         } catch (PacienteNomeInvalidoException e) {

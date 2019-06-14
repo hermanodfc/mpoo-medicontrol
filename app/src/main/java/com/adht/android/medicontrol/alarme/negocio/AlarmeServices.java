@@ -34,7 +34,7 @@ public class AlarmeServices {
         dao.deletar(idAlarme);
     }
 
-    public Alarme getAlarme(int idAlarme){
+    public Alarme getAlarme(long idAlarme){
         Alarme alarme = new Alarme();
         AlarmeDAOSQLite dao = new AlarmeDAOSQLite();
         try {

@@ -39,7 +39,7 @@ public class AlarmeAtualizacaoActivity extends AppCompatActivity {
 
     private final AlarmeServices services = new AlarmeServices();
 
-    private int idAlarme;
+    private long idAlarme;
 
 
 
@@ -49,7 +49,7 @@ public class AlarmeAtualizacaoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alarme_atualizacao);
 
         Intent intent = getIntent();
-        idAlarme = intent.getIntExtra("ALARME_ID", 0);
+        idAlarme = intent.getLongExtra("ALARME_ID", 0);
 
         Alarme alarme = services.getAlarme(idAlarme);
 

@@ -47,7 +47,7 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
 
     private Amizade createAmizade(Cursor cursor) throws IOException {
         Amizade result = new Amizade();
-        result.setId(cursor.getInt(cursor.getColumnIndex(
+        result.setId(cursor.getLong(cursor.getColumnIndex(
                 DBHelper.TABELA_AMIZADE_CAMPO_ID)));
         result.setStatusAmizade(StatusAmizade.values()[cursor.getInt(
                 cursor.getColumnIndex(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE))]);
