@@ -11,12 +11,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,9 +39,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AlarmesListaActivity extends AppCompatActivity {
-
+    private AlarmeAdapter alarmeAdapter;
     private RecyclerView recyclerViewAlarmes;
     private List<Alarme> listaAlarme = new ArrayList<Alarme>();
+
     Usuario usuario = Sessao.INSTANCE.getUsuario();
     long idPaciente = usuario.getPaciente().getId();
 
@@ -48,27 +54,50 @@ public class AlarmesListaActivity extends AppCompatActivity {
         recyclerViewAlarmes = findViewById(R.id.recyclerViewAlarmes);
 
 
-        //configurar adapter e adicionando alarmes em um array
         AlarmeServices alarmeServices = new AlarmeServices();
         try {
             listaAlarme = alarmeServices.listar(idPaciente);
         } catch (MediControlException e) {
             e.printStackTrace();
         }
-
         setUpRecyclerView();
 
 
     }
 
+
+
+
     private void setUpRecyclerView() {
-        AlarmeAdapter alarmeAdapter = new AlarmeAdapter(this, listaAlarme);
-        recyclerViewAlarmes.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewAlarmes.setAdapter(alarmeAdapter);
         recyclerViewAlarmes.setHasFixedSize(true);
+        alarmeAdapter = new AlarmeAdapter(this, listaAlarme);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeCallback());
         itemTouchHelper.attachToRecyclerView(recyclerViewAlarmes);
         recyclerViewAlarmes.addItemDecoration(new ItemDecorator());
+        recyclerViewAlarmes.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewAlarmes.setAdapter(alarmeAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.alarmes_menu, menu);
+
+        MenuItem buscaItem = menu.findItem(R.id.action_search);
+        SearchView buscaView = (SearchView) buscaItem.getActionView();
+        buscaView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                alarmeAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
     }
 
     class ItemDecorator extends RecyclerView.ItemDecoration {
@@ -148,9 +177,10 @@ public class AlarmesListaActivity extends AppCompatActivity {
         }
     }
 
-    public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHolder> {
+    public class AlarmeAdapter extends RecyclerView.Adapter<AlarmeAdapter.MyViewHolder> implements Filterable {
 
-        private final List<Alarme> listaAlarmes;
+        private List<Alarme> listaAlarmes;
+        private List<Alarme> listaAlarmesFull;
         private Activity activity;
         final List<Alarme> itemsPendingRemoval = new ArrayList<>();
         private final AlarmeServices services = new AlarmeServices();
@@ -162,6 +192,7 @@ public class AlarmesListaActivity extends AppCompatActivity {
         public AlarmeAdapter(Activity activity, List<Alarme> lista) {
             this.activity = activity;
             this.listaAlarmes = lista;
+            listaAlarmesFull = new ArrayList<>(listaAlarmes);
         }
 
         @NonNull
@@ -208,6 +239,42 @@ public class AlarmesListaActivity extends AppCompatActivity {
             Alarme item = listaAlarme.get(position);
             return itemsPendingRemoval.contains(item);
         }
+
+        public Filter getFilter(){
+            return alarmesFilter;
+        }
+
+        private Filter alarmesFilter = new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                List<Alarme> listaFiltrada = new ArrayList<>();
+
+                if (constraint == null || constraint.length() == 0) {
+                    listaFiltrada.addAll(listaAlarmesFull);
+                } else {
+                    String filterPadrao = constraint.toString().toLowerCase().trim();
+
+                    for (Alarme item : listaAlarmesFull){
+                        if (item.getNomeMedicamento().toLowerCase().contains(filterPadrao)){
+                            listaFiltrada.add(item);
+                        }
+                    }
+                }
+
+                FilterResults resultado = new FilterResults();
+                resultado.values = listaFiltrada;
+
+                return resultado;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults resultado) {
+                listaAlarmes.clear();
+
+                listaAlarmes.addAll((List) resultado.values);
+                notifyDataSetChanged();
+            }
+        };
 
         public void pendingRemoval(int position) {
             final Alarme item = listaAlarme.get(position);
