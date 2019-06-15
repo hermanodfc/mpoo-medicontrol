@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/remover_amigos"
-        android:icon="@drawable/ic_clear_24px"
+        android:icon="@drawable/ic_clear_white_24px"
         android:title="@string/remove"
         android:visible="false"
         app:showAsAction="ifRoom" />
