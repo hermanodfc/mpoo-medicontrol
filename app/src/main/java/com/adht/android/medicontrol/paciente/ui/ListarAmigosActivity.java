@@ -1,6 +1,7 @@
 package com.adht.android.medicontrol.paciente.ui;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -11,19 +12,25 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.adht.android.medicontrol.R;
+import com.adht.android.medicontrol.alarme.ui.AlarmesListaAmigo;
 import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.infra.persistencia.AmizadeSemAmigos;
+import com.adht.android.medicontrol.infra.ui.RecyclerItemClickListener;
 import com.adht.android.medicontrol.paciente.dominio.Amizade;
 import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.paciente.dominio.StatusAmizade;
@@ -32,12 +39,16 @@ import com.adht.android.medicontrol.util.Dialog;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class ListarAmigosActivity extends AppCompatActivity {
-    private RecyclerView recyclerAmigos;
 
+    private RecyclerView recyclerAmigos;
     private List<Amizade> listaAmigos;
+    private HashSet<Amizade> selecionados = new HashSet<>();
+    long idPaciente = Sessao.INSTANCE.getUsuario().getPaciente().getId();
+    ListarAmizadeAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +56,10 @@ public class ListarAmigosActivity extends AppCompatActivity {
         setContentView(R.layout.listar_amigos);
         recyclerAmigos = findViewById(R.id.recyclerViewAmigos);
         AmizadeServices amizadeServices = new AmizadeServices();
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
 
         try {
             listaAmigos = amizadeServices.getAmigos(Sessao.INSTANCE.getUsuario().getPaciente());
@@ -78,13 +93,45 @@ public class ListarAmigosActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        if (adapter.isRemoveMode()) {
+            adapter.limparSelecionados();
+            adapter.notifyDataSetChanged();
+        }
+        super.onBackPressed();
+    }
+
+    private void viewHolderClick(boolean longClick, View view, int position) {
+        adapter.viewHolderClick(longClick, view, position);
+    }
+
     private void setUpRecyclerView() {
         recyclerAmigos.setLayoutManager(new LinearLayoutManager(this));
-        recyclerAmigos.setAdapter(new ListarAmizadeAdapter(listaAmigos));
+        adapter = new ListarAmizadeAdapter(listaAmigos);
+        recyclerAmigos.setAdapter(adapter);
         recyclerAmigos.setHasFixedSize(true);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeCallback());
         itemTouchHelper.attachToRecyclerView(recyclerAmigos);
         recyclerAmigos.addItemDecoration(new ItemDecorator());
+        recyclerAmigos.addOnItemTouchListener(new RecyclerItemClickListener(this,
+                recyclerAmigos, new RecyclerItemClickListener.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(View view, int position) {
+                viewHolderClick(false, view, position);
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+                viewHolderClick(true, view, position);
+            }
+        }));
+
+        //novo swipe
+        ItemTouchHelper itemTouchHelper2 = new ItemTouchHelper(new SwipeCallbackRight());
+        itemTouchHelper2.attachToRecyclerView(recyclerAmigos);
     }
 
     class ItemDecorator extends RecyclerView.ItemDecoration {
@@ -173,6 +220,17 @@ public class ListarAmigosActivity extends AppCompatActivity {
         private static final int PENDING_REMOVAL_TIMEOUT = 3000; // 3sec
         int lastInsertedIndex;
         boolean undoOn;
+
+        public boolean isRemoveMode() {
+            return removeMode;
+        }
+
+        public void setRemoveMode(boolean removeMode) {
+            this.removeMode = removeMode;
+        }
+
+        private boolean removeMode;
+
         public ListarAmizadeAdapter(List<Amizade> lista) {
             this.listaAmizade = lista;
         }
@@ -184,10 +242,17 @@ public class ListarAmigosActivity extends AppCompatActivity {
             return new AmigoViewHolder(itemLista);
         }
 
+        public void limparSelecionados() {
+            selecionados.clear();
+        }
+
         @Override
         public void onBindViewHolder(@NonNull AmigoViewHolder amigoViewHolder, int position) {
-            amigoViewHolder.setAmizade(listaAmigos.get(position));
+            Amizade amizade = listaAmigos.get(position);
+            amigoViewHolder.setAmizade(amizade);
+            amigoViewHolder.setSelecionado(selecionados.contains(amizade));
             amigoViewHolder.bind();
+
         }
 
         @Override
@@ -242,6 +307,22 @@ public class ListarAmigosActivity extends AppCompatActivity {
                 notifyItemRemoved(position);
             }
         }
+
+        public void viewHolderClick(boolean longClick, View view, int position) {
+            Amizade amizade = listaAmizade.get(position);
+            boolean amizadeSelecionada = selecionados.contains(amizade);
+
+            if (amizadeSelecionada) {
+                selecionados.remove(amizade);
+                view.setBackground(null);
+
+            } else if (removeMode || longClick){
+                selecionados.add(amizade);
+                view.setBackgroundColor(Color.LTGRAY);
+            }
+
+            removeMode = !selecionados.isEmpty();
+        }
     }
 
     class AmigoViewHolder extends RecyclerView.ViewHolder{
@@ -250,9 +331,19 @@ public class ListarAmigosActivity extends AppCompatActivity {
         private TextView textViewNomeAmigo;
         private TextView textViewStatusAmizade;
         private ImageButton buttonAdicionar;
+        private boolean selecionado = false;
+
+        public boolean isSelecionado() {
+            return selecionado;
+        }
+
+        public void setSelecionado(boolean selecionado) {
+            this.selecionado = selecionado;
+        }
 
         public AmigoViewHolder(@NonNull View itemView) {
             super(itemView);
+
             textViewNomeAmigo = itemView.findViewById(R.id.amigoNome);
             textViewStatusAmizade = itemView.findViewById(R.id.textViewStatusAmizade);
             buttonAdicionar = itemView.findViewById(R.id.buttonAceitar);
@@ -282,6 +373,11 @@ public class ListarAmigosActivity extends AppCompatActivity {
             textViewNomeAmigo.setText(amigo.getNome());
             textViewStatusAmizade.setText(textoStatus());
             buttonAdicionar.setVisibility(visibilidadeBotao(usuarioConvidado));
+            if (this.isSelecionado()) {
+                this.itemView.setBackgroundColor(Color.LTGRAY);
+            } else {
+                this.itemView.setBackgroundColor(Color.TRANSPARENT);
+            }
         }
 
         private int visibilidadeBotao(boolean usuarioConvidado) {
@@ -395,6 +491,87 @@ public class ListarAmigosActivity extends AppCompatActivity {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
 
+    }
+
+    class SwipeCallbackRight extends ItemTouchHelper.SimpleCallback{
+
+
+        public SwipeCallbackRight() {
+            super(0, ItemTouchHelper.RIGHT);
+        }
+
+        Drawable background;
+        Drawable xMark;
+        int xMarkMargin;
+        boolean initiated;
+
+        private void init() {
+            background = new ColorDrawable(Color.RED);
+            xMark = ContextCompat.getDrawable(ListarAmigosActivity.this, R.drawable.ic_baseline_access_alarms_24px);
+            xMark.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+            xMarkMargin = (int) ListarAmigosActivity.this.getResources().getDimension(R.dimen.ic_clear_margin);
+            initiated = true;
+        }
+
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getAdapterPosition();
+            long idConvidado;
+            long idSolicitante;
+            idConvidado = listaAmigos.get(position).getConvidado().getId();
+            idSolicitante = listaAmigos.get(position).getSolicitante().getId();
+            finish();
+            if(idPaciente == idConvidado){
+                Intent intent = new Intent(ListarAmigosActivity.this, AlarmesListaAmigo.class);
+                intent.putExtra("AMIGO_ID", idSolicitante);
+                finish();
+                startActivity(intent);
+
+            }else{
+                Intent intent = new Intent(ListarAmigosActivity.this, AlarmesListaAmigo.class);
+                intent.putExtra("AMIGO_ID", idConvidado);
+                finish();
+                startActivity(intent);
+            }
+
+
+
+        }
+
+        @Override
+        public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            View itemView = viewHolder.itemView;
+
+            if (viewHolder.getAdapterPosition() == -1) {
+                return;
+            }
+
+            if (!initiated) {
+                init();
+            }
+
+            background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom());
+            background.draw(c);
+
+            int itemHeight = itemView.getBottom() - itemView.getTop();
+            int intrinsicWidth = xMark.getIntrinsicWidth();
+            int intrinsicHeight = xMark.getIntrinsicWidth();
+
+            int xMarkLeft = itemView.getRight() - xMarkMargin - intrinsicWidth;
+            int xMarkRight = itemView.getRight() - xMarkMargin;
+            int xMarkTop = itemView.getTop() + (itemHeight - intrinsicHeight)/2;
+            int xMarkBottom = xMarkTop + intrinsicHeight;
+            xMark.setBounds(xMarkLeft, xMarkTop, xMarkRight, xMarkBottom);
+
+            xMark.draw(c);
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
     }
 }
 
