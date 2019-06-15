@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".alarme.ui.AlarmeAtualizacaoActivity"></activity>
+        <activity android:name=".alarme.ui.AlarmesListaAmigo"></activity>
+        <activity android:name=".alarme.ui.AlarmeAtualizacaoActivity" />
         <activity android:name=".alarme.ui.AlarmeCadastroActivity" />
         <activity android:name=".usuario.ui.CadastroActivity" />
         <activity android:name=".alarme.ui.AlarmesListaActivity" />
@@ -31,9 +32,10 @@
             android:name=".infra.ui.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".alarme.ui.AlarmesListaActivity" />
         <activity android:name=".paciente.ui.AdicionarAmigoActivity" />
-        <activity android:name=".paciente.ui.ListarAmigosActivity" />
+        <activity android:name=".paciente.ui.ListarAmigosActivity"
+            android:label="@string/amigos"
+            android:parentActivityName=".infra.ui.MainActivity"/>
     </application>
 
 </manifest>

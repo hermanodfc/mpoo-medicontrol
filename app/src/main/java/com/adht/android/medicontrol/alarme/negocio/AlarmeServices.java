@@ -24,7 +24,7 @@ public class AlarmeServices {
         return daoAlarme.listar(idPaciente);
     }
 
-    public void atualizar(Alarme alarme, int idAlarme) throws IOException {
+    public void atualizar(Alarme alarme, long idAlarme) throws IOException {
         AlarmeDAOSQLite dao = new AlarmeDAOSQLite();
         dao.atualizar(alarme, idAlarme);
     }
@@ -34,7 +34,7 @@ public class AlarmeServices {
         dao.deletar(idAlarme);
     }
 
-    public Alarme getAlarme(int idAlarme){
+    public Alarme getAlarme(long idAlarme){
         Alarme alarme = new Alarme();
         AlarmeDAOSQLite dao = new AlarmeDAOSQLite();
         try {

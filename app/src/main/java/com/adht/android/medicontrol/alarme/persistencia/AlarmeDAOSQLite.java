@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlarmeDAOSQLite extends AbstractSQLite {
-    public Alarme getAlarme(int idAlarme) throws MediControlException, IOException {
+    public Alarme getAlarme(long idAlarme) throws MediControlException, IOException {
         Alarme result = null;
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_ALARME + " U WHERE U." + DBHelper.TABELA_ALARME_CAMPO_ID + " = ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(idAlarme)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(idAlarme)});
         if (cursor.moveToFirst()) {
             result = createAlarme(cursor);
         }
