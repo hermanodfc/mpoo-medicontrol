@@ -6,5 +6,6 @@
         android:id="@+id/remover_amigos"
         android:icon="@drawable/ic_clear_24px"
         android:title="@string/remove"
-        app:showAsAction="ifRoom"/>
+        android:visible="false"
+        app:showAsAction="ifRoom" />
 </menu>
