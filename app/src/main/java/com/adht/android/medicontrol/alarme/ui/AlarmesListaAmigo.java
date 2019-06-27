@@ -42,8 +42,6 @@ public class AlarmesListaAmigo extends AppCompatActivity {
 
         recyclerViewAlarmes = findViewById(R.id.recyclerViewAlarmes);
 
-
-
         AlarmeServices alarmeServices = new AlarmeServices();
         try {
             listaAlarme = alarmeServices.listar(idAmigo);

@@ -12,12 +12,21 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toolbar;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +35,7 @@ import com.adht.android.medicontrol.R;
 import com.adht.android.medicontrol.alarme.ui.AlarmesListaAmigo;
 import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.infra.persistencia.AmizadeSemAmigos;
+import com.adht.android.medicontrol.infra.ui.RecyclerItemClickListener;
 import com.adht.android.medicontrol.paciente.dominio.Amizade;
 import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.paciente.dominio.StatusAmizade;
@@ -34,14 +44,18 @@ import com.adht.android.medicontrol.util.Dialog;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class ListarAmigosActivity extends AppCompatActivity {
+
     private RecyclerView recyclerAmigos;
-
     private List<Amizade> listaAmigos;
-
     long idPaciente = Sessao.INSTANCE.getUsuario().getPaciente().getId();
+    String nomePaciente = Sessao.INSTANCE.getUsuario().getPaciente().getNome();
+    ListarAmizadeAdapter adapter;
+    private MenuItem menuTrash;
+    private MenuItem buscaItem;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +63,8 @@ public class ListarAmigosActivity extends AppCompatActivity {
         setContentView(R.layout.listar_amigos);
         recyclerAmigos = findViewById(R.id.recyclerViewAmigos);
         AmizadeServices amizadeServices = new AmizadeServices();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         try {
             listaAmigos = amizadeServices.getAmigos(Sessao.INSTANCE.getUsuario().getPaciente());
@@ -82,13 +98,121 @@ public class ListarAmigosActivity extends AppCompatActivity {
 
     }
 
+    public void setActionBarName(int size) {
+        ActionBar actionBar = getSupportActionBar();
+        if (size == 0) {
+            actionBar.setTitle(R.string.amigos);
+        } else {
+            actionBar.setTitle(Integer.toString(size));
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.amigos_menu, menu);
+        menuTrash = menu.findItem(R.id.remover_amigos);
+        menuTrash.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                removerSelecionados();
+                return false;
+            }
+        });
+        buscaItem = menu.findItem(R.id.action_search);
+        SearchView buscaView = (SearchView) buscaItem.getActionView();
+        buscaView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+    }
+
+    private void removerSelecionados() {
+        adapter.removerSelecionados();
+    }
+
+    public void ocultarPesquisa(boolean ocultar) {
+        if (ocultar) {
+            buscaItem.setVisible(false);
+        } else{
+            buscaItem.setVisible(true);
+        }
+    }
+    public void mostrarLixeira(boolean mostrar) {
+        if (mostrar) {
+            menuTrash.setVisible(true);
+        } else {
+            menuTrash.setVisible(false);
+        }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (adapter.isRemoveMode()) {
+                    mostrarLixeira(false);
+                    setActionBarName(0);
+                    adapter.limparSelecionados();
+                    adapter.notifyDataSetChanged();
+                    return true;
+                }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (adapter.isRemoveMode()) {
+            mostrarLixeira(false);
+            setActionBarName(0);
+            adapter.limparSelecionados();
+            adapter.notifyDataSetChanged();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
+    private void viewHolderClick(boolean longClick, View view, int position) {
+        adapter.viewHolderClick(longClick, view, position);
+    }
+
     private void setUpRecyclerView() {
+        adapter = new ListarAmizadeAdapter(listaAmigos);
         recyclerAmigos.setLayoutManager(new LinearLayoutManager(this));
-        recyclerAmigos.setAdapter(new ListarAmizadeAdapter(listaAmigos));
         recyclerAmigos.setHasFixedSize(true);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeCallback());
         itemTouchHelper.attachToRecyclerView(recyclerAmigos);
+        recyclerAmigos.setAdapter(adapter);
         recyclerAmigos.addItemDecoration(new ItemDecorator());
+        recyclerAmigos.addOnItemTouchListener(new RecyclerItemClickListener(this,
+                recyclerAmigos, new RecyclerItemClickListener.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(View view, int position) {
+                viewHolderClick(false, view, position);
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+                viewHolderClick(true, view, position);
+            }
+        }));
+
         //novo swipe
         ItemTouchHelper itemTouchHelper2 = new ItemTouchHelper(new SwipeCallbackRight());
         itemTouchHelper2.attachToRecyclerView(recyclerAmigos);
@@ -171,17 +295,31 @@ public class ListarAmigosActivity extends AppCompatActivity {
         }
     }
 
-    class ListarAmizadeAdapter extends RecyclerView.Adapter<AmigoViewHolder> {
+    class ListarAmizadeAdapter extends RecyclerView.Adapter<AmigoViewHolder> implements Filterable {
 
-        final List<Amizade> listaAmizade;
+        private HashSet<Amizade> selecionados = new HashSet<>();
+        private List<Amizade> listaAmizade;
+        private List<Amizade> listaAmizadeFull;
         final List<Amizade> itemsPendingRemoval = new ArrayList<>();
         private Handler handler = new Handler();
         HashMap<Amizade, Runnable> pendingRunnables = new HashMap<>();
         private static final int PENDING_REMOVAL_TIMEOUT = 3000; // 3sec
         int lastInsertedIndex;
         boolean undoOn;
+
+        public boolean isRemoveMode() {
+            return removeMode;
+        }
+
+        public void setRemoveMode(boolean removeMode) {
+            this.removeMode = removeMode;
+        }
+
+        private boolean removeMode;
+
         public ListarAmizadeAdapter(List<Amizade> lista) {
             this.listaAmizade = lista;
+            listaAmizadeFull = new ArrayList<>(listaAmizade);
         }
 
         @NonNull
@@ -191,10 +329,18 @@ public class ListarAmigosActivity extends AppCompatActivity {
             return new AmigoViewHolder(itemLista);
         }
 
+        public void limparSelecionados() {
+            selecionados.clear();
+            removeMode = false;
+        }
+
         @Override
         public void onBindViewHolder(@NonNull AmigoViewHolder amigoViewHolder, int position) {
-            amigoViewHolder.setAmizade(listaAmigos.get(position));
+            Amizade amizade = listaAmigos.get(position);
+            amigoViewHolder.setAmizade(amizade);
+            amigoViewHolder.setSelecionados(selecionados);
             amigoViewHolder.bind();
+
         }
 
         @Override
@@ -249,6 +395,83 @@ public class ListarAmigosActivity extends AppCompatActivity {
                 notifyItemRemoved(position);
             }
         }
+
+        public void viewHolderClick(boolean longClick, View view, int position) {
+            Amizade amizade = listaAmizade.get(position);
+            boolean amizadeSelecionada = selecionados.contains(amizade);
+
+            if (amizadeSelecionada) {
+                selecionados.remove(amizade);
+                view.setBackground(null);
+
+            } else if (removeMode || longClick){
+                selecionados.add(amizade);
+                view.setBackgroundColor(Color.LTGRAY);
+            }
+
+            removeMode = !selecionados.isEmpty();
+            mostrarLixeira(removeMode);
+            ocultarPesquisa(removeMode);
+            setActionBarName(selecionados.size());
+        }
+
+        public void removerSelecionados() {
+
+            ArrayList<Amizade> temp = new ArrayList<>(selecionados);
+
+            for (Amizade amizade: temp) {
+                int index = listaAmizade.indexOf(amizade);
+                remove(index);
+                selecionados.remove(amizade);
+            }
+
+            setActionBarName(0);
+            mostrarLixeira(false);
+            removeMode = false;
+        }
+
+        public Filter getFilter(){ return amigosFilter;}
+
+        private Filter amigosFilter = new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                List<Amizade> listaFiltrada = new ArrayList<>();
+
+                if (constraint == null || constraint.length() == 0) {
+                    listaFiltrada.addAll(listaAmizadeFull);
+                } else {
+                    String filterPadrao = constraint.toString().toLowerCase().trim();
+
+                    for (Amizade item : listaAmizadeFull){
+                        String busca;
+                        if(item.getSolicitante().getNome().equals(nomePaciente) ){
+                            busca = item.getConvidado().getNome();
+                        } else {
+                             busca = item.getSolicitante().getNome();
+                        }
+                        if (busca.toLowerCase().contains(filterPadrao)){
+                            listaFiltrada.add(item);
+                        }
+                    }
+                }
+
+                FilterResults resultado = new FilterResults();
+                resultado.values = listaFiltrada;
+
+                return resultado;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults resultado) {
+                listaAmizade.clear();
+
+                listaAmizade.addAll((List) resultado.values);
+                notifyDataSetChanged();
+            }
+
+
+
+        };
     }
 
     class AmigoViewHolder extends RecyclerView.ViewHolder{
@@ -258,8 +481,15 @@ public class ListarAmigosActivity extends AppCompatActivity {
         private TextView textViewStatusAmizade;
         private ImageButton buttonAdicionar;
 
+        public void setSelecionados(HashSet<Amizade> selecionados) {
+            this.selecionados = selecionados;
+        }
+
+        private HashSet<Amizade> selecionados;
+
         public AmigoViewHolder(@NonNull View itemView) {
             super(itemView);
+
             textViewNomeAmigo = itemView.findViewById(R.id.amigoNome);
             textViewStatusAmizade = itemView.findViewById(R.id.textViewStatusAmizade);
             buttonAdicionar = itemView.findViewById(R.id.buttonAceitar);
@@ -289,6 +519,11 @@ public class ListarAmigosActivity extends AppCompatActivity {
             textViewNomeAmigo.setText(amigo.getNome());
             textViewStatusAmizade.setText(textoStatus());
             buttonAdicionar.setVisibility(visibilidadeBotao(usuarioConvidado));
+            if (selecionados.contains(amizade)) {
+                this.itemView.setBackgroundColor(Color.LTGRAY);
+            } else {
+                this.itemView.setBackgroundColor(Color.TRANSPARENT);
+            }
         }
 
         private int visibilidadeBotao(boolean usuarioConvidado) {

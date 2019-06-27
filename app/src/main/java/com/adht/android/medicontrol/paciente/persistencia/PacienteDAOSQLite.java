@@ -42,7 +42,7 @@ public class PacienteDAOSQLite extends AbstractSQLite {
         return result;
     }
 
-    public Paciente getPacienteById(Long idPaciente) throws IOException {
+    public Paciente getPacienteById(long idPaciente) throws IOException {
         Paciente result = null;
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " +DBHelper.TABELA_PACIENTE+ " U WHERE U." +

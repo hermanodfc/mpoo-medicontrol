@@ -32,9 +32,10 @@
             android:name=".infra.ui.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".alarme.ui.AlarmesListaActivity" />
         <activity android:name=".paciente.ui.AdicionarAmigoActivity" />
-        <activity android:name=".paciente.ui.ListarAmigosActivity" />
+        <activity android:name=".paciente.ui.ListarAmigosActivity"
+            android:label="@string/amigos"
+            android:parentActivityName=".infra.ui.MainActivity"/>
     </application>
 
 </manifest>
