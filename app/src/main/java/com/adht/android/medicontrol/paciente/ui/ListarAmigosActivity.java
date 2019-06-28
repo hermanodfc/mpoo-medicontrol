@@ -32,8 +32,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.adht.android.medicontrol.R;
+import com.adht.android.medicontrol.alarme.ui.AlarmeListaCuidador;
 import com.adht.android.medicontrol.alarme.ui.AlarmesListaAmigo;
 import com.adht.android.medicontrol.infra.Sessao;
+import com.adht.android.medicontrol.infra.exception.AmizadeExistenteException;
 import com.adht.android.medicontrol.infra.persistencia.AmizadeSemAmigos;
 import com.adht.android.medicontrol.infra.ui.RecyclerItemClickListener;
 import com.adht.android.medicontrol.paciente.dominio.Amizade;
@@ -56,6 +58,7 @@ public class ListarAmigosActivity extends AppCompatActivity {
     ListarAmizadeAdapter adapter;
     private MenuItem menuTrash;
     private MenuItem buscaItem;
+    private MenuItem addCuidador;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -112,6 +115,8 @@ public class ListarAmigosActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.amigos_menu, menu);
         menuTrash = menu.findItem(R.id.remover_amigos);
+        addCuidador = menu.findItem(R.id.add_cuidador);
+
         menuTrash.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -119,6 +124,15 @@ public class ListarAmigosActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        addCuidador.setOnMenuItemClickListener((new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                atualizarSelecionados();
+                return false;
+            }
+        }));
+
         buscaItem = menu.findItem(R.id.action_search);
         SearchView buscaView = (SearchView) buscaItem.getActionView();
         buscaView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -138,6 +152,10 @@ public class ListarAmigosActivity extends AppCompatActivity {
 
     private void removerSelecionados() {
         adapter.removerSelecionados();
+    }
+
+    private void atualizarSelecionados(){
+        adapter.atualizarSelecionados();
     }
 
     public void ocultarPesquisa(boolean ocultar) {
@@ -388,7 +406,19 @@ public class ListarAmigosActivity extends AppCompatActivity {
                 listaAmizade.remove(position);
                 AmizadeServices amizadeServices = new AmizadeServices();
                 try {
-                    amizadeServices.desfazerAmizade(amizade);
+                    switch (amizade.getStatus()){
+                        case ACEITO:
+                            amizadeServices.desfazerAmizadeDois(amizade);
+                            amizadeServices.desfazerAmizade(amizade);
+                            break;
+                        case PENDENTE:
+                            amizadeServices.desfazerAmizade(amizade);
+                            break;
+                        case CUIDADOR:
+                            amizadeServices.desfazerAmizadeDois(amizade);
+                            amizadeServices.desfazerAmizade(amizade);
+                    }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -428,6 +458,26 @@ public class ListarAmigosActivity extends AppCompatActivity {
             setActionBarName(0);
             mostrarLixeira(false);
             removeMode = false;
+        }
+
+        public void atualizarSelecionados(){
+            ArrayList<Amizade> temp = new ArrayList<>(selecionados);
+            AmizadeServices amizadeServices = new AmizadeServices();
+            for (Amizade amizade: temp) {
+                switch (amizade.getStatus()){
+                    case ACEITO:
+                        amizade.setStatusAmizade(StatusAmizade.CUIDADOR);
+                        amizadeServices.atualizar(amizade);
+                        break;
+                    case PENDENTE:
+                        //mostrar caixa de dialogo que ainda não é amigo
+                        break;
+                    case CUIDADOR:
+                        //mostrar caixa de dialogo avisando que já é cuidador
+                        break;
+                }
+            }
+
         }
 
         public Filter getFilter(){ return amigosFilter;}
@@ -507,6 +557,13 @@ public class ListarAmigosActivity extends AppCompatActivity {
             amizadeServices.atualizar(amizade);
             textViewStatusAmizade.setText(textoStatus());
             buttonAdicionar.setVisibility(View.INVISIBLE);
+            try {
+                amizadeServices.cadastrarPedidoAceito(amizade);
+            } catch (AmizadeExistenteException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         public void setAmizade(Amizade amizade) {
@@ -556,6 +613,8 @@ public class ListarAmigosActivity extends AppCompatActivity {
                 case PENDENTE:
                     status = "Aguardando confirmação";
                     break;
+                case CUIDADOR:
+                    status = "Amigo e cuidador";
             }
             return status;
         }
@@ -669,21 +728,68 @@ public class ListarAmigosActivity extends AppCompatActivity {
             int position = viewHolder.getAdapterPosition();
             long idConvidado;
             long idSolicitante;
+            Amizade amizade = listaAmigos.get(position);
             idConvidado = listaAmigos.get(position).getConvidado().getId();
             idSolicitante = listaAmigos.get(position).getSolicitante().getId();
             finish();
-            if(idPaciente == idConvidado){
-                Intent intent = new Intent(ListarAmigosActivity.this, AlarmesListaAmigo.class);
-                intent.putExtra("AMIGO_ID", idSolicitante);
-                finish();
-                startActivity(intent);
+            switch (amizade.getStatus()){
+                case ACEITO:
+                    if(idPaciente == idConvidado){
+                        Intent intent = new Intent(ListarAmigosActivity.this, AlarmesListaAmigo.class);
+                        intent.putExtra("AMIGO_ID", idSolicitante);
+                        finish();
+                        startActivity(intent);
 
-            }else{
-                Intent intent = new Intent(ListarAmigosActivity.this, AlarmesListaAmigo.class);
-                intent.putExtra("AMIGO_ID", idConvidado);
-                finish();
-                startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(ListarAmigosActivity.this, AlarmesListaAmigo.class);
+                        intent.putExtra("AMIGO_ID", idConvidado);
+                        finish();
+                        startActivity(intent);
+                    }
+
+                    break;
+
+                case CUIDADOR:
+                    if(idPaciente == idConvidado){
+                        Intent intent = new Intent(ListarAmigosActivity.this, AlarmeListaCuidador.class);
+                        intent.putExtra("AMIGO_ID", idSolicitante);
+                        finish();
+                        startActivity(intent);
+
+                    }else{
+                        Intent intent = new Intent(ListarAmigosActivity.this, AlarmeListaCuidador.class);
+                        intent.putExtra("AMIGO_ID", idConvidado);
+                        finish();
+                        startActivity(intent);
+                    }
+
+                    break;
+
+                case PENDENTE:
+                    final Handler handler2 = new Handler()
+                    {
+
+                        @Override
+                        public void handleMessage(Message mesg)
+                        {
+                            throw new RuntimeException();
+                        }
+                    };
+                    android.app.AlertDialog dialog = Dialog.alertDialogOkButton("Amigos",
+                            "Amizade pendente.", ListarAmigosActivity.this, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    handler2.handleMessage(handler2.obtainMessage());
+                                }
+                            });
+                    dialog.show();
+                    finish();
+                    break;
+
             }
+
+
+
 
 
 
@@ -719,6 +825,8 @@ public class ListarAmigosActivity extends AppCompatActivity {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     }
+
+
 }
 
 

@@ -2,5 +2,6 @@ package com.adht.android.medicontrol.paciente.dominio;
 
 public enum StatusAmizade {
     PENDENTE,
-    ACEITO;
+    ACEITO,
+    CUIDADOR
 }

@@ -20,14 +20,11 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " +DBHelper.TABELA_AMIZADE+ " U WHERE (U." +
                 DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + " = ? AND U." +
-                DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " = ?) OR (U." +
-                DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " = ? AND U." +
-                DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + " = ?);";
+                DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " = ?)";
 
         Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(solicitante.getId()),
                                                       Long.toString(amigo.getId()),
-                                                      Long.toString(solicitante.getId()),
-                                                      Long.toString(amigo.getId())});
+                                                      });
         if (cursor.moveToFirst()) {
             result = createAmizade(cursor);
         }
@@ -40,6 +37,16 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
         ContentValues values = new ContentValues();
         values.put(DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE, amizade.getSolicitante().getId());
         values.put(DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO, amizade.getConvidado().getId());
+        values.put(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE, amizade.getStatus().ordinal());
+        db.insert(DBHelper.TABELA_AMIZADE, null, values);
+        super.close(db);
+    }
+
+    public void cadastrarPedidoAceito(Amizade amizade) throws IOException{
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE, amizade.getConvidado().getId());
+        values.put(DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO, amizade.getSolicitante().getId());
         values.put(DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE, amizade.getStatus().ordinal());
         db.insert(DBHelper.TABELA_AMIZADE, null, values);
         super.close(db);
@@ -65,10 +72,12 @@ public class AmizadeDAOSQLite extends AbstractSQLite {
         SQLiteDatabase db = super.getReadableDatabase();
         String sql = "SELECT * FROM " +DBHelper.TABELA_AMIZADE+ " U WHERE U." +
                 DBHelper.TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + " = ? " +
-                "OR U." + DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " = ?;";
+                "OR U." + DBHelper.TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " = ? " +"AND U." + DBHelper.TABELA_AMIZADE_CAMPO_STATUS_AMIZADE +
+                " = ? ";
 
         Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(paciente.getId()),
-                                                      Long.toString(paciente.getId())});
+                Long.toString(paciente.getId()),
+                Integer.toString(0)});
         while(cursor.moveToNext()){
             result.add(createAmizade(cursor));
         }
