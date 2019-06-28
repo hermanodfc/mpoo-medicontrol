@@ -42,6 +42,7 @@ import com.adht.android.medicontrol.paciente.dominio.Amizade;
 import com.adht.android.medicontrol.paciente.dominio.Paciente;
 import com.adht.android.medicontrol.paciente.dominio.StatusAmizade;
 import com.adht.android.medicontrol.paciente.negocio.AmizadeServices;
+import com.adht.android.medicontrol.paciente.persistencia.AmizadeDAOSQLite;
 import com.adht.android.medicontrol.util.Dialog;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -417,6 +418,9 @@ public class ListarAmigosActivity extends AppCompatActivity {
                         case CUIDADOR:
                             amizadeServices.desfazerAmizadeDois(amizade);
                             amizadeServices.desfazerAmizade(amizade);
+                        case ACOMPANHADO:
+                            amizadeServices.desfazerAmizadeDois(amizade);
+                            amizadeServices.desfazerAmizade(amizade);
                     }
 
                 } catch (IOException e) {
@@ -463,11 +467,23 @@ public class ListarAmigosActivity extends AppCompatActivity {
         public void atualizarSelecionados(){
             ArrayList<Amizade> temp = new ArrayList<>(selecionados);
             AmizadeServices amizadeServices = new AmizadeServices();
+            AmizadeDAOSQLite dao = new AmizadeDAOSQLite();
             for (Amizade amizade: temp) {
                 switch (amizade.getStatus()){
                     case ACEITO:
-                        amizade.setStatusAmizade(StatusAmizade.CUIDADOR);
-                        amizadeServices.atualizar(amizade);
+                        Paciente idSolicitante = amizade.getConvidado();
+                        Paciente idConvidado = amizade.getSolicitante();
+
+                        try {
+                            Amizade amizadeReversa = dao.getAmizade(idSolicitante, idConvidado);
+                            amizadeReversa.setStatusAmizade(StatusAmizade.CUIDADOR);
+                            amizadeServices.atualizar(amizadeReversa);
+                            amizade.setStatusAmizade(StatusAmizade.ACOMPANHADO);
+                            amizadeServices.atualizar(amizade);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                         break;
                     case PENDENTE:
                         //mostrar caixa de dialogo que ainda não é amigo
@@ -615,6 +631,8 @@ public class ListarAmigosActivity extends AppCompatActivity {
                     break;
                 case CUIDADOR:
                     status = "Amigo e cuidador";
+                case ACOMPANHADO:
+                    status = "Amigo e acompanhado";
             }
             return status;
         }
@@ -748,8 +766,23 @@ public class ListarAmigosActivity extends AppCompatActivity {
                     }
 
                     break;
-
                 case CUIDADOR:
+                    if(idPaciente == idConvidado){
+                        Intent intent = new Intent(ListarAmigosActivity.this, AlarmesListaAmigo.class);
+                        intent.putExtra("AMIGO_ID", idSolicitante);
+                        finish();
+                        startActivity(intent);
+
+                    }else{
+                        Intent intent = new Intent(ListarAmigosActivity.this, AlarmesListaAmigo.class);
+                        intent.putExtra("AMIGO_ID", idConvidado);
+                        finish();
+                        startActivity(intent);
+                    }
+
+                    break;
+
+                case ACOMPANHADO:
                     if(idPaciente == idConvidado){
                         Intent intent = new Intent(ListarAmigosActivity.this, AlarmeListaCuidador.class);
                         intent.putExtra("AMIGO_ID", idSolicitante);
