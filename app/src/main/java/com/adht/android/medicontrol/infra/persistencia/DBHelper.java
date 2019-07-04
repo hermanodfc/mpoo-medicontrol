@@ -39,6 +39,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABELA_AMIZADE_CAMPO_ID_SOLICITANTE = "ID_PACIENTE";
     public static final String TABELA_AMIZADE_CAMPO_ID_CONVIDADO = "ID_AMIGO";
     public static final String TABELA_AMIZADE_CAMPO_STATUS_AMIZADE = "STATUS_AMIZADE";
+    public static final String TABELA_AMIZADE_CAMPO_CUIDADOR = "ID_CUIDADOR";
 
     private static final String[] TABELAS = {
             TABELA_USUARIO, TABELA_PACIENTE, TABELA_ALARME, TABELA_AMIZADE
@@ -62,14 +63,15 @@ public class DBHelper extends SQLiteOpenHelper {
                         TABELA_AMIZADE_CAMPO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + " INTEGER NOT NULL, " +
                         TABELA_AMIZADE_CAMPO_ID_CONVIDADO + " INTEGER NOT NULL, " +
+                        TABELA_AMIZADE_CAMPO_CUIDADOR + " INTEGER NOT NULL, " +
                         TABELA_AMIZADE_CAMPO_STATUS_AMIZADE + " INTEGER NOT NULL, " +
                         "FOREIGN KEY(" + TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + ") " +
-                            "REFERENCES " + TABELA_PACIENTE + "(" +
-                                TABELA_PACIENTE_CAMPO_ID_USUARIO + "), " +
+                        "REFERENCES " + TABELA_PACIENTE + "(" +
+                        TABELA_PACIENTE_CAMPO_ID_USUARIO + "), " +
                         "FOREIGN KEY(" + TABELA_AMIZADE_CAMPO_ID_SOLICITANTE + ") " +
                         "REFERENCES " + TABELA_PACIENTE + "(" +
                         TABELA_AMIZADE_CAMPO_ID_CONVIDADO + ")" +
-                ");";
+                        ");";
         db.execSQL(sqlTbAmizade);
     }
     private void createTabelaUsuario(SQLiteDatabase db) {
@@ -92,8 +94,8 @@ public class DBHelper extends SQLiteOpenHelper {
                         TABELA_PACIENTE_CAMPO_GENERO + " INTEGER NOT NULL, " +
                         TABELA_PACIENTE_CAMPO_ID_USUARIO + " INTEGER NOT NULL UNIQUE, " +
                         "FOREIGN KEY(" + TABELA_PACIENTE_CAMPO_ID_USUARIO + ") " +
-                            "REFERENCES " + TABELA_USUARIO + "(" + TABELA_USUARIO_CAMPO_ID + ") " +
-                ");";
+                        "REFERENCES " + TABELA_USUARIO + "(" + TABELA_USUARIO_CAMPO_ID + ") " +
+                        ");";
 
         db.execSQL(sqlTbPaciente);
     }

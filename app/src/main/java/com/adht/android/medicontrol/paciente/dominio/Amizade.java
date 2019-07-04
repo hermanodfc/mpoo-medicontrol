@@ -6,6 +6,7 @@ public class Amizade {
     private Paciente solicitante;
     private Paciente convidado;
     private StatusAmizade statusAmizade;
+    private long idCuidador;
 
     public long getId() {
         return id;
@@ -37,5 +38,13 @@ public class Amizade {
 
     public void setStatusAmizade(StatusAmizade statusAmizade) {
         this.statusAmizade = statusAmizade;
+    }
+
+    public long getIdCuidador() {
+        return idCuidador;
+    }
+
+    public void setIdCuidador(long idCuidador) {
+        this.idCuidador = idCuidador;
     }
 }

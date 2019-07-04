@@ -23,12 +23,6 @@ public class AmizadeServices {
         dao.cadastrarPedidoAmizade(amizade);
     }
 
-    public void cadastrarPedidoAceito(Amizade amizade)
-            throws AmizadeExistenteException, IOException{
-        AmizadeDAOSQLite dao = new AmizadeDAOSQLite();
-        dao.cadastrarPedidoAceito(amizade);
-    }
-
     public List<Amizade> getAmigos(Paciente paciente) throws IOException, AmizadeSemAmigos {
         AmizadeDAOSQLite dao = new AmizadeDAOSQLite();
         ArrayList<Amizade> result = dao.getAmizades(paciente);
@@ -41,15 +35,6 @@ public class AmizadeServices {
     public void desfazerAmizade(Amizade amizade) throws IOException {
         AmizadeDAOSQLite dao = new AmizadeDAOSQLite();
         dao.desfazerAmizade(amizade);
-    }
-
-    public void desfazerAmizadeDois(Amizade amizade) throws IOException{
-        Paciente idSolicitante = amizade.getConvidado();
-        Paciente idConvidado = amizade.getSolicitante();
-        AmizadeDAOSQLite dao = new AmizadeDAOSQLite();
-        Amizade amizade2 = dao.getAmizade(idSolicitante, idConvidado);
-        dao.desfazerAmizade(amizade2);
-
     }
 
     public void atualizar(Amizade amizade) {
