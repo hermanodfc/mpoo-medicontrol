@@ -20,6 +20,10 @@
             android:id="@+id/nav_lista_amigos"
             android:icon="@drawable/ic_baseline_group_24px"
             android:title="@string/lbl_amigos" />
+        <item
+            android:id="@+id/toque_alarme"
+            android:icon="@drawable/ic_baseline_group_24px"
+            android:title="Tocar Alarme" />
     </group>
 
     <item android:title="@string/lbl_communicate">
