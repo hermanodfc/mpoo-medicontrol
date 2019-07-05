@@ -17,6 +17,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.adht.android.medicontrol.alarme.ui.AlarmeCadastroActivity;
+import com.adht.android.medicontrol.alarme.ui.AlarmeToqueActivity;
 import com.adht.android.medicontrol.alarme.ui.AlarmesListaActivity;
 import com.adht.android.medicontrol.infra.Sessao;
 import com.adht.android.medicontrol.paciente.ui.AdicionarAmigoActivity;
@@ -123,6 +124,10 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_lista_amigos) {
             intent = new Intent(MainActivity.this, ListarAmigosActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.toque_alarme) {
+            intent = new Intent(MainActivity.this, AlarmeToqueActivity.class);
+            intent.putExtra(AlarmeToqueActivity.EXTRA_NOME_REMEDIO, "Amoxicilina");
             startActivity(intent);
         } else if (id == R.id.nav_exit) {
             UsuarioServices services = new UsuarioServices();
