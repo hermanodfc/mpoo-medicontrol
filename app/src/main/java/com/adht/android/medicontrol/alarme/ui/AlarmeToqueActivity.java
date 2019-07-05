@@ -34,7 +34,6 @@ import com.adht.android.medicontrol.infra.ml.VisionProcessorBase;
 import com.adht.android.medicontrol.infra.ml.labeldetector.LabelGraphic;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.vision.Detector;
 import com.google.firebase.ml.common.FirebaseMLException;
 import com.google.firebase.ml.common.modeldownload.FirebaseLocalModel;
 import com.google.firebase.ml.common.modeldownload.FirebaseModelManager;
@@ -104,8 +103,8 @@ public class AlarmeToqueActivity extends AppCompatActivity
 
                 long currentTime = System.currentTimeMillis();
                 long total = currentTime + 10000;
-                intent3.putExtra("ALARME_NOME3", remedio);
-                intent3.putExtra("ALARME_REQUEST3", request);
+                intent3.putExtra("ALARME_NOME2", remedio);
+                intent3.putExtra("ALARME_REQUEST2", request);
                 a.setExact(AlarmManager.RTC_WAKEUP, total, p1);
 
                 finish();

@@ -255,6 +255,10 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
                 long minuto = Integer.parseInt(inicio.substring(3)) * 60000; //1 minuto = 60.000 milisegundos
                 long milis = dia + hora + minuto;
                 Intent intent = new Intent(AlarmeCadastroActivity.this, Alarm.class);
+
+                intent.putExtra("ALARME_NOME", alarme.getNomeMedicamento());
+                intent.putExtra("ALARME_REQUEST", alarme.getRequestCode());
+
                 PendingIntent p1 = PendingIntent.getBroadcast(getApplicationContext(),broadcastCode, intent,0);
                 AlarmManager a = (AlarmManager)getSystemService(ALARM_SERVICE);
                 /*String array[] = new String [2];
@@ -262,8 +266,6 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
                 array[1] = Integer.toString(alarme.getRequestCode());
                 intent.putExtra("ALARME_INFO", array);*/
 
-                intent.putExtra("ALARME_NOME", alarme.getNomeMedicamento());
-                intent.putExtra("ALARME_REQUEST", alarme.getRequestCode());
 
                 //a.setRepeating(AlarmManager.RTC_WAKEUP, milis, 10000, p1);
                 a.setExact(AlarmManager.RTC_WAKEUP,milis, p1);
