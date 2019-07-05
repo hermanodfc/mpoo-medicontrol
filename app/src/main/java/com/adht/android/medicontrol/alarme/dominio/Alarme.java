@@ -11,6 +11,15 @@ public class Alarme {
     private int frequenciaHoras;
     private int duracaoDias;
     private Paciente paciente;
+    private int requestCode;
+
+    public int getRequestCode() {
+        return requestCode;
+    }
+
+    public void setRequestCode(int requestCode) {
+        this.requestCode = requestCode;
+    }
 
     public Paciente getPaciente() {
         return paciente;

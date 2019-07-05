@@ -32,6 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABELA_ALARME_CAMPO_FREQUENCIA_HORAS = "FREQUENCIA";
     public static final String TABELA_ALARME_CAMPO_DURACAO_DIAS = "DIAS";
     public static final String TABELA_ALARME_CAMPO_ID_PACIENTE = "ID_USUARIO";
+    public static final String TABELA_ALARME_CAMPO_REQUEST_CODE = "REQUEST_CODE";
 
     // TABELA DAS AMIZADES
     public static final String TABELA_AMIZADE = "TB_AMIZADE";
@@ -109,6 +110,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         TABELA_ALARME_CAMPO_COMPLEMENTO + " TEXT NOT NULL, " +
                         TABELA_ALARME_CAMPO_FREQUENCIA_HORAS + " INTEGER NOT NULL," +
                         TABELA_ALARME_CAMPO_DURACAO_DIAS + " INTEGER NOT NULL," +
+                        TABELA_ALARME_CAMPO_REQUEST_CODE + " INTEGER NOT NULL," +
                         TABELA_ALARME_CAMPO_ID_PACIENTE  + " INTEGER NOT NULL, " +
                         "FOREIGN KEY(" + TABELA_ALARME_CAMPO_ID_PACIENTE + ")" +
                         "REFERENCES " + TABELA_USUARIO + "(" + TABELA_USUARIO_CAMPO_ID + ")" +

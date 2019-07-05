@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -24,6 +26,10 @@ import com.adht.android.medicontrol.alarme.negocio.AlarmeServices;
 import com.adht.android.medicontrol.infra.ui.MainActivity;
 import com.adht.android.medicontrol.infra.ui.TaskResult;
 import com.adht.android.medicontrol.infra.ui.TaskResultType;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class AlarmeAtualizacaoCuidadorActivity extends AppCompatActivity {
     private EditText nomeView;
@@ -243,6 +249,19 @@ public class AlarmeAtualizacaoCuidadorActivity extends AppCompatActivity {
                 alarme.setDuracaoDias(dias);
                 alarme.setFrequenciaHoras(frequencia);
                 services.atualizar(alarme, idAlarme);
+                //alarmmanager:
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                String diaString = format.format(Calendar.getInstance().getTime());
+                Date data = format.parse(diaString);
+                long dia = data.getTime();
+                long hora = new Integer(inicio.substring(0, 2)) * 3600000; //1 hora = 3.600.000 milisegundos
+                long minuto = Integer.parseInt(inicio.substring(3)) * 60000; //1 minuto = 60.000 milisegundos
+                long milis = dia + hora + minuto;
+                Intent intent = new Intent(AlarmeAtualizacaoCuidadorActivity.this, Alarm.class);
+                PendingIntent p1 = PendingIntent.getBroadcast(getApplicationContext(),alarme.getRequestCode(), intent,0);
+                AlarmManager a = (AlarmManager)getSystemService(ALARM_SERVICE);
+                //a.setRepeating(AlarmManager.RTC_WAKEUP, milis, 10000, p1);
+                a.setExact(AlarmManager.RTC_WAKEUP,milis, p1);
             } catch (Exception e) {
                 result = new TaskResult(TaskResultType.FAIL, e.getMessage());
             }

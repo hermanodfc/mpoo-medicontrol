@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -24,6 +26,12 @@ import com.adht.android.medicontrol.infra.ui.MainActivity;
 import com.adht.android.medicontrol.infra.ui.TaskResult;
 import com.adht.android.medicontrol.infra.ui.TaskResultType;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 public class AlarmeCadastroActivity extends AppCompatActivity {
 
     private EditText nomeView;
@@ -36,6 +44,8 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
     private AlarmeCadastroTask alarmeCadastroTask = null;
 
     private final AlarmeServices services = new AlarmeServices();
+
+    public static int broadcastCode=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +71,8 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cadastrar();
+                broadcastCode ++;
+
             }
         });
 
@@ -206,6 +218,7 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         private final int dias;
         private final int frequencia;
 
+
         AlarmeCadastroTask() {
             nome = nomeView.getText().toString();
             complemento = complementoView.getText().toString();
@@ -223,6 +236,7 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
         private TaskResult registerAlarme() {
             TaskResult result = TaskResult.SUCCESS;
 
+
             try {
                 Alarme alarme = new Alarme();
                 alarme.setNomeMedicamento(nome);
@@ -230,7 +244,21 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
                 alarme.setHorarioInicial(inicio);
                 alarme.setDuracaoDias(dias);
                 alarme.setFrequenciaHoras(frequencia);
+                alarme.setRequestCode(broadcastCode);
                 services.cadastrar(alarme);
+                //configurando hora
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                String diaString = format.format(Calendar.getInstance().getTime());
+                Date data = format.parse(diaString);
+                long dia = data.getTime();
+                long hora = new Integer(inicio.substring(0, 2)) * 3600000; //1 hora = 3.600.000 milisegundos
+                long minuto = Integer.parseInt(inicio.substring(3)) * 60000; //1 minuto = 60.000 milisegundos
+                long milis = dia + hora + minuto;
+                Intent intent = new Intent(AlarmeCadastroActivity.this, Alarm.class);
+                PendingIntent p1 = PendingIntent.getBroadcast(getApplicationContext(),broadcastCode, intent,0);
+                AlarmManager a = (AlarmManager)getSystemService(ALARM_SERVICE);
+                //a.setRepeating(AlarmManager.RTC_WAKEUP, milis, 10000, p1);
+                a.setExact(AlarmManager.RTC_WAKEUP,milis, p1);
             } catch (Exception e) {
                 result = new TaskResult(TaskResultType.FAIL, e.getMessage());
             }

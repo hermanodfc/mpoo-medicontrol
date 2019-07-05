@@ -33,6 +33,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite {
         values.put(DBHelper.TABELA_ALARME_CAMPO_FREQUENCIA_HORAS, alarme.getFrequenciaHoras());
         values.put(DBHelper.TABELA_ALARME_CAMPO_DURACAO_DIAS, alarme.getDuracaoDias());
         values.put(DBHelper.TABELA_ALARME_CAMPO_ID_PACIENTE, idPaciente);
+        values.put(DBHelper.TABELA_ALARME_CAMPO_REQUEST_CODE, alarme.getRequestCode());
         db.insert(DBHelper.TABELA_ALARME, null, values);
         super.close(db);
     }
@@ -45,6 +46,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite {
         result.setFrequenciaHoras(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_FREQUENCIA_HORAS)));
         result.setComplemento(cursor.getString(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_COMPLEMENTO)));
         result.setDuracaoDias(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_DURACAO_DIAS)));
+        result.setRequestCode(cursor.getInt(cursor.getColumnIndex(DBHelper.TABELA_ALARME_CAMPO_REQUEST_CODE)));
         return result;
     }
 
@@ -69,6 +71,7 @@ public class AlarmeDAOSQLite extends AbstractSQLite {
         values.put(DBHelper.TABELA_ALARME_CAMPO_HORARIO_INICIO, alarme.getHorarioInicial());
         values.put(DBHelper.TABELA_ALARME_CAMPO_FREQUENCIA_HORAS, alarme.getFrequenciaHoras());
         values.put(DBHelper.TABELA_ALARME_CAMPO_DURACAO_DIAS, alarme.getDuracaoDias());
+        values.put(DBHelper.TABELA_ALARME_CAMPO_REQUEST_CODE, alarme.getRequestCode());
         db.update(DBHelper.TABELA_ALARME, values, DBHelper.TABELA_ALARME_CAMPO_ID + "=" + idAlarme, null);
         super.close(db);
     }
