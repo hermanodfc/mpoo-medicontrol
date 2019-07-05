@@ -257,6 +257,14 @@ public class AlarmeCadastroActivity extends AppCompatActivity {
                 Intent intent = new Intent(AlarmeCadastroActivity.this, Alarm.class);
                 PendingIntent p1 = PendingIntent.getBroadcast(getApplicationContext(),broadcastCode, intent,0);
                 AlarmManager a = (AlarmManager)getSystemService(ALARM_SERVICE);
+                /*String array[] = new String [2];
+                array[0] = alarme.getNomeMedicamento();
+                array[1] = Integer.toString(alarme.getRequestCode());
+                intent.putExtra("ALARME_INFO", array);*/
+
+                intent.putExtra("ALARME_NOME", alarme.getNomeMedicamento());
+                intent.putExtra("ALARME_REQUEST", alarme.getRequestCode());
+
                 //a.setRepeating(AlarmManager.RTC_WAKEUP, milis, 10000, p1);
                 a.setExact(AlarmManager.RTC_WAKEUP,milis, p1);
             } catch (Exception e) {

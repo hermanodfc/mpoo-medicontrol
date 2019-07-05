@@ -125,10 +125,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_lista_amigos) {
             intent = new Intent(MainActivity.this, ListarAmigosActivity.class);
             startActivity(intent);
-        } else if (id == R.id.toque_alarme) {
+/*        } else if (id == R.id.toque_alarme) {
             intent = new Intent(MainActivity.this, AlarmeToqueActivity.class);
             intent.putExtra(AlarmeToqueActivity.EXTRA_NOME_REMEDIO, "Amoxicilina");
-            startActivity(intent);
+            startActivity(intent);*/
         } else if (id == R.id.nav_exit) {
             UsuarioServices services = new UsuarioServices();
             services.logout();

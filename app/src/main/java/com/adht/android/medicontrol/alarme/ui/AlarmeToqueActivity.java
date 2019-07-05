@@ -1,5 +1,7 @@
 package com.adht.android.medicontrol.alarme.ui;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -64,12 +66,18 @@ public class AlarmeToqueActivity extends AppCompatActivity
     private MediaPlayer player = new MediaPlayer();
     private Button adiar;
     private String remedio;
+    private int request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_alarme_toque);
+        Intent intent = getIntent();
+
+
+        remedio = intent.getStringExtra("ALARME_NOME2");
+        request = intent.getIntExtra("REQUEST2", 0);
 
         preview = (CameraSourcePreview) findViewById(R.id.firePreview);
         if (preview == null) {
@@ -90,12 +98,22 @@ public class AlarmeToqueActivity extends AppCompatActivity
         adiar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent3 = new Intent(AlarmeToqueActivity.this, Alarm.class);
+                PendingIntent p1 = PendingIntent.getBroadcast(getApplicationContext(),request, intent3,0);
+                AlarmManager a = (AlarmManager)getSystemService(ALARM_SERVICE);
+
+                long currentTime = System.currentTimeMillis();
+                long total = currentTime + 10000;
+                intent3.putExtra("ALARME_NOME3", remedio);
+                intent3.putExtra("ALARME_REQUEST3", request);
+                a.setExact(AlarmManager.RTC_WAKEUP, total, p1);
+
                 finish();
             }
         });
 
-        Intent intent = getIntent();
-        remedio = intent.getStringExtra(EXTRA_NOME_REMEDIO);
+        /*Intent intent = getIntent();
+        remedio = intent.getStringExtra(EXTRA_NOME_REMEDIO);*/
         TextView nomeRemedio = findViewById(R.id.nomeRemedio);
         nomeRemedio.setText(remedio);
     }
