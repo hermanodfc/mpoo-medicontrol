@@ -262,9 +262,12 @@ public class AlarmeAtualizacaoActivity extends AppCompatActivity {
                 long minuto = Integer.parseInt(inicio.substring(3)) * 60000; //1 minuto = 60.000 milisegundos
                 long milis = dia + hora + minuto;
                 Intent intent = new Intent(AlarmeAtualizacaoActivity.this, Alarm.class);
+                intent.putExtra("ALARME_NOME", alarme.getNomeMedicamento());
+                intent.putExtra("ALARME_REQUEST", alarme.getRequestCode());
                 PendingIntent p1 = PendingIntent.getBroadcast(getApplicationContext(),alarme.getRequestCode(), intent,0);
                 AlarmManager a = (AlarmManager)getSystemService(ALARM_SERVICE);
-                //a.setRepeating(AlarmManager.RTC_WAKEUP, milis, 10000, p1);
+
+                //a.setRepeating(AlarmManager.RTC_WAKEUP, milis, 20000, p1);
                 a.setExact(AlarmManager.RTC_WAKEUP,milis, p1);
             } catch (Exception e) {
                 result = new TaskResult(TaskResultType.FAIL, e.getMessage());
